@@ -1,0 +1,32 @@
+@font-face {
+    font-display:swap;
+    font-family:Anjoman;
+    font-style:light;
+    font-weight:300;
+    src:url(Anjoman-Light.eot);
+    src:url(Anjoman-Light.eot?#iefix) format("embedded-opentype"), url(Anjoman-Light.woff2) format("woff2"), url(Anjoman-Light.woff) format("woff")
+}
+@font-face {
+    font-display:swap;
+    font-family:Anjoman;
+    font-style:normal;
+    font-weight:400;
+    src:url(Anjoman-FaNum-Regular.eot);
+    src:url(Anjoman-FaNum-Regular.eot?#iefix) format("embedded-opentype"), url(Anjoman-FaNum-Regular.woff2) format("woff2"), url(Anjoman-FaNum-Regular.woff) format("woff")
+}
+@font-face {
+    font-display:swap;
+    font-family:Anjoman;
+    font-style:medium;
+    font-weight:500;
+    src:url(Anjoman-Medium.eot);
+    src:url(Anjoman-Medium.eot?#iefix) format("embedded-opentype"), url(Anjoman-Medium.woff2) format("woff2"), url(Anjoman-Medium.woff) format("woff")
+}
+@font-face {
+    font-display:swap;
+    font-family:Anjoman;
+    font-style:normal;
+    font-weight:700;
+    src:url(Anjoman-FaNum-Bold.eot);
+    src:url(Anjoman-FaNum-Bold.eot?#iefix) format("embedded-opentype"), url(Anjoman-FaNum-Bold.woff2) format("woff2"), url(Anjoman-FaNum-Bold.woff) format("woff")
+}
