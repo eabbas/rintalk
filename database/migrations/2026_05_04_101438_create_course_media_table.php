@@ -11,17 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('course_attachments', function (Blueprint $table) {
+        Schema::create('course_media', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description');
-            $table->text('summary');
-            $table->string('price');
-            $table->string('discount');
             $table->integer('course_id');
             $table->string('file_path');
-            $table->string('image');
+            $table->string('duration');
+            $table->string('order');
             $table->string('type');
+            $table->string('preview');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('course_attachments');
+        Schema::dropIfExists('course_media');
     }
 };

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->integer('progress');
-            $table->text('summry');
+            $table->text('summary');
             $table->string('price');
             $table->string('discount');
             $table->string('duration');
