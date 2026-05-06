@@ -26,6 +26,7 @@ return new class extends Migration
             $table->integer('active');
             $table->integer('show_in_home');
             $table->text('prerequisite');
+            $table->string('master_name');
             $table->timestamps();
         });
     }

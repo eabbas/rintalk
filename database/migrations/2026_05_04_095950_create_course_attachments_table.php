@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('course_attachments', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
-            $table->text('summary');
+            $table->text('description')->nullable();
+            $table->text('summary')->nullable();
             $table->string('price');
             $table->string('discount');
             $table->integer('course_id');

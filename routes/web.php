@@ -65,17 +65,17 @@ Route::group([
 ///CourseMedia
 
 Route::group([
-    'prefix' => 'CourseMedia',
+    'prefix' => 'courseMedia',
     'controller' => CourseMediaController::class,
-    'as' =>'CourseMedia.',
+    'as' =>'courseMedia.',
 ], function(){
     Route::get('/create', 'create')->name('create');
     Route::post('/store','store')->name('store');
     Route::get('/index' , 'index')->name('index');
-    Route::get('/single/{book}', 'single')->name('single');
-    Route::get('/edit/{book}', 'edit')->name('edit');
+    Route::get('/single/{courseMedia}', 'single')->name('single');
+    Route::get('/edit/{courseMedia}', 'edit')->name('edit');
     Route::post('/update', 'update')->name('update');
-    Route::get('/delete/{CourseAttachment}', 'delete')->name('delete');
+    Route::get('/delete/{courseMedia}', 'delete')->name('delete');
 });
 
 

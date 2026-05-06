@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
-            $table->text('summary');
+            $table->text('description')->nullable();
+            $table->text('summary')->nullable();
             $table->string('price');
             $table->string('discount');
             $table->integer('level_id');
@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('active');
             $table->integer('show_in_home')->nullable();
             $table->string('file_path');
+            $table->string('image');
             $table->timestamps();
         });
     }

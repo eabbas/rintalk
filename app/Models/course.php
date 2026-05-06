@@ -21,4 +21,9 @@ class course extends Model
     'show_in_home',
     'prerequisite'
    ];
+
+   public function medias()
+    {
+        return $this->hasMany(CourseMedia::class);
+    }
 }

@@ -14,4 +14,9 @@ class CourseMedia extends Model
         'type',
         'preview'
     ];
+    
+    public function course()
+    {
+        return $this->belongsTo(course::class , 'course_id');
+    }
 }

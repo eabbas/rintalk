@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('duration');
             $table->string('order');
             $table->string('type');
-            $table->string('preview');
+            $table->string('preview')->nullable();
             $table->timestamps();
         });
     }

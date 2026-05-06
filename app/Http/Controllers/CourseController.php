@@ -68,7 +68,10 @@ class CourseController extends Controller
     }
 
      public function delete($id){
-         course::find($id)->delete();
+        $course = course::find($id)->delete();
+         if($course->media->file_path){
+            Storage::disk('public')->delete($course->media->file_path);
+        }
          return to_route('course.courses');
     }
 }
