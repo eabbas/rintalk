@@ -21,8 +21,8 @@ return new class extends Migration
             $table->integer('level_id');
             $table->integer('status_id');
             $table->integer('active');
-            $table->integer('show_in_home');
-            $table->text('file_path');
+            $table->integer('show_in_home')->nullable();
+            $table->string('file_path');
             $table->timestamps();
         });
     }

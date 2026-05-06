@@ -16,6 +16,7 @@ class Books extends Model
     'status_id',
     'active',
     'show_in_home',
-    'file_path'
+    'file_path',
+    'image'
    ];
 }
