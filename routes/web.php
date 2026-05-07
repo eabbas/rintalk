@@ -26,6 +26,7 @@ Route::group([
     Route::get('/edit/{course}', 'edit')->name('edit');
     Route::post('/update', 'update')->name('update');
     Route::get('/delete/{course}', 'delete')->name('delete');
+     Route::get('/medias/{course}' , 'media')->name('medias');
 });
 
 
@@ -69,7 +70,7 @@ Route::group([
     'controller' => CourseMediaController::class,
     'as' =>'courseMedia.',
 ], function(){
-    Route::get('/create', 'create')->name('create');
+    Route::get('/create/{course?}', 'create')->name('create');
     Route::post('/store','store')->name('store');
     Route::get('/index' , 'index')->name('index');
     Route::get('/single/{courseMedia}', 'single')->name('single');

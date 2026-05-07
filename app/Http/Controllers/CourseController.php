@@ -67,6 +67,11 @@ class CourseController extends Controller
         return view('admin.course.single' , ['course'=>$course]);
     }
 
+    public function media(course $course)
+    {
+        return view("admin.course.medias",['course'=>$course]);
+    }
+
      public function delete($id){
         $course = course::find($id)->delete();
          if($course->media->file_path){

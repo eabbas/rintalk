@@ -10,16 +10,12 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 class CourseMediaController extends Controller
 {
-    //   public function create(course $course)
-    // {
-    //     return view('admin.courseMedia.create',['course'=>$course]);
-    // }
-
-    public function create()
-    {
+    
+    public function create(course $course)
+  {
         $courses = Course::all();
-        return view('admin.courseMedia.create',['courses'=>$courses]);
-    }
+        return view('admin.courseMedia.create',['courses'=>$courses , 'course'=>$course]);
+  }
 
     public function store(Request $request)
     {
