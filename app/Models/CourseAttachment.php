@@ -17,4 +17,8 @@ class CourseAttachment extends Model
         'image',
         'type'
     ];
+
+    public function course(){
+    return $this->belongsTo(Course::class);
+    }
 }

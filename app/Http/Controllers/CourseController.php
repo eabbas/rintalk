@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Models\course;
+use App\Models\level;
+use App\Models\status;
+use App\Models\category;
+use App\Models\courseCategory;
 use App\Models\CourseAttachment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -11,7 +15,10 @@ use Illuminate\Support\Facades\Auth;
 class CourseController extends Controller
 {
     public function create(){
-        return view('admin.course.create');
+        $levels = level::all();
+        $statuses = status::all();
+        $categories = category::all();
+        return view('admin.course.create' , ['levels'=>$levels , 'statuses'=>$statuses , 'categories'=>$categories]);
     }
 
     public function store(Request $request){
@@ -29,6 +36,10 @@ class CourseController extends Controller
                 'active' => $request->active,
                 'show_in_home' => $request->show_in_home,
                 'prerequisite' => $request->prerequisite
+             ]);
+             courseCategory::create([
+                'course_id'=> $courseId,
+                'category_id'=> $request->category_id,
              ]);
         return to_route('course.courses');
     }

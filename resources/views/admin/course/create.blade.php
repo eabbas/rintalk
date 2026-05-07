@@ -82,12 +82,9 @@
                     <label class="form-label">سطح دوره  <span class="text-red-500">*</span></label>
                     <select name="level_id" class="form-select">
                         <option value="">انتخاب سطح</option>
-                        <option value="1">A1</option>
-                        <option value="2">A2</option>
-                        <option value="3">B1</option>
-                        <option value="4">B2</option>
-                        <option value="5">C1</option>
-                        <option value="6">C2</option>
+                        @foreach ($levels as $level)
+                        <option value="{{$level->id}}">{{$level->title}}</option>
+                        @endforeach
                     </select>
                 </div>
 
@@ -96,11 +93,9 @@
                     <label class="form-label">وضعیت دوره<span class="text-red-500">*</span></label>
                     <select name="status_id" class="form-select">
                         <option value="">انتخاب وضعیت</option>
-                        <option value="1">پیش‌نویس</option>
-                        <option value="2">منتشر شده</option>
-                        <option value="3">در حال برگزاری</option>
-                        <option value="4">تکمیل شده</option>
-                        <option value="5">آرشیو شده</option>
+                        @foreach ($statuses as $status)
+                        <option value="{{$status->id}}">{{$status->title}}</option>
+                        @endforeach
                     </select>
                 </div>
 
@@ -111,17 +106,15 @@
                 </div>
 
                 <!-- دسته‌بندی -->
-                {{-- <div class="col-span-1">
+                <div class="col-span-1">
                     <label class="form-label">دسته‌بندی</label>
                     <select name="category_id" class="form-select">
                         <option value="">انتخاب دسته‌بندی</option>
-                        <option value="1">زبان‌های خارجی</option>
-                        <option value="2">برنامه‌نویسی</option>
-                        <option value="3">طراحی و گرافیک</option>
-                        <option value="4">بازاریابی و کسب‌وکار</option>
-                        <option value="5">علوم انسانی</option>
+                        @foreach ($categories as $category)
+                        <option value="{{$category->id}}">{{$category->title}}</option>
+                        @endforeach
                     </select>
-                </div> --}}
+                </div>
             </div>
 
             <!-- توضیحات کامل -->

@@ -63,6 +63,8 @@
                         @endphp
                         @if ($courses)
                             @foreach ($courses as $course)
+                            @foreach ($course->categories as $category)
+                            {{-- @dd($course->category) --}}
                                {{-- @foreach ($course->crs_categories as $crsCategory) --}}
                                  {{-- @foreach ($course->seasons as $season) --}}
                                  @if ($course)
@@ -98,15 +100,15 @@
                                         </div>
                                         <div
                                         class="p-1 lg:p-3 text-xs lg:text-sm h-full flex items-center justify-center text-gray-900 w-[500px]  lg:w-full text-center col-span-2">
-                                        <span class="block w-30 lg:w-full">{{ $course->status_id }}</span>
+                                        <span class="block w-30 lg:w-full">{{ $course->status->title }}</span>
                                     </div>
                                         <div
                                         class="p-1 lg:p-3 text-xs lg:text-sm h-full flex items-center justify-center text-gray-900 w-[500px]  lg:w-full text-center col-span-2">
-                                        <span class="block w-30 lg:w-full">{{ $course->level_id }}</span>
+                                        <span class="block w-30 lg:w-full">{{ $course->level->title }}</span>
                                     </div>
                                     <div
                                     class="p-1 lg:p-3 text-xs lg:text-sm h-full flex items-center justify-center text-gray-900 w-[500px] lg:w-full text-center col-span-2">
-                                    <span class="block w-24 lg:w-full"></span>
+                                    <span class="block w-24 lg:w-full">{{$category->title}}</span>
                                 </div>
                                 
                                 <div class="col-span-5">
@@ -185,7 +187,7 @@
                                     $i++;
                                     @endphp
                                 @endforeach
-                                {{-- @endforeach --}}
+                                @endforeach
                                 {{-- @endforeach --}}
                         @endif
                     </div>
