@@ -132,15 +132,14 @@
                         <span class="chevron text-gray-400 text-sm">▼</span>
                     </div>
                     <ul class="dropdown-menu hidden mr-6 mt-1 space-y-1">
-                        <li><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">فصل ۱: مقدمات</a></li>
-                        <li><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">فصل ۲: گرامر پایه</a></li>
-                        <li><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">فصل ۳: واژگان کلیدی</a></li>
-                        <li><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">فصل ۴: مهارت شنیداری</a></li>
+                        <li><a href="{{ url('chapter/create') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg"> ایجاد فصل </a></li>
+                        <li><a href="{{ url('chapter/index') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg"> لیست فصل  </a></li>
+                        <li><a href="{{ url('chapterComment/index') }}"  class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg"> کامنت ها</a></li>
                     </ul>
                 </div>
 
                 <!-- ========== منوی درس‌ها با دراپ‌داون ========== -->
-                <div class="dropdown-item">
+               <div class="dropdown-item">
                     <div class="dropdown-trigger flex items-center justify-between px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-50 transition-all cursor-pointer">
                         <div class="flex items-center gap-3">
                             <span class="w-5 text-center">📖</span>
@@ -149,10 +148,25 @@
                         <span class="chevron text-gray-400 text-sm">▼</span>
                     </div>
                     <ul class="dropdown-menu hidden mr-6 mt-1 space-y-1">
-                        <li><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">درس ۱: معرفی خود</a></li>
-                        <li><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">درس ۲: خانواده و دوستان</a></li>
-<li><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">درس ۳: برنامه روزانه</a></li>
-                        <li><a href="#" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">درس ۴: سفر و گردشگری</a></li>
+                        <li><a href="{{ route('lesson.create') }}" class="block px-4 py-2 text-sm hover:bg-gray-50 rounded-lg">ایجاد درس</a></li>
+                        <li><a href="{{ route('lesson.lessons') }}" class="block px-4 py-2 text-sm hover:bg-gray-50 rounded-lg">لیست دروس</a></li>
+                        <!-- <li><a href="{{ route('LessonAttachment.createLessonAttachment') }}" class="block px-4 py-2 text-sm font-bold hover:bg-gray-50 rounded-lg">ایجاد پیوست</a></li>
+                        <li><a href="{{ route('LessonAttachment.LessonAttachments') }}" class="block px-4 py-2 text-sm font-bold hover:bg-gray-50 rounded-lg">لیست پیوست</a></li>
+                        <li><a href="{{ route('LessonMedia.createLessonMedia') }}" class="block px-4 py-2 text-sm font-bold hover:bg-gray-50 rounded-lg">ایجاد مدیا</a></li>
+                        <li><a href="{{ route('LessonMedia.LessonMedias') }}" class="block px-4 py-2 text-sm font-bold hover:bg-gray-50 rounded-lg">لیست مدیا</a></li> -->
+                    </ul>
+                </div>
+                    <div class="dropdown-item">
+                    <div class="dropdown-trigger flex items-center justify-between px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-50 transition-all cursor-pointer">
+                        <div class="flex items-center gap-3">
+                            <span class="w-5 text-center">🏷️</span>
+                            <span>دسته‌بندی</span>
+                        </div>
+                        <span class="chevron text-gray-400 text-sm">▼</span>
+                    </div>
+                    <ul class="dropdown-menu hidden mr-6 mt-1 space-y-1">
+                        <li><a href="{{ route('category.create') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">ایجاد دسته بندی</a></li>
+                        <li><a href="{{ route('category.list') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">لیست دسته بندی ها</a></li>
                     </ul>
                 </div>
 
