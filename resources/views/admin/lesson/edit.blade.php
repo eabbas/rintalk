@@ -70,29 +70,34 @@
                     <input type="text" name="title" class="form-input bg-blue-50" placeholder="مثال: جلسه اول - معرفی" value="{{$lesson->title}}" required>
                 </div>
 
-                <!-- دوره والد (course_id) -->
+                <!-- فصل والد (chapter_id) -->
                 <div class="col-span-1">
-                    <label class="form-label">دوره مرتبط <span class="text-red-500">*</span></label>
-                    <select name="course_id" class="form-select bg-blue-50">
-                        <option value="">انتخاب دوره</option>
-                        <option value="1"> دوره</option>
-                        
+                    <label class="form-label">فصل مرتبط <span class="text-red-500">*</span></label>
+                    <select name="chapter_id" class="form-select bg-blue-50" required>
+                        @foreach($chapters as $chapter)
+                        <option value="{{$chapter->id}}"
+                        @if ($chapter->id == $lesson->chapter_id) {{ 'selected' }} @endif>
+                        {{$chapter->title}}</option>
+                        @endforeach
                     </select>
                 </div>
 
                 <!-- وضعیت (status_id) -->
                 <div class="col-span-1">
-                    <label class="form-label">وضعیت درس</label>
-                    <select name="status_id" class="form-select bg-blue-50">
-                        <option value="">انتخاب وضعیت</option>
-                        
+                    <label class="form-label">وضعیت درس <span class="text-red-500">*</span></label>
+                    <select name="status_id" class="form-select bg-blue-50" required>
+                        @foreach($status as $state)
+                        <option value="{{$state->id}}"
+                            @if ($state->id == $lesson->status_id) {{ 'selected' }} @endif>
+                            {{$state->title}}</option>
+                        @endforeach
                     </select>
                 </div>
 
                 <!-- ترتیب نمایش (order) -->
                 <div class="col-span-1">
-                    <label class="form-label">ترتیب نمایش</label>
-                    <input type="number" name="order" class="form-input bg-blue-50" placeholder="مثال: 1" step="1" value="{{ old('order', $lesson->order) }}">
+                    <label class="form-label">ترتیب نمایش<span class="text-red-500">*</span></label>
+                    <input type="number" name="order" class="form-input bg-blue-50" placeholder="مثال: 1" step="1" value="{{ $lesson->order }}" required>
                 </div>
             </div>
 
@@ -111,20 +116,20 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- مدت زمان (duration) -->
                 <div>
-                    <label class="form-label">مدت زمان (دقیقه)</label>
-                    <input type="text" name="duration" class="form-input bg-blue-50" placeholder="مثال: 45 دقیقه" value="{{ old('duration', $lesson->duration) }}">
+                    <label class="form-label">مدت زمان (دقیقه)<span class="text-red-500">*</span></label>
+                    <input type="text" name="duration" class="form-input bg-blue-50" placeholder="مثال: 45 دقیقه" value="{{$lesson->duration}}"required>
                 </div>
 
                 <!-- قیمت (price) -->
                 <div>
-                    <label class="form-label">قیمت (تومان)</label>
-                    <input type="text" name="price" class="form-input bg-blue-50" placeholder="مثال: 150000" value="{{ old('price', $lesson->price) }}">
+                    <label class="form-label">قیمت (تومان)<span class="text-red-500">*</span></label>
+                    <input type="text" name="price" class="form-input bg-blue-50" placeholder="مثال: 150000" value="{{ $lesson->price }}" required>
                 </div>
 
                 <!-- تخفیف (discount) -->
                 <div>
                     <label class="form-label">تخفیف (تومان)</label>
-                    <input type="text" name="discount" class="form-input bg-blue-50" placeholder="مثال: 20" value="{{ old('discount', $lesson->discount) }}">
+                    <input type="text" name="discount" class="form-input bg-blue-50" placeholder="مثال: 20" value="{{ $lesson->discount}}">
                 </div>
             </div>
 

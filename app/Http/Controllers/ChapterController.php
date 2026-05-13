@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 use App\Models\chapter;
+use App\Models\course;
 use Illuminate\Http\Request;
 
 class ChapterController extends Controller
 {
-    public function create(){
-        return view("admin.chapters.create");
+    public function create(course $course){
+        $courses = course::all();
+        return view("admin.chapters.create" , ['course',$course , 'courses'=>$courses]);
     }
 
     public function store(Request $request){
            $chapterId = chapter::insertGetId([
                 'title' => $request->title,
                 'description' => $request->description,
-                'course_id' => 1,
+                'course_id' => $request->course_id,
                 'price' => $request->price,
                 'discount' => $request->discount,
                 'duration' => $request->duration,

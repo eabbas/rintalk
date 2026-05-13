@@ -19,4 +19,12 @@ class Books extends Model
     'file_path',
     'image'
    ];
+   public function status()
+    {
+        return $this->belongsTo(status::class);
+    }
+     public function level()
+    {
+        return $this->belongsTo(level::class);
+    }
 }

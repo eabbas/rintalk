@@ -69,9 +69,9 @@
                                     <a href="{{ route('LessonAttachment.LessonAttachments', [$lesson]) }}"
                                         class="text-sky-700 text-xs whitespace-nowrap hover:underline">لیست پیوست ها/</a>
                                     <a href="{{ route('LessonMedia.create', [$lesson]) }}"
-                                        class="text-sky-700 text-xs whitespace-nowrap hover:underline">ایجاد مدیا/</a>
+                                        class="text-sky-700 text-xs whitespace-nowrap hover:underline">افزودن ویدیو/</a>
                                     <a href="{{ route('LessonMedia.LessonMedias', [$lesson]) }}"
-                                        class="text-sky-700 text-xs whitespace-nowrap hover:underline">لیست مدیا</a>
+                                        class="text-sky-700 text-xs whitespace-nowrap hover:underline">لیست ویدیوها</a>
                                 </div>
                             </div>
                             @php

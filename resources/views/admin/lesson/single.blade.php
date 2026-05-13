@@ -31,12 +31,22 @@
                     </div>
                     <div class="w-full lg:py-3 flex flex-col gap-2 lg:gap-0 lg:flex-row lg:items-center">
                         <div class="w-full lg:w-1/2 text-xs lg:text-sm text-gray-400">
+                             فصل مربوطه 
+                        </div>
+                        <div class="w-full lg:w-1/2 font-medium pr-3 lg:pr-0 text-sm lg:text-base">
+                            {{ $lesson->chapter->title }}
+                        </div>
+                    </div>
+                    @if($lesson->summary)
+                    <div class="w-full lg:py-3 flex flex-col gap-2 lg:gap-0 lg:flex-row lg:items-center">
+                        <div class="w-full lg:w-1/2 text-xs lg:text-sm text-gray-400">
                              خلاصه 
                         </div>
                         <div class="w-full lg:w-1/2 font-medium pr-3 lg:pr-0 text-sm lg:text-base">
                             {{ $lesson->summary }}
                         </div>
                     </div>
+                    @endif
                     <div class="w-full lg:py-3 flex flex-col gap-2 lg:gap-0 lg:flex-row lg:items-center">
                         <div class="w-full lg:w-1/2 text-xs lg:text-sm text-gray-400">
                              مدت زمان درس 

@@ -6,19 +6,25 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\lesson;
 use App\Models\status;
+use App\Models\course;
+use App\Models\chapter;
 class LessonController extends Controller
 {
-     public function create(){
+     public function create(chapter $chapter=null){
         $status=status::all();
-        return view('admin.lesson.create',['status'=>$status]);
+        $chapters=chapter::all();
+        $courses=course::all();
+        return view('admin.lesson.create',['status'=>$status,'chapters'=>$chapters,'chapter'=>$chapter,'courses'=>$courses]);
     }
 
     public function store(Request $request){
+            // $chapter=chapter::find($request->chapter_id);
             lesson::create([
                 'title' => $request->title,
                 'description' => $request->description,
                 'summary' => $request->summary,
                 'duration' => $request->duration,
+                'chapter_id' => $request->chapter_id,
                 'price' => $request->price,
                 'discount' => $request->discount,
                 'active'=> $request->active ? 1 : 0,
@@ -28,15 +34,22 @@ class LessonController extends Controller
                 'course_id' => $request->course_id,
             ]);
             return to_route('lesson.lessons');
+            //  return redirect()->route("chapter.ChapterIndex");
     }
 
     public function index(){
        $lessons = lesson::all();
        return view('admin.lesson.index' , ['lessons'=>$lessons]);
     }
+    public function chapterLesson(chapter $chapter){
+       $lessons = $chapter->lessons;
+       return view('admin.lesson.index' , ['lessons'=>$lessons]);
+    }
 
     public function edit(lesson $lesson){
-        return view('admin.lesson.edit' , ['lesson'=>$lesson]);
+        $chapters=chapter::all();
+        $status=status::all();
+        return view('admin.lesson.edit' , ['lesson'=>$lesson,'chapters'=>$chapters,'status'=>$status]);
     }
 
     public function update(Request $request){
@@ -50,17 +63,14 @@ class LessonController extends Controller
         $lesson->discount = $request->discount;
         $lesson->show_in_home = $request->show_in_home ? 1 : 0;
         $lesson->active= $request->active ? 1 : 0;
-        $lesson->status_id = 1;
-        $lesson->course_id = 1;
+        $lesson->status_id = $request->status_id;
+        // $lesson->course_id = 1;
+        $lesson->chapter_id = $request->chapter_id;
         $lesson->order = $request->order;
         $lesson->save();
         return to_route('lesson.lessons');
     }
-
-    public function class_list(lesson $lesson){
-        return view('admin.lesson.class_list' , ['lesson'=>$lesson]);
-    }
-    
+ 
     public function single(lesson $lesson){
         return view('admin.lesson.single' , ['lesson'=>$lesson]);
     }

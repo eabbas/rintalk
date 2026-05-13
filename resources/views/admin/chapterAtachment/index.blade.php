@@ -18,7 +18,7 @@
         <span class="block w-20 lg:w-full">قیمت</span>
     </div>
     <div class="py-3 text-center text-xs font-medium text-gray-600 col-span-2">
-        <span class="block w-20 lg:w-full">مدت دوره</span>
+        <span class="block w-20 lg:w-full">خلاصه توضیح</span>
     </div>
     <div class="py-3 text-center text-xs font-medium text-gray-600 col-span-3">
         <span class="block w-24 lg:w-full">عملیات</span>

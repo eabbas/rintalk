@@ -3,7 +3,6 @@
     @section('content')
      <h1 class="text-2xl font-bold text-gray-800 text-center mb-5">فرم ایجاد فصل</h1>
         <form action="{{ route('chapter.chapterStore') }}" method="post" enctype='multipart/form-data'>
-          <input type="hidden" name="course_id" value="{{$course->id}}"> 
             @csrf
             <div class="min-h-screen flex items-start justify-center">
                 <div class="bg-white rounded-2xl shadow-md p-3 w-full md:w-9/12">
@@ -50,6 +49,15 @@
                                     <input class="p-4 w-full focus:outline-none text-sm font-bold mr-2" type="text"
                                         name='discount' placeholder="تخفیف فصل(تومان) راوارد کنید" required>
                                 </div>
+                            </div>
+                            <div class="col-span-1">
+                                  <label class="form-label"> دوره</label>
+                             <select name="course_id" class="form-select bg-blue-50">
+                                 <option value="">انتخاب دوره </option>
+                                    @foreach($courses as $course)
+                              <option value="{{$course->id}}">{{$course->title}}</option>
+                               @endforeach
+                             </select>
                             </div>
                             <div class="w-full flex flex-col gap-3 max-md:flex-col max-md:gap-1 lg:col-span-2">
                                 <label class="w-30 text-sm mb-1 mt-2.5 flex">توضیحات</label>

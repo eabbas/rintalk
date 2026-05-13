@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\books;
+use App\Models\level;
+use App\Models\status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -9,10 +11,13 @@ use Illuminate\Support\Facades\Storage;
 class BooksController extends Controller
 {
    public function create(){
-        return view('admin.books.create');
+    $levels = level::all();
+    $statuses = status::all();
+        return view('admin.books.create' , ['levels'=>$levels , 'statuses'=>$statuses]);
     }
 
     public function store(Request $request){
+        $image = null;
          if (isset($request->file_path)) {
         $name = $request->file_path->getClientOriginalName();
         $fullName = Str::uuid() . '_' . $name;
@@ -31,8 +36,8 @@ class BooksController extends Controller
                 'discount' => $request->discount,
                 'level_id' => $request->level_id,
                 'status_id' => $request->status_id,
-                'active' => $request->active,
-                'show_in_home' => $request->show_in_home,
+                'active' => $request->active  ? 1 : 0,
+                'show_in_home' => $request->show_in_home  ? 1 : 0,
                 'file_path' => $file_path,
                 'image'=> $image
              ]);
@@ -46,10 +51,13 @@ class BooksController extends Controller
 
     public function edit(books $book){
         $book = books::find($book->id);
-        return view('admin.books.edit' , ['book'=>$book]);
+        $levels = level::all();
+        $statuses = status::all();
+        return view('admin.books.edit' , ['book'=>$book, 'levels'=>$levels, 'statuses'=>$statuses]);
     }
 
     public function update(Request $request){
+        $image = null;
         if (isset($request->file_path)) {
         $name = $request->file_path->getClientOriginalName();
         $fullName = Str::uuid() . '_' . $name;
@@ -68,8 +76,8 @@ class BooksController extends Controller
         $book->discount = $request->discount;
         $book->level_id = $request->level_id;
         $book->status_id = $request->status_id;
-        $book->active = $request->active;
-        $book->show_in_home = $request->show_in_home;
+        $book->active = $request->active ? 1 : 0;
+        $book->show_in_home = $request->show_in_home ? 1 : 0;
         $book->file_path =  $file_path;
         $book->image =  $image;
         $book->save();

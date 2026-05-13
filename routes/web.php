@@ -40,7 +40,7 @@ Route::group([
     Route::get('/edit/{course}', 'edit')->name('edit');
     Route::post('/update', 'update')->name('update');
     Route::get('/delete/{course}', 'delete')->name('delete');
-     Route::get('/medias/{course}' , 'media')->name('medias');
+    Route::get('/medias/{course}' , 'media')->name('medias');
 });
 
 
@@ -207,7 +207,7 @@ Route::group([
     'controller' => ChapterController::class,
     'as' =>'chapter.',
 ], function(){
-    Route::get('/create', 'create')->name('create');
+    Route::get('/create/{course?}', 'create')->name('create');
     Route::get('/index', 'index')->name('ChapterIndex');
     Route::get('/edit/{id}', 'edit')->name('ChapterEdit');
     Route::get('/delete/{id}', 'delete')->name('DeleteChapter');

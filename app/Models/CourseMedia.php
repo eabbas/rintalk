@@ -17,6 +17,6 @@ class CourseMedia extends Model
     
     public function course()
     {
-        return $this->belongsTo(course::class , 'course_id');
+        return $this->belongsTo(course::class);
     }
 }

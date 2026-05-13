@@ -29,5 +29,12 @@ class chapter extends Model
     return $this->hasMany(ChapterMedia::class);
 
   }
-    
+  public function lessons(){
+    return $this->hasMany(lesson::class , 'chapter_id');
+
+  }
+      public function course()
+    {
+        return $this->belongsTo(course::class);
+    }
 }

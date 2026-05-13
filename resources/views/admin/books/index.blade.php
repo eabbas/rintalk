@@ -84,11 +84,11 @@
                                         </div>
                                         <div
                                         class="p-1 lg:p-3 text-xs lg:text-sm h-full flex items-center justify-center text-gray-900 w-[500px]  lg:w-full text-center col-span-2">
-                                        <span class="block w-30 lg:w-full">{{ $book->status_id }}</span>
+                                        <span class="block w-30 lg:w-full">{{ $book->status->title }}</span>
                                     </div>
                                         <div
                                         class="p-1 lg:p-3 text-xs lg:text-sm h-full flex items-center justify-center text-gray-900 w-[500px]  lg:w-full text-center col-span-2">
-                                        <span class="block w-30 lg:w-full">{{ $book->level_id }}</span>
+                                        <span class="block w-30 lg:w-full">{{ $book->level->title }}</span>
                                     </div>
                                 <div class="col-span-2">
                                     <div

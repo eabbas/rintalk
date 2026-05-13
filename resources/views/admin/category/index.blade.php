@@ -1,5 +1,5 @@
 @extends('welcome')
-@section('title', 'لیست دسته‌ها')
+@section('title', 'سینگل دسته')
 @section('content')
     <div class="w-full flex flex-col pb-4">
         <div class="bg-white rounded-lg">

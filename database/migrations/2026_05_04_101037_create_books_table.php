@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('active');
             $table->integer('show_in_home')->nullable();
             $table->string('file_path');
-            $table->string('image');
+            $table->string('image')->nullable();;
             $table->timestamps();
         });
     }

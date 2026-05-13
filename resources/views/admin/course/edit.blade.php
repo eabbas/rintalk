@@ -77,17 +77,16 @@
                     <input type="text" name="course_code" class="form-input" placeholder="مثال: ENG-101">
                 </div> --}}
 
-                <!-- سطح دوره -->
+                 <!-- سطح دوره -->
                 <div class="col-span-1">
                     <label class="form-label">سطح دوره  <span class="text-red-500">*</span></label>
                     <select name="level_id" class="form-select">
                         <option value="">انتخاب سطح</option>
-                        <option value="1">A1</option>
-                        <option value="2">A2</option>
-                        <option value="3">B1</option>
-                        <option value="4">B2</option>
-                        <option value="5">C1</option>
-                        <option value="6">C2</option>
+                        @foreach ($levels as $level)
+                        <option value="{{$level->id}}" @if ($level->id == $course->level_id)
+                            {{'selected'}}
+                        @endif>{{$level->title}}</option>
+                        @endforeach
                     </select>
                 </div>
 
@@ -96,11 +95,24 @@
                     <label class="form-label">وضعیت دوره<span class="text-red-500">*</span></label>
                     <select name="status_id" class="form-select">
                         <option value="">انتخاب وضعیت</option>
-                        <option value="1">پیش‌نویس</option>
-                        <option value="2">منتشر شده</option>
-                        <option value="3">در حال برگزاری</option>
-                        <option value="4">تکمیل شده</option>
-                        <option value="5">آرشیو شده</option>
+                        @foreach ($statuses as $status)
+                        <option value="{{$status->id}}" @if ($status->id == $course->status_id)
+                            {{'selected'}}
+                        @endif>{{$status->title}}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <!-- دسته‌بندی -->
+                <div class="col-span-1">
+                    <label class="form-label">دسته‌بندی</label>
+                    <select name="category_id" class="form-select">
+                        <option value="">انتخاب دسته‌بندی</option>
+                        @foreach ($categories as $category)
+                        <option value="{{$category->id}}" @if ($category->id == $course->category_id)
+                            {{'selected'}}
+                        @endif>{{$category->title}}</option>
+                        @endforeach
                     </select>
                 </div>
 
@@ -109,7 +121,11 @@
                     <label class="form-label">مدرس دوره <span class="text-red-500">*</span></label>
                      <input type="text" name="master_name" class="form-input" value="{{$course->master_name}}" placeholder="نام استاد را وارد کنید" required>
                 </div>
-
+                <!-- پیش نیاز ها -->
+                <div class="col-span-1">
+                    <label class="form-label">پیش نیاز های دوره <span class="text-red-500">*</span></label>
+                    <input type="text" name="prerequisite" value="{{$course->prerequisite}}" class="form-input" placeholder="مثال: آشنایی با پایه انگلیسی" required>
+                </div>
                 <!-- دسته‌بندی -->
                 {{-- <div class="col-span-1">
                     <label class="form-label">دسته‌بندی</label>
@@ -136,21 +152,13 @@
                 <textarea name="summary" rows="2" class="form-textarea w-full" placeholder="خلاصه کوتاه (حداکثر ۲۰۰ کاراکتر)">{{$course->summary}}</textarea>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-3 md:grid-cols-3 gap-6">
                 <!-- مدت زمان -->
                 <div>
                     <label class="form-label">مدت زمان (ساعت)<span class="text-red-500">*</span></label> 
                     <input type="text" name="duration" value="{{$course->duration}}" class="form-input" placeholder="مثال: 24 ساعت">
                 </div>
-                <!-- پیش نیاز ها -->
-                <div class="col-span-2">
-                    <label class="form-label">پیش نیاز های دوره <span class="text-red-500">*</span></label>
-                    <input type="text" name="prerequisite" value="{{$course->prerequisite}}" class="form-input" placeholder="مثال: آشنایی با پایه انگلیسی" required>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- قیمت -->
+                 <!-- قیمت -->
                 <div>
                     <label class="form-label">قیمت (تومان) <span class="text-red-500">*</span></label>
                     <input type="text" name="price" value="{{$course->price}}" class="form-input" placeholder="مثال: 450000">
@@ -161,13 +169,17 @@
                     <label class="form-label">تخفیف <span class="text-red-500">*</span></label>
                     <input type="text" name="discount" value="{{$course->discount}}" class="form-input" placeholder="قیمت با تخفیف">
                 </div>
+            </div>
+
+            {{-- <div class="grid grid-cols-1 md:grid-cols-3 gap-6"> --}}
+               
 
                 <!-- قیمت پس از تخفیف (فقط نمایشی) -->
                 {{-- <div>
                     <label class="form-label">قیمت نهایی (تومان)</label>
                     <input type="text" class="form-input bg-gray-100 cursor-not-allowed" placeholder="به‌طور خودکار محاسبه می‌شود" readonly disabled>
                 </div> --}}
-            </div>
+            {{-- </div> --}}
             <!-- چک‌باکس‌ها -->
             <div class="flex flex-wrap gap-6">
                 <label class="flex items-center gap-2 cursor-pointer">

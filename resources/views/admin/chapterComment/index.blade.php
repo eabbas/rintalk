@@ -1,3 +1,6 @@
+@extends('welcome')
+    @section('title', 'فصل های دوره مربوطه')
+    @section('content')
 <div class="container mx-auto px-4 py-8">
     <div class="max-w-4xl mx-auto">
      
@@ -26,3 +29,4 @@
         </div>
     </div> 
 </div> 
+@endsection

@@ -22,6 +22,7 @@ class CourseController extends Controller
     }
 
     public function store(Request $request){
+        // dd($request->all());
              $courseId = course::insertGetId([
                 'user_id'=>1,
                 'master_name'=>$request->master_name,
@@ -33,9 +34,10 @@ class CourseController extends Controller
                 'discount' => $request->discount,
                 'level_id' => $request->level_id,
                 'status_id' => $request->status_id,
-                'active' => $request->active,
-                'show_in_home' => $request->show_in_home,
-                'prerequisite' => $request->prerequisite
+                'active' => $request->active ? 1 : 0,
+                'show_in_home' => $request->show_in_home ? 1 : 0,
+                'prerequisite' => $request->prerequisite,
+                'category_id' => $request->category_id
              ]);
              courseCategory::create([
                 'course_id'=> $courseId,
@@ -51,7 +53,10 @@ class CourseController extends Controller
 
     public function edit(course $course){
       $course = course::find($course->id);
-      return view('admin.course.edit', ['course'=>$course]);
+      $levels = level::all();
+      $statuses = status::all();
+      $categories = category::all();
+      return view('admin.course.edit', ['course'=>$course, 'levels'=>$levels, 'statuses'=>$statuses,'categories'=>$categories]);
     }
 
     public function update(Request $request){
@@ -66,9 +71,10 @@ class CourseController extends Controller
         $course->discount = $request->discount;
         $course->level_id = $request->level_id;
         $course->status_id = $request->status_id;
-        $course->active = $request->active;
-        $course->show_in_home = $request->show_in_home;
+        $course->active = $request->active ? 1 : 0;
+        $course->show_in_home = $request->show_in_home ? 1 : 0;
         $course->prerequisite = $request->prerequisite;
+        $course->category_id = $request->category_id;
         $course->save();
         return to_route('course.courses');
     }
@@ -89,5 +95,9 @@ class CourseController extends Controller
             Storage::disk('public')->delete($course->media->file_path);
         }
          return to_route('course.courses');
+    }
+
+    public function CreateChapter(course $course){
+        return view('admin.course.createChapter');
     }
 }

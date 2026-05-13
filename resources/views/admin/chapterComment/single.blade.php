@@ -1,4 +1,6 @@
-
+@extends('welcome')
+    @section('title', 'فصل های دوره مربوطه')
+    @section('content')
 <div class="container mx-auto px-4 py-8">
     <div class="max-w-2xl mx-auto">
 
@@ -21,11 +23,7 @@
                     {{$chapterComment->comment}}
                 </p>
             </div>
-            
-            
-            
-    
-         
         </div>
     </div>
 </div>
+@endsection

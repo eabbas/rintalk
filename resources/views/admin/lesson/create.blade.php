@@ -69,21 +69,44 @@
                     <input type="text" name="title" class="form-input bg-blue-50" placeholder="مثال: جلسه اول - معرفی" required>
                 </div>
 
-                <!-- دوره والد (course_id) -->
+                <!-- دوره والد (chapter_id) -->
+                 @if(!$chapter)
                 <div class="col-span-1">
-                    <label class="form-label">دوره مرتبط <span class="text-red-500">*</span></label>
-                    <select name="course_id" class="form-select bg-blue-50" required>
-                        <option value="">انتخاب دوره</option>
-                        <option value="1">آموزش زبان انگلیسی</option>
-                        <option value="2">آموزش برنامه نویسی پایتون</option>
-                        <option value="3">دوره طراحی وب</option>
+                    <label class="form-label">فصل مرتبط <span class="text-red-500">*</span></label>
+                    <select name="chapter_id" class="form-select bg-blue-50" required>
+                        <option value="">انتخاب فصل</option>
+                          @foreach($chapters as $chapter)
+                        <option value="{{$chapter->id}}">{{$chapter->title}}</option>
+                        @endforeach
                     </select>
                 </div>
-
+                @else
+                 <!-- فصل والد (chapter_id) -->
+                <div class="col-span-1">
+                    <label class="form-label">فصل مرتبط <span class="text-red-500">*</span></label>
+                    <select name="chapter_id" class="form-select bg-blue-50" required>
+                        @foreach($chapters as $chapter)
+                        <option value="{{$chapter->id}}"
+                        @if ($chapter->title) {{ 'selected' }} @endif>
+                        {{$chapter->title}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                @endif
+                <!-- دوره (course_id) -->
+                <div class="col-span-1">
+                    <label class="form-label">دوره<span class="text-red-500">*</span></label>
+                    <select name="course_id" class="form-select bg-blue-50" required>
+                        <option value="">انتخاب دوره</option>
+                        @foreach($courses as $course)
+                        <option value="{{$course->id}}">{{$course->title}}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <!-- وضعیت (status_id) -->
                 <div class="col-span-1">
-                    <label class="form-label">وضعیت درس</label>
-                    <select name="status_id" class="form-select bg-blue-50">
+                    <label class="form-label">وضعیت درس<span class="text-red-500">*</span></label>
+                    <select name="status_id" class="form-select bg-blue-50" required>
                         <option value="">انتخاب وضعیت</option>
                         @foreach($status as $state)
                         <option value="{{$state->id}}">{{$state->title}}</option>
@@ -93,8 +116,8 @@
 
                 <!-- ترتیب نمایش (order) -->
                 <div class="col-span-1">
-                    <label class="form-label">ترتیب نمایش</label>
-                    <input type="number" name="order" class="form-input bg-blue-50" placeholder="مثال: 1" step="1">
+                    <label class="form-label">ترتیب نمایش<span class="text-red-500">*</span></label>
+                    <input type="number" name="order" class="form-input bg-blue-50" placeholder="مثال: 1" step="1" required>
                 </div>
             </div>
 
@@ -113,15 +136,16 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- مدت زمان (duration) -->
                 <div>
-                    <label class="form-label">مدت زمان (دقیقه)</label>
-                    <input type="text" name="duration" class="form-input bg-blue-50" placeholder="مثال: 45 دقیقه">
+                    <label class="form-label">مدت زمان (دقیقه)<span class="text-red-500">*</span></label>
+                    <input type="text" name="duration" class="form-input bg-blue-50" placeholder="مثال: 45 دقیقه" required>
                 </div>
 
                 <!-- قیمت (price) -->
-                <div>
-                    <label class="form-label">قیمت (تومان)</label>
-                    <input type="text" name="price" class="form-input bg-blue-50" placeholder="مثال: 150000" >
-                </div>
+            <div>
+                <label class="form-label">قیمت (تومان)<span class="text-red-500">*</span></label>
+                <input type="text" name="price" class="form-input bg-blue-50" placeholder="مثال: 150000" required>
+                <span>(قیمت صفر به منزله رایگان بودن هست)</span>
+            </div>
 
                 <!-- تخفیف (discount) -->
                 <div>

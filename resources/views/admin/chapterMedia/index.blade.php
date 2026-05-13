@@ -11,9 +11,7 @@
     <div class="py-3 text-center text-xs font-medium text-gray-600">
         <span class="block w-20 lg:w-full">ردیف</span>
     </div>
-    <div class="py-3 text-center text-xs font-medium text-gray-600 col-span-2">
-        <span class="block w-20 lg:w-full">عنوان درس</span>
-    </div>
+  
     <div class="py-3 text-center text-xs font-medium text-gray-600 col-span-2">
         <span class="block w-20 lg:w-full">مدت زمان مدیا</span>
     </div>
@@ -31,9 +29,7 @@
         <div class="p-1 lg:p-3 text-xs lg:text-sm h-full flex items-center justify-center text-gray-900 text-center">
             <span class="block w-20 lg:w-full">{{ $i }}</span>
         </div>
-        <div class="p-1 lg:p-3 text-xs lg:text-sm h-full flex items-center justify-center text-gray-900 text-center col-span-2">
-            <span class="block w-20 lg:w-full">{{ $chapterMedia->chapter->title }}</span>
-        </div>
+        
         <div class="p-1 lg:p-3 text-xs lg:text-sm h-full flex items-center justify-center text-gray-900 text-center col-span-2">
             <span class="block w-20 lg:w-full">{{ $chapterMedia->duration }}دقیقه</span>
         </div>
