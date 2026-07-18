@@ -80,7 +80,7 @@
                 <!-- سطح دوره -->
                 <div class="col-span-1">
                     <label class="form-label">سطح دوره  <span class="text-red-500">*</span></label>
-                    <select name="level_id" class="form-select">
+                    <select name="level_id" class="form-select" required>
                         <option value="">انتخاب سطح</option>
                         @foreach ($levels as $level)
                         <option value="{{$level->id}}">{{$level->title}}</option>
@@ -91,7 +91,7 @@
                 <!-- وضعیت دوره -->
                 <div class="col-span-1">
                     <label class="form-label">وضعیت دوره<span class="text-red-500">*</span></label>
-                    <select name="status_id" class="form-select">
+                    <select name="status_id" class="form-select" required>
                         <option value="">انتخاب وضعیت</option>
                         @foreach ($statuses as $status)
                         <option value="{{$status->id}}">{{$status->title}}</option>
@@ -108,7 +108,7 @@
                 <!-- دسته‌بندی -->
                 <div class="col-span-1">
                     <label class="form-label">دسته‌بندی</label>
-                    <select name="category_id" class="form-select">
+                    <select name="category_id" class="form-select" required>
                         <option value="">انتخاب دسته‌بندی</option>
                         @foreach ($categories as $category)
                         <option value="{{$category->id}}">{{$category->title}}</option>
@@ -133,7 +133,7 @@
                 <!-- مدت زمان -->
                 <div>
                     <label class="form-label">مدت زمان (ساعت)<span class="text-red-500">*</span></label> 
-                    <input type="text" name="duration" class="form-input" placeholder="مثال: 24 ساعت">
+                    <input type="text" name="duration" class="form-input" placeholder="مثال: 24 ساعت" required>
                 </div>
                 <!-- پیش نیاز ها -->
                 <div class="col-span-2">
@@ -146,7 +146,7 @@
                 <!-- قیمت -->
                 <div>
                     <label class="form-label">قیمت (تومان) <span class="text-red-500">*</span></label>
-                    <input type="text" name="price" class="form-input" placeholder="مثال: 450000">
+                    <input type="text" name="price" class="form-input" placeholder="مثال: 450000" required>
                 </div>
 
                 <!-- تخفیف -->

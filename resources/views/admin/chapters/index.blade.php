@@ -108,8 +108,11 @@
                                     <a href="{{ route('chapterMedia.chapterMediaIndex', [$chapter->id]) }}"
                                        class="text-sky-700 text-xs whitespace-nowrap hover:underline">لیست مدیا</a>
 
-                                    <a href="{{ route('chapterComment.create', [$chapter->id]) }}"
-                                       class="text-sky-700 text-xs whitespace-nowrap hover:underline">ایجاد کامنت </a>
+                                        <a href="{{ route('lesson.create', [$chapter->id]) }}"
+                                        class="text-sky-700 text-xs whitespace-nowrap hover:underline">ایجاد درس</a>
+
+                                    <a href="{{ route('lesson.chapterLesson',[$chapter]) }}"
+                                        class="text-sky-700 text-xs whitespace-nowrap hover:underline">لیست درس ها</a>
                                 </div>
                             </div>
 

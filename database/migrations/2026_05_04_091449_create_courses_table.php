@@ -18,16 +18,15 @@ return new class extends Migration
             $table->integer('progress')->nullable();
             $table->text('summary')->nullable();
             $table->string('price');
-            $table->string('discount');
-            $table->string('duration');
+            $table->string('discount')->nullable();
+            $table->string('duration')->nullable();
             $table->integer('level_id');
             $table->integer('status_id');
             $table->integer('user_id');
-            $table->integer('active');
-            $table->integer('show_in_home');
+            $table->integer('active')->default(0);
+            $table->integer('show_in_home')->default(0);
             $table->text('prerequisite');
-            $table->string('master_name');
-             $table->integer('category_id');
+            $table->string('master_name')->nullable();
             $table->timestamps();
         });
     }

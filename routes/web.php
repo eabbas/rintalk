@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Middleware\LoginMiddleware;
+use App\Http\Middleware\UserMiddleware;
 ///course
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\CourseAttachmentController;
@@ -20,9 +23,86 @@ use App\Http\Controllers\LessonAttachmentController;
 use App\Http\Controllers\LessonCommentController;
 use App\Http\Controllers\LessonMediaController;
 use App\Http\Controllers\CategoryController;
+//Text
+use App\Http\Controllers\TextController;
+//leitnary
+use App\Http\Controllers\LeitnaryController;
+
 
 Route::get('/', function () {
     return view('welcome');
+})->name('home')->middleware([UserMiddleware::class]);
+
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware([LoginMiddleware::class]);
+Route::get('/signup', [UserController::class, "create"])->name('signup')->middleware([LoginMiddleware::class]);
+Route::post('/check', [UserController::class, "checkAuth"])->name('checkAuth');
+
+Route::group([
+    'prefix' => 'users',
+    'controller' => UserController::class,
+    'as' => 'user.',
+    'middleware' => [UserMiddleware::class]
+], function () {
+    Route::post("/store", "store")->name('store')->withoutMiddleware([UserMiddleware::class]);
+    Route::post("/check", "check")->name('check')->withoutMiddleware([UserMiddleware::class]);
+    Route::get("/logout", "logout")->name('logout');
+    Route::get("/", "index")->name('list');
+    Route::get("/panel/{user}", "panel")->name('panel');
+    Route::get('/profile/{user?}', 'profile')->name('profile');
+    Route::get('/show/{user}', 'show')->name('show');
+    Route::get("/edit/{user}", "edit")->name('edit');
+    Route::post("/update", "update")->name('update');
+    Route::get("/delete/{user}", "delete")->name('delete');
+    Route::get('/compelete', 'compelete_form')->name('compelete_form');
+    Route::post('/save', 'save')->name('save');
+    Route::get('/setting', 'setting')->name('setting');
+    Route::post('/set', 'set')->name('set');
+    route::post('/set_order', 'set_order')->name('set_order');
+    Route::get('/create_user', 'create_user')->name('create_user');
+    Route::post('/store_user', 'store_user')->name('store_user');
+    Route::get('/dashboard', 'dashboard')->name('dashboard');
+});
+
+
+
+/// text
+
+Route::group([
+    'prefix' => 'Text',
+    'controller' => TextController::class,
+    'as' =>'Text.',
+], function(){
+    Route::get('/create', 'create')->name('create');
+    Route::post('/store','store')->name('store');
+    Route::get('/single/{Text}', 'single')->name('single');
+    Route::get('/showMeaning/{Text}', 'showMeaning')->name('showMeaning');
+    Route::post('/saveMeanings', 'saveMeanings')->name('saveMeanings');
+    Route::get('/setMeaning/{Text}', 'setMeaning')->name('setMeaning');
+    Route::post('/saveSentenceMeanings', 'saveSentenceMeanings')->name('saveSentenceMeanings');
+    Route::get('/setSentenceMeaning/{Text}', 'setSentenceMeaning')->name('setSentenceMeaning');
+    Route::get('/index' , 'index')->name('texts');
+    Route::get('/delete/{id}', 'delete')->name('delete');
+
+
+  ///leitnary
+});
+Route::group([
+    'prefix' => 'leitnary',
+    'controller' => LeitnaryController::class,
+    'as' =>'leitnary.',
+], function(){
+    Route::get('/create', 'create')->name('create');
+    Route::post('/store','store')->name('store');
+    Route::get('/userLeitnary', 'userLeitnary')->name('userLeitnary');
+    Route::post('/delete', 'delete')->name('delete');
+    Route::post('/review', 'review')->name('review');
+    Route::post('/getWords', 'getWords')->name('getWords');
+    // Route::get('/single/{SeperateSentense}', 'single')->name('single');
+    // Route::get('/showMeaning/{SeperateSentense}', 'showMeaning')->name('showMeaning');
+    // Route::get('/index' , 'index')->name('leitnarys');
+
+
+  
 });
 
 
@@ -41,6 +121,10 @@ Route::group([
     Route::post('/update', 'update')->name('update');
     Route::get('/delete/{course}', 'delete')->name('delete');
     Route::get('/medias/{course}' , 'media')->name('medias');
+    Route::get('/courseUserList/{course}' , 'courseUserList')->name('courseUserList');
+    Route::post('/sendRequestToPartner/{User?}' , 'sendRequestToPartner')->name('sendRequestToPartner');
+    Route::get('/requestList' , 'requestList')->name('requestList');
+    Route::post('/acceptRequest' , 'acceptRequest')->name('acceptRequest');
 });
 
 
@@ -132,10 +216,10 @@ Route::group([
     'controller' => LessonController::class,
     'as' =>'lesson.',
 ], function(){
-    Route::get('/create', 'create')->name('create');
+    Route::get('/create/{chapter?}', 'create')->name('create');
     Route::post('/store','store')->name('store');
     Route::get('/index' , 'index')->name('lessons');
-    Route::get('/class_list/{lesson}' , 'class_list')->name('class_list');
+    Route::get('/chapterLesson/{chapter}' , 'chapterLesson')->name('chapterLesson');
     Route::get('/single/{lesson}', 'single')->name('single');
     Route::get('/edit/{lesson}', 'edit')->name('edit');
     Route::post('/update', 'update')->name('update');
@@ -207,12 +291,14 @@ Route::group([
     'controller' => ChapterController::class,
     'as' =>'chapter.',
 ], function(){
-    Route::get('/create/{course?}', 'create')->name('create');
+    Route::get('/create/{course}', 'create')->name('create');
     Route::get('/index', 'index')->name('ChapterIndex');
     Route::get('/edit/{id}', 'edit')->name('ChapterEdit');
     Route::get('/delete/{id}', 'delete')->name('DeleteChapter');
     Route::post('/update', 'update')->name('UpdateChapter');
     Route::post('/store' , 'store')->name('chapterStore');
+    Route::get('/indexChapterOfCourse/{course}' , 'indexChapterOfCourse')->name('ChapterOfCourse');
+
 });
 
 

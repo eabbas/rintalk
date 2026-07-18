@@ -84,7 +84,7 @@
                         <option value="">انتخاب سطح</option>
                         @foreach($levels as $level)
                         <option value="{{$level->id}}">{{$level->title}}</option>
-                        @endforeach
+                        @endif
                     </select>
                 </div>
 
@@ -95,14 +95,14 @@
                         <option value="">انتخاب وضعیت</option>
                         @foreach($statuses as $status)
                         <option value="{{$status->id}}">{{$status->title}}</option>
-                        @endforeach
+                        @endif
                     </select>
                 </div>
 
                <!-- تصویر -->
                <div class="col-span-1">
-                    <label class="form-label">تصویر</label>
-                    <input type="file"  name="image" class="form-input">
+                    <label class="form-label">تصویر<span class="text-red-500">*</span></label>
+                    <input type="file"  name="image" class="form-input" required>
                 </div>
             </div>
 
@@ -140,7 +140,7 @@
 
                 <!-- تخفیف -->
                 <div>
-                    <label class="form-label">تخفیف</label>
+                    <label class="form-label">تخفیف <span class="text-red-500">*</span></label>
                     <input type="text" name="discount" class="form-input" placeholder="قیمت با تخفیف">
                 </div>
 

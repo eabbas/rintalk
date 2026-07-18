@@ -1,49 +1,53 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ویرایش کاربر</title>
-    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
-   <script src="{{ asset('assets/js/tailwind.js') }}"></script>
-</head>
-<body class="bg-gray-100 p-4">
-    <div class="max-w-lg mx-auto bg-white p-6 rounded shadow">
-        <h1 class="text-xl font-bold mb-4">ویرایش کاربر</h1>
+@extends('welcome')
+@section('title', 'ویرایش دانشجو')
+@section('content')
 
-        <form action="{{ route('Student.updateStudent') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-
-            <div class="mb-3">
-                <input type="hidden" name="id" value="{{ $student->id }}" class="w-full border p-2 rounded">
-            </div>
-
-
-            <div class="mb-3">
-                <label class="block mb-1">نام </label>
-                <input type="text" name="name" value="{{ $student->name }}" class="w-full border p-2 rounded">
-            </div>
-
-            <div class="mb-3">
-                <label class="block mb-1">  </label>
-                <textarea name="family" rows="3" class="w-full border p-2 rounded">{{ $student->family }}</textarea>
-            </div>
-
-            <div class="mb-3">
-                <label class="block mb-1"> جنسیت</label>
-                <input type="text" name="gender" value="{{ $student->gender }}" class="w-full border p-2 rounded">
-            </div>
-        
-            <div class="mb-3">
-                <label class="block mb-1">سن </label>
-                <input type="number" name="age" value="{{ $student->age }}" class="w-full border p-2 rounded">
-            </div>
-            
-            <div class="flex gap-2">
-                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">ویرایش</button>
-                <a href="{{ route('chapter.ChapterIndex') }}" class="bg-gray-400 text-white px-4 py-2 rounded">بازگشت</a>
-            </div>
-        </form>
+<div class="max-w-2xl mx-auto p-6">
+    
+    <div class="mb-4 text-right">
+        <a href="{{ route('Student.studentIndex') }}" class="bg-gray-500 text-white px-4 py-2 rounded-xl inline-block">← بازگشت به لیست</a>
     </div>
-</body>
-</html>
+
+    <h1 class="text-3xl font-bold text-center mb-8">✏️ ویرایش دانشجو</h1>
+
+    <form action="{{route('Student.updateStudent')}}" method="POST" class="bg-white rounded-2xl shadow-xl p-8">
+        @csrf
+
+        <input type="hidden" name="id" value="{{ $student->id }}">
+        <div class="mb-4">
+            <label class="block mb-2 font-bold">نام:</label>
+            <input type="text" name="name" value="{{ $student->name }}" class="w-full p-3 border rounded-xl bg-blue-50" required>
+        </div>
+
+        <div class="mb-4">
+            <label class="block mb-2 font-bold">نام خانوادگی:</label>
+            <input type="text" name="family" value="{{ $student->family }}" class="w-full p-3 border rounded-xl bg-blue-50" required>
+        </div>
+
+       
+        <div class="mb-4">
+            <label class="block mb-2 font-bold">سن:</label>
+            <input type="number" name="age" value="{{ $student->age }}" class="w-full p-3 border rounded-xl bg-blue-50" min="1" max="120" required>
+        </div>
+
+    
+        <div class="mb-6">
+            <label class="block mb-2 font-bold">جنسیت:</label>
+            <div class="flex gap-6">
+                <label>
+                    <input type="radio" name="gender" value="مرد" {{ $student->gender == 'مرد' ? 'checked' : '' }}> مرد
+                </label>
+                <label>
+                    <input type="radio" name="gender" value="زن" {{ $student->gender == 'زن' ? 'checked' : '' }}> زن
+                </label>
+            </div>
+        </div>
+
+        <div class="flex justify-end gap-3">
+            <a href="{{ route('Student.studentIndex') }}" class="px-6 py-2 border rounded-xl">انصراف</a>
+            <button type="submit" class="px-6 py-2 bg-yellow-500 text-white rounded-xl">  بروزرسانی</button>
+        </div>
+    </form>
+</div>
+
+@endsection

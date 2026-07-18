@@ -21,9 +21,10 @@ return new class extends Migration
             $table->string('discount')->nullable();
             $table->integer('course_id');
             $table->integer('status_id');
+            $table->integer('chapter_id');
             $table->integer('active')->default(0);
             $table->integer('show_in_home')->default(0);
-            $table->integer('order');
+            $table->integer('order')->nullable();
             $table->timestamps();
         });
     }

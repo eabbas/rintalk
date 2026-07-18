@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("chapter_id");
             $table->string("file_path");
             $table->string("duration");
-            $table->string("order");
+            $table->string("order")->nullable();
             $table->string("preview")->nullable();
             $table->timestamps();
         });

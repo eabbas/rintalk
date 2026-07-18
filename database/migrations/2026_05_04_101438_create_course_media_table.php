@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->integer('course_id');
             $table->string('file_path');
-            $table->string('duration');
-            $table->string('order');
+            $table->string('duration')->nullable();
+            $table->string('order')->nullable();
             $table->string('type');
             $table->string('preview')->nullable();
             $table->timestamps();

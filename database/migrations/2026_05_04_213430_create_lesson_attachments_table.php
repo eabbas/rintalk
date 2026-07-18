@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('price');
             $table->string('discount')->nullable();
             $table->string('file_path');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->integer('lesson_id');
             $table->string('type');
             $table->timestamps();

@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('file_path')->nullable();
             $table->string('preview')->nullable();
-            $table->string('duration');
+            $table->string('duration')->nullable();
             $table->integer('lesson_id');
-            $table->integer('order');
+            $table->integer('order')->nullable();
             $table->timestamps();
         });
     }

@@ -54,7 +54,6 @@ class ChapterAtachmentController extends Controller
     }
 
     public function update(Request $request){
-         $ChapterAtachment=ChapterAtachment::find($request->id);
          if(isset($request->image)){
             $type = $request->image->getClientOriginalExtension();
             $name = $request->image->getClientOriginalName();
