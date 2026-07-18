@@ -21,8 +21,27 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phoneNumber',
+        'family'
     ];
+     public function leitnaries(){
 
+    return $this->hasMany(leitnary::class , 'user_id');
+    
+    }
+    public function partnerRequests(){
+
+    return $this->hasMany(partnerRequests::class , 'user_id');
+    
+    }
+     public function courses(){
+      return $this->belongsToMany(course::class,'user_courses');
+
+    }
+     public function role(){
+      return $this->belongsToMany(role::class,'role_users');
+
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -45,9 +64,4 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
-    public function courses(){
-        return $this->hasMany(course::class)->chaperOne();
-    }
-
 }

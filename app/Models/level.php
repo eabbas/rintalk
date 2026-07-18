@@ -10,8 +10,4 @@ class level extends Model
     ["title",
       "description",
     ];
-
-    public function courses(){
-        return $this->hasMany(course::class)->chaperOne();
-    }
 }

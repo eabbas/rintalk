@@ -11,7 +11,7 @@ class ChapterCommentController extends Controller
     
 public function create(chapter $chapter){
        $chapters=chapter::all();
-     return view("admin.chapterComment.create",["chapter"=>$chapter,"chapters"=>$chapters]);
+     return view("admin.comment.create",["chapter"=>$chapter,"chapters"=>$chapters]);
     }
    
 public function store(Request $request){
@@ -30,14 +30,16 @@ public function store(Request $request){
 
  public function index(){
      $comments=ChapterComment::with("chapter")->get();
-       return view("admin.chapterComment.index",["comments"=>$comments]);
+       return view("admin.comment.index",["comments"=>$comments]);
  }
 
 public function single(chapter $chapter){
+    // dd($lesson);
     $chapter->load("chapterComments");
+    // dd($x);
     foreach($chapter->chapterComments as $chapterComment){
         $chapter['chapterComments'] = $chapterComment;
     }
-    return view("admin.chapterComment.single",["chapterComment"=>$chapterComment,"chapter"=>$chapter]);
+    return view("admin.comment.single",["chapterComment"=>$chapterComment,"chapter"=>$chapter]);
 }
 }

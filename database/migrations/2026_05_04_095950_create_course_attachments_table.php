@@ -17,11 +17,11 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->text('summary')->nullable();
             $table->string('price');
-            $table->string('discount');
+            $table->string('discount')->nullable();
             $table->integer('course_id');
-            $table->string('file_path');
-            $table->string('image');
-            $table->string('type');
+            $table->string('file_path')->nullable();
+            $table->string('image')->nullable();
+            $table->string('type')->nullable();
             $table->timestamps();
         });
     }

@@ -27,10 +27,10 @@ class course extends Model
         return $this->hasMany(CourseMedia::class);
     }
 
-     public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+    //  public function user()
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
      public function status()
     {
         return $this->belongsTo(status::class);
@@ -48,9 +48,14 @@ class course extends Model
     public function courseAttachments(){
         return $this->hasMany(courseAttachment::class)->chaperOne();
     }
-      public function chapters()
+    
+    public function chapters()
     {
     return $this->hasMany(chapter::class , 'course_id');
+    }
+     public function users(){
+      return $this->belongsToMany(User::class,'user_courses');
+
     }
 
 }

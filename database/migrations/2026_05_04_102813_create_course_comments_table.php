@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('course_id');
             $table->integer('user_id');
             $table->integer('parent_id');
-            $table->integer('active');
+            $table->integer('active')->default(1);
             $table->string('comment');
             $table->timestamps();
         });

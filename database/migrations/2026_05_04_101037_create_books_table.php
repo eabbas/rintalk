@@ -20,10 +20,10 @@ return new class extends Migration
             $table->string('discount');
             $table->integer('level_id');
             $table->integer('status_id');
-            $table->integer('active');
-            $table->integer('show_in_home')->nullable();
+            $table->integer('active')->default(0);
+            $table->integer('show_in_home')->default(0);
             $table->string('file_path');
-            $table->string('image')->nullable();;
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

@@ -79,34 +79,35 @@
 
                 <!-- سطح دوره -->
                 <div class="col-span-1">
-                    <label class="form-label">سطح دوره  <span class="text-red-500">*</span></label>
+                    <label class="form-label">سطح <span class="text-red-500">*</span></label>
                     <select name="level_id" class="form-select">
                         <option value="">انتخاب سطح</option>
-                        @foreach ($levels as $level)
-                        <option value="{{$level->id}}" @if ($level->id == $book->level_id)
-                            {{'selected'}}
-                        @endif>{{$level->title}}</option>
-                        @endforeach
+                        <option value="1">A1</option>
+                        <option value="2">A2</option>
+                        <option value="3">B1</option>
+                        <option value="4">B2</option>
+                        <option value="5">C1</option>
+                        <option value="6">C2</option>
                     </select>
                 </div>
 
                 <!-- وضعیت دوره -->
-                 <div class="col-span-1">
-                    <label class="form-label">وضعیت دوره<span class="text-red-500">*</span></label>
+                <div class="col-span-1">
+                    <label class="form-label">وضعیت<span class="text-red-500">*</span></label>
                     <select name="status_id" class="form-select">
                         <option value="">انتخاب وضعیت</option>
-                        @foreach ($statuses as $status)
-                        <option value="{{$status->id}}" @if ($status->id == $book->status_id)
-                            {{'selected'}}
-                        @endif>{{$status->title}}</option>
-                        @endforeach
+                        <option value="1">پیش‌نویس</option>
+                        <option value="2">منتشر شده</option>
+                        <option value="3">در حال برگزاری</option>
+                        <option value="4">تکمیل شده</option>
+                        <option value="5">آرشیو شده</option>
                     </select>
                 </div>
 
                <!-- تصویر -->
                <div class="col-span-1">
-                    <label class="form-label">تصویر</label>
-                    <input type="file"  name="image" class="form-input">
+                    <label class="form-label">تصویر<span class="text-red-500">*</span></label>
+                    <input type="file"  name="image" class="form-input" required>
                 </div>
             </div>
 

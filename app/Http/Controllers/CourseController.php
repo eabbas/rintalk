@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 use App\Models\course;
 use App\Models\level;
 use App\Models\status;
+use App\Models\User;
 use App\Models\category;
 use App\Models\courseCategory;
+use App\Models\partnerRequests;
 use App\Models\CourseAttachment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -22,7 +24,6 @@ class CourseController extends Controller
     }
 
     public function store(Request $request){
-        // dd($request->all());
              $courseId = course::insertGetId([
                 'user_id'=>1,
                 'master_name'=>$request->master_name,
@@ -34,10 +35,9 @@ class CourseController extends Controller
                 'discount' => $request->discount,
                 'level_id' => $request->level_id,
                 'status_id' => $request->status_id,
-                'active' => $request->active ? 1 : 0,
-                'show_in_home' => $request->show_in_home ? 1 : 0,
-                'prerequisite' => $request->prerequisite,
-                'category_id' => $request->category_id
+                'active' => $request->active,
+                'show_in_home' => $request->show_in_home,
+                'prerequisite' => $request->prerequisite
              ]);
              courseCategory::create([
                 'course_id'=> $courseId,
@@ -52,11 +52,11 @@ class CourseController extends Controller
     }
 
     public function edit(course $course){
-      $course = course::find($course->id);
-      $levels = level::all();
-      $statuses = status::all();
-      $categories = category::all();
-      return view('admin.course.edit', ['course'=>$course, 'levels'=>$levels, 'statuses'=>$statuses,'categories'=>$categories]);
+    //   $course = course::find($course->id);
+    $levels=level::all();
+    $statuses=status::all();
+    $categories=category::all();
+      return view('admin.course.edit', ['course'=>$course,'levels'=>$levels,'statuses'=>$statuses,'categories'=>$categories]);
     }
 
     public function update(Request $request){
@@ -71,10 +71,9 @@ class CourseController extends Controller
         $course->discount = $request->discount;
         $course->level_id = $request->level_id;
         $course->status_id = $request->status_id;
-        $course->active = $request->active ? 1 : 0;
-        $course->show_in_home = $request->show_in_home ? 1 : 0;
+        $course->active = $request->active;
+        $course->show_in_home = $request->show_in_home;
         $course->prerequisite = $request->prerequisite;
-        $course->category_id = $request->category_id;
         $course->save();
         return to_route('course.courses');
     }
@@ -100,4 +99,130 @@ class CourseController extends Controller
     public function CreateChapter(course $course){
         return view('admin.course.createChapter');
     }
+
+    // public function courseUserList(course $course){
+    //     $courseUsers=$course->users;
+    //     // dd($courseUsers);
+    //     $authUser=User::find(1);
+    //     $status = partnerRequests::where('user_id', $authUser->id)->where('status', 1)->first();
+    //     return view("admin.course.courseUserList",['courseUsers'=>$courseUsers,'status'=>$status ,'authUser'=>$authUser]);
+
+    // }
+    // public function requestList(){
+    //     $requests=null;
+    //     $authUser=User::find(2);
+    //     $partnerRequests=partnerRequests::where('applicant',$authUser->id)->get();
+    //     $status = partnerRequests::where('user_id', $authUser->id)->where('status', 1)->first();
+
+    //     // dd($partnerRequests);
+    //     foreach($partnerRequests as $partner){
+    //     $requests[]=User::find($partner->user_id);
+    //     }
+    //     // dd($requests);
+    //     return view("admin.course.requestList",['requests'=>$requests,'status'=>$status]);
+
+    // }
+    // public function sendRequestToPartner(User $User){
+    //     $authUser=User::find(1);
+    //     // dd($authUser);
+    //     partnerRequests::create(['user_id'=>$authUser->id ,'applicant'=>$User->id ,'status'=>0]);
+    //     return to_route('course.courses');
+    // }
+    public function requestList(){
+        $requests=null;
+        $authUser=Auth::user();
+        $partnerRequests=partnerRequests::where('applicant',$authUser->id)->get();
+        $status = partnerRequests::where('applicant', $authUser->id)->where('status', 1)->first();
+        // dd($status);
+        $partnerCount = partnerRequests::where('applicant',$authUser->id)->where('status',1)->count();
+        foreach($partnerRequests as $partner){
+        $requests[]=User::find($partner->user_id);
+        }
+        return view("admin.course.requestList",['requests'=>$requests,'status'=>$status,'partnerCount'=>$partnerCount]);
+
+    }
+   public function courseUserList(course $course){
+    $courseUsers = $course->users;
+    $authUser = Auth::user();
+    $status = partnerRequests::where('user_id', $authUser->id)->where('status', 1)->first();
+    $sentRequests = partnerRequests::where('user_id', $authUser->id)->where('status', 0)->pluck('applicant')->toArray();
+    // dd($status);
+    $sentRequestsCount = partnerRequests::where('user_id', $authUser->id)->where('status', 0)->count();
+    
+    return view("admin.course.courseUserList",['courseUsers' => $courseUsers,'status' => $status,'authUser' => $authUser,'sentRequests' => $sentRequests,'sentRequestsCount' => $sentRequestsCount]);
+}
+
+public function sendRequestToPartner(Request $request) 
+{
+    $authUser = Auth::user();
+    $userId = $request->user_id;
+    
+    $oneRequest = partnerRequests::where('user_id', $authUser->id)->where('status', 1)->first();
+    if($oneRequest) {
+        return response()->json([
+            'success' => false,
+            'message' => 'شما قبلاً یک هم‌تیم تایید کرده‌اید'
+        ]);
+    }
+    
+    $requestCount = partnerRequests::where('user_id', $authUser->id)->where('status', 0)->count();
+    if($requestCount >= 2) {
+        return response()->json([
+            'success' => false,
+            'message' => 'شما فقط میتوانید به 2 کاربر درخواست ارسال کنید'
+        ]);
+    }
+    
+    $existingRequest = partnerRequests::where('user_id', $authUser->id)->where('applicant', $userId)->first();
+    if($existingRequest) {
+        return response()->json([
+            'success' => false,
+            'message' => 'شما قبلاً به این کاربر درخواست ارسال کرده‌اید'
+        ]);
+    }
+    
+    $partnerRequest = partnerRequests::create([
+        'user_id' => $authUser->id,
+        'applicant' => $userId,
+        'status' => 0
+    ]);
+    
+    if($partnerRequest) {
+        return response()->json([
+            'success' => true,
+            'message' => 'درخواست با موفقیت ارسال شد'
+        ]);
+    }
+    
+    return response()->json([
+        'success' => false,
+        'message' => 'خطادرارسال درخواست'
+    ]);
+}
+public function acceptRequest(Request $request){
+    $authUser = Auth::user();
+    $user = User::find($request->user_id);
+    $partnerCount = partnerRequests::where('applicant', $authUser->id)->where('status', 1)->count();
+    if($partnerCount >= 2) {
+        return response()->json([
+            'success' => false,
+            'message' => 'شما فقط میتوانید 2 کاربر را تایید کنید'
+        ]);
+    }
+    
+    $partnerRequests = partnerRequests::where('user_id', $authUser->id)->where('status', 1)->first();
+    if($partnerRequests) {
+        return response()->json([
+            'success' => false,
+            'message' => 'شما قبلاً یک کاربر را تایید کرده‌اید'
+        ]);
+    }
+    $x = partnerRequests::where('applicant', $authUser->id)->where('user_id', $user->id)->update(['status' => 1]);
+    if($x) {
+        return response()->json([
+            'success' => true,
+            'message' => 'کاربر با موفقیت تایید شد'
+        ]);
+    } 
+}
 }

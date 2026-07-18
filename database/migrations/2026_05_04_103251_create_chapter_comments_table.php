@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('chapter_comments', function (Blueprint $table) {
             $table->id();
             $table->string("comment");
-            $table->string("active");
+            $table->string("active")->default(1);
             $table->string("user_id");
             $table->string("chapter_id");
             $table->string("parent_id");

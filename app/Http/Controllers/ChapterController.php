@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 class ChapterController extends Controller
 {
     public function create(course $course){
-        $courses = course::all();
-        return view("admin.chapters.create" , ['course',$course , 'courses'=>$courses]);
+        // $courses = course::all();
+        return view("admin.chapters.create" , ['course'=>$course ]);
     }
 
     public function store(Request $request){
@@ -28,8 +28,14 @@ class ChapterController extends Controller
 
     public function index(){
         $chapters=chapter::all();
-        return view("admin.chapters.index", ["chapters" => $chapters]);    
+        $courses=course::all();
+        return view("admin.chapters.index", ["chapters" => $chapters,"courses"=>$courses]);    
     }
+
+
+    public function indexChapterOfCourse(course $course){
+       return view("admin.chapters.ChapterOfCourse",["course"=>$course]);
+    } 
 
     public function edit($id){
        $chapter=chapter::find($id);

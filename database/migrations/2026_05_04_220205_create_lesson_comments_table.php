@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('user_id');
             $table->integer('lesson_id');
             $table->integer('parent_id');
-            $table->integer('active')->default(0);
+            $table->integer('active')->default(1);
             $table->timestamps();
         });
     }

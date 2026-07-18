@@ -3,7 +3,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\category;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
 class CategoryController extends Controller
 {
     public function create()
