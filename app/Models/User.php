@@ -42,6 +42,9 @@ class User extends Authenticatable
       return $this->belongsToMany(role::class,'role_users');
 
     }
+    public function hasRoles($role){
+        return $this->role()->whereIn('title' , $role)->exists();
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
