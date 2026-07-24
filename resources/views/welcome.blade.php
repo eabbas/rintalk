@@ -137,6 +137,7 @@
                     <span>خروج از حساب کاربری</span>
                 </a> -->
                 <!-- ========== منوی دوره‌ها با دراپ‌داون ========== -->
+                @can('panelCan' , ['admin'])
                 <div class="dropdown-item">
                     <div class="dropdown-trigger flex items-center justify-between px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-50 transition-all cursor-pointer">
                         <div class="flex items-center gap-3">
@@ -160,8 +161,10 @@
 
                     </ul>
                 </div>
+                @endcan
 
                 <!-- ========== منوی فصل‌ها با دراپ‌داون ========== -->
+                @can('panelCan' , ['admin'])
                 <div class="dropdown-item">
                     <div class="dropdown-trigger flex items-center justify-between px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-50 transition-all cursor-pointer">
                         <div class="flex items-center gap-3">
@@ -176,8 +179,9 @@
                         <li><a href="{{ url('chapterComment/index') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg"> کامنت ها</a></li>
                     </ul>
                 </div>
-
+                @endcan
                 <!-- ========== منوی درس‌ها با دراپ‌داون ========== -->
+                @can('panelCan' , ['admin'])
                 <div class="dropdown-item">
                     <div class="dropdown-trigger flex items-center justify-between px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-50 transition-all cursor-pointer">
                         <div class="flex items-center gap-3">
@@ -195,6 +199,8 @@
                         <li><a href="{{ route('LessonMedia.LessonMedias') }}" class="block px-4 py-2 text-sm font-bold hover:bg-gray-50 rounded-lg">لیست مدیا</a></li> -->
                     </ul>
                 </div>
+                @endcan
+                @can('panelCan' , ['admin'])
                 <div class="dropdown-item">
                     <div class="dropdown-trigger flex items-center justify-between px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-50 transition-all cursor-pointer">
                         <div class="flex items-center gap-3">
@@ -208,6 +214,8 @@
                         <li><a href="{{ route('category.list') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">لیست دسته بندی ها</a></li>
                     </ul>
                 </div>
+                @endcan
+                @can('panelCan' , ['admin'])
                 <div class="dropdown-item">
                     <div class="dropdown-trigger flex items-center justify-between px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-50 transition-all cursor-pointer">
                         <div class="flex items-center gap-3">
@@ -220,6 +228,7 @@
                         <li><a href="{{ route('Student.signup') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg"> فرم ثبت نام</a></li>
                     </ul>
                 </div>
+                @endcan
                 <div class="dropdown-item">
                     <div class="dropdown-trigger flex items-center justify-between px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-50 transition-all cursor-pointer">
                         <div class="flex items-center gap-3">
@@ -229,7 +238,9 @@
                         <span class="chevron text-gray-400 text-sm">▼</span>
                     </div>
                     <ul class="dropdown-menu hidden mr-6 mt-1 space-y-1">
+                @can('panelCan' , ['admin'])
                         <li><a href="{{route('Text.create')}}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">افزودن متن</a></li>
+                @endcan
                         <li><a href="{{route('Text.texts')}}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">لیست متن</a></li>
                     </ul>
                 </div>
@@ -246,6 +257,7 @@
                         <!-- <li><a href="{{route('Text.texts')}}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">لیست متن</a></li> -->
                     </ul>
                 </div>
+                @can('panelCan' , ['admin'])
                 <div class="dropdown-item">
                     <div class="dropdown-trigger flex items-center justify-between px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-50 transition-all cursor-pointer">
                         <div class="flex items-center gap-3">
@@ -259,10 +271,9 @@
                         <!-- <li><a href="{{route('Text.texts')}}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">لیست متن</a></li> -->
                     </ul>
                 </div>
-
+                @endcan
                 <!-- سایر لینک‌های ساده -->
-                @if(Auth::user())
-                @if(Auth::user()->role[0]->title == "admin")
+                @can('panelCan' , ['admin'])
                 <div class="dropdown-item">
                     <div class="dropdown-trigger flex items-center justify-between px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-50 transition-all cursor-pointer">
                         <div class="flex items-center gap-3">
@@ -277,8 +288,7 @@
                         <li><a href="{{ route('user.create_user') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">ایجاد کاربر</a></li>
                     </ul>
                 </div>
-                @endif
-                @endif
+                @endcan
                 <!-- <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-50 transition-all">
                     <span class="w-5 text-center">⚙️</span>
                     <span>تنظیمات</span>
