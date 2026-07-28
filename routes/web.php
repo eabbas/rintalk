@@ -30,8 +30,8 @@ use App\Http\Controllers\LeitnaryController;
 
 
 Route::get('/', function () {
-    return view('welcome');
-})->name('home')->middleware([UserMiddleware::class]);
+    return view('home');
+})->name('home');
 
 Route::get('/login', [UserController::class, 'login'])->name('login')->middleware([LoginMiddleware::class]);
 Route::get('/signup', [UserController::class, "create"])->name('signup')->middleware([LoginMiddleware::class]);
