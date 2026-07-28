@@ -122,8 +122,8 @@
                     <span class="w-5 text-center">📤</span>
                     <span>داشبورد</span>
                 </a> -->
-                @if(!Auth::check())
-                <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary-50 text-primary-700 font-medium transition-all">
+                <!-- @if(!Auth::check())
+                <a href="{{route('signup')}}" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary-50 text-primary-700 font-medium transition-all">
                     <span class="w-5 text-center">🔓</span>
                     <span>ورود</span>
                 </a>
@@ -131,12 +131,34 @@
                     <span class="w-5 text-center">📝</span>
                     <span>ثبت نام</span>
                 </a>
-                @endif
+                @endif -->
                 <!-- <a href="{{route('user.logout')}}" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary-50 text-primary-700 font-medium transition-all">
                     <span class="w-5 text-center">🕳</span>
                     <span>خروج از حساب کاربری</span>
                 </a> -->
                 <!-- ========== منوی دوره‌ها با دراپ‌داون ========== -->
+                @if(!Auth::check())
+                    <div class="flex items-center gap-3 ">
+                        <div class="flex items-center gap-2.5">
+                            <a href="{{route('login')}}" class="group relative px-4 py-2 rounded-full text-sm font-bold transition-all duration-200  bg-[#081830] hover:border-purple-400 text-[#081830] hover:text-[#f89820] shadow-sm hover:shadow-md overflow-hidden cursor-pointer">
+                                <span class="relative z-10 flex items-center">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                                    </svg>
+                                    <span class="relative right-2 px-6 py-2 rounded-full text-sm font-bold bg-white">ورود</span>
+                                </span>
+                            </a>
+
+                            <a href="{{route('signup')}}" class="flex flex-row items-center bg-[#081830] px-4 py-2 rounded-full text-sm font-bold transition-all duration-200 hover:border-purple-400 text-[#081830] hover:text-[#f89820]
+                                    ] shadow-sm hover:shadow-md overflow-hidden cursor-pointer">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                                </svg>
+                                <span class="relative right-2 px-6 py-2 rounded-full text-sm font-bold bg-white">ثبت نام</span>
+                            </a>
+                        </div>
+                    </div>
+                @endif
                 @can('panelCan' , ['admin'])
                 <div class="dropdown-item">
                     <div class="dropdown-trigger flex items-center justify-between px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-50 transition-all cursor-pointer">
@@ -215,7 +237,7 @@
                     </ul>
                 </div>
                 @endcan
-                @can('panelCan' , ['admin'])
+
                 <div class="dropdown-item">
                     <div class="dropdown-trigger flex items-center justify-between px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-50 transition-all cursor-pointer">
                         <div class="flex items-center gap-3">
@@ -228,7 +250,7 @@
                         <li><a href="{{ route('Student.signup') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg"> فرم ثبت نام</a></li>
                     </ul>
                 </div>
-                @endcan
+
                 <div class="dropdown-item">
                     <div class="dropdown-trigger flex items-center justify-between px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-50 transition-all cursor-pointer">
                         <div class="flex items-center gap-3">
