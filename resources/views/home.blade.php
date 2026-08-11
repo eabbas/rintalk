@@ -374,7 +374,7 @@
                     </div>
                     <div class="w-12 h-12 md:w-18 md:h-18 lg:w-22 lg:h-22 bg-white rounded-full border-3 border-[#f5d5b2] p-[1px] flex justify-center items-center">
                         <div class="w-full h-full bg-[#fa6004] rounded-full  p-1.5 flex justify-center items-center overflow-hidden">
-                            <img src="{{asset('storage/home/file_0000000083ec71f489146d02f60521c4.png')}}" alt="" class="object-cover w-full h-full">
+                            <img src="{{asset('storage/home/file_0000000083ec71f489146d02f60521c4.png')}}" alt="" class="object-cover w-full h-full ">
                         </div>
                     </div>
                 </div>
