@@ -168,7 +168,7 @@
 
     <section class="w-11/12 bg-[#0b1a31] mx-auto rounded-xl flex relative mt-3">
         <div class="w-7/12 h-7/12">
-            <img src="{{asset('storage/home/file_00000000d1a882308d5e53e725d63f6f (1).png')}}" alt="" class="object-cover w-full h-full rounded-xl"> 
+            <img src="{{asset('storage/home/ei_1786388637947-removebg-preview (1).png')}}" alt="" class="object-cover w-full h-full rounded-xl"> 
         </div>
         <div class="w-5/12 h-full absolute left-0 flex flex-col justify-center  gap-1.5 items-end pl-5 lg:pl-15">
             <p class="text-[6px] text-[#f6911e] md:text-[1.1rem] lg:text-[1.4rem] text-nowrap xl:text-[1.8rem]">یاد گیری زبان و فرصتی برای دنیای جدید</p>
@@ -392,7 +392,7 @@
                         <span class="text-[10px] md:text-[1.2rem] lg:text-[1.8rem] font-bold">تست استاندارد</span>
                     </div>
                 </div>
-                <div class="px-3 py-1.5 bg-[#ff9a1e] rounded-xl flex gap-1 justify-center items-center">k
+                <div class="px-3 py-1.5 bg-[#ff9a1e] rounded-xl flex gap-1 justify-center items-center">
                     <span class="text-[10px] text-white md:text-[1.2rem] lg:text-[1.6rem] font-bold">تعیین سطح </span>
                     <div class=" rounded-full  bg-[#f98300] flex justify-center items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -50 448 512" class="size-3 md:size-4 lg:size-6 rotate-90" fill="white">
