@@ -73,7 +73,7 @@
 
 
     <section class="w-full flex justify-center relative mt-5">
-        <div class=" w-11/12 pt-1 rounded-lg flex items-center justify-between">
+        <div class=" w-11/12 pt-1 rounded-lg flex items-center gap-5 justify-between overflow-hidden overflow-x-auto">
             <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 md:flex hidden flex-col gap-1 items-center pup_up_story">
                 <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
                     <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
@@ -82,7 +82,7 @@
                 </div>
                 <span class="w-full text-xs md:text-[1rem] lg:text-[1.2rem] text-nowrap text-center"> ثبت </span>
             </div>
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 md:flex hidden flex-col gap-1 items-center pup_up_story">
+            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
                 <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
                     <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
                         <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
@@ -90,7 +90,7 @@
                 </div>
                 <span class="w-full text-xs md:text-[1rem] lg:text-[1.2rem] text-nowrap text-center"> ثبت </span>
             </div>
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 md:flex hidden flex-col gap-1 items-center pup_up_story">
+            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
                 <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
                     <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
                         <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
@@ -98,7 +98,31 @@
                 </div>
                 <span class="w-full text-xs md:text-[1rem] lg:text-[1.2rem] text-nowrap text-center"> ثبت </span>
             </div>
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 md:flex hidden flex-col gap-1 items-center pup_up_story">
+            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
+                <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
+                    <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
+                        <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
+                    </div>
+                </div>
+                <span class="w-full text-xs md:text-[1rem] lg:text-[1.2rem] text-nowrap text-center"> ثبت </span>
+            </div>
+            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
+                <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
+                    <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
+                        <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
+                    </div>
+                </div>
+                <span class="w-full text-xs md:text-[1rem] lg:text-[1.2rem] text-nowrap text-center"> ثبت </span>
+            </div>
+            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
+                <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
+                    <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
+                        <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
+                    </div>
+                </div>
+                <span class="w-full text-xs md:text-[1rem] lg:text-[1.2rem] text-nowrap text-center"> ثبت </span>
+            </div>
+            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
                 <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
                     <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
                         <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
