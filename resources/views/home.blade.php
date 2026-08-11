@@ -73,8 +73,8 @@
 
 
     <section class="w-full flex justify-center relative mt-5">
-        <div class=" w-11/12 pt-1 rounded-lg flex items-center gap-5 justify-between overflow-hidden overflow-x-auto">
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
+        <div class=" w-11/12 pt-1 rounded-lg flex items-center justify-between">
+            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 md:flex hidden flex-col gap-1 items-center pup_up_story">
                 <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
                     <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
                         <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
@@ -82,7 +82,7 @@
                 </div>
                 <span class="w-full text-xs md:text-[1rem] lg:text-[1.2rem] text-nowrap text-center"> ثبت </span>
             </div>
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
+            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 md:flex hidden flex-col gap-1 items-center pup_up_story">
                 <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
                     <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
                         <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
@@ -90,7 +90,7 @@
                 </div>
                 <span class="w-full text-xs md:text-[1rem] lg:text-[1.2rem] text-nowrap text-center"> ثبت </span>
             </div>
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
+            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 md:flex hidden flex-col gap-1 items-center pup_up_story">
                 <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
                     <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
                         <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
@@ -98,39 +98,7 @@
                 </div>
                 <span class="w-full text-xs md:text-[1rem] lg:text-[1.2rem] text-nowrap text-center"> ثبت </span>
             </div>
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
-                <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
-                    <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
-                        <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
-                    </div>
-                </div>
-                <span class="w-full text-xs md:text-[1rem] lg:text-[1.2rem] text-nowrap text-center"> ثبت </span>
-            </div>
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
-                <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
-                    <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
-                        <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
-                    </div>
-                </div>
-                <span class="w-full text-xs md:text-[1rem] lg:text-[1.2rem] text-nowrap text-center"> ثبت </span>
-            </div>
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
-                <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
-                    <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
-                        <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
-                    </div>
-                </div>
-                <span class="w-full text-xs md:text-[1rem] lg:text-[1.2rem] text-nowrap text-center"> ثبت </span>
-            </div>
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
-                <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
-                    <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
-                        <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
-                    </div>
-                </div>
-                <span class="w-full text-xs md:text-[1rem] lg:text-[1.2rem] text-nowrap text-center"> ثبت </span>
-            </div>
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
+            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 md:flex hidden flex-col gap-1 items-center pup_up_story">
                 <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
                     <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
                         <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
@@ -170,13 +138,37 @@
                 </div>
                 <span class="text-xs md:text-[1rem] lg:text-[1.2rem]"> پاور</span>
             </div>
+            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
+                <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
+                    <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
+                        <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
+                    </div>
+                </div>
+                <span class="text-xs md:text-[1rem] lg:text-[1.2rem]"> پاور</span>
+            </div>
+            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
+                <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
+                    <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
+                        <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
+                    </div>
+                </div>
+                <span class="text-xs md:text-[1rem] lg:text-[1.2rem]"> پاور</span>
+            </div>
+            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
+                <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
+                    <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
+                        <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
+                    </div>
+                </div>
+                <span class="text-xs md:text-[1rem] lg:text-[1.2rem]"> پاور</span>
+            </div>
             <!-- video_story -->
         </div>
     </section>
 
-    <section class="w-11/12 bg-[#1b2639] mx-auto rounded-xl flex relative mt-3">
-        <div class="w-full h-full ">
-            <img src="{{asset('storage/home/ei_1786388637947-removebg-preview (1).png')}}" alt="" class="object-cover w-7/12 h-7/12 rounded-xl">
+    <section class="w-11/12 bg-[#0b1a31] mx-auto rounded-xl flex relative mt-3">
+        <div class="w-7/12 h-7/12">
+            <img src="{{asset('storage/home/ei_1786388637947-removebg-preview (1).png')}}" alt="" class="object-cover w-full h-full rounded-xl"> 
         </div>
         <div class="w-5/12 h-full absolute left-0 flex flex-col justify-center  gap-1.5 items-end pl-5 lg:pl-15">
             <p class="text-[6px] text-[#f6911e] md:text-[1.1rem] lg:text-[1.4rem] text-nowrap xl:text-[1.8rem]">یاد گیری زبان و فرصتی برای دنیای جدید</p>
@@ -371,11 +363,11 @@
 
 
     <!-- تعیین سصح -->
-    <section class="w-11/12 mx-auto mt-5 flex gap-1">
-        <div class="w-1/2 h-full lg:h-6/12 bg-white flex flex-col relative rounded-xl border-1 border-white" style="box-shadow:0.5PX 0.5PX 5PX #d4d4e6">
+    <section class="w-11/12 mx-auto mt-5 flex gap-1"> 
+        <div class="w-1/2 h-full bg-white flex flex-col relative rounded-xl border-1 border-white" style="box-shadow:0.5PX 0.5PX 5PX #d4d4e6">
             <img src="{{asset('storage/home/file_00000000fb4471fbbcb3f2b09783b365.png')}}" alt="" class="object-cover w-full h-full lg:size-7/12 rounded-xl">
             <div class="w-full h-full absolute py-1.5 pl-3 flex flex-col justify-between gap-1 items-end">
-                <div class="flex gap-4 items-center w-full justify-center">
+                <div class="w-full flex gap-4 items-center justify-center">
                     <div class="flex flex-col">
                         <h3 class="text-[16px] md:text-[1.4rem] lg:text-[2rem] font-bold">تعیین سطج</h3>
                         <h4 class="text-[12px] md:text-[1.2rem] lg:text-[1.8rem] font-bold">سطح خود </h4>
@@ -411,7 +403,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-1/2 min-h-full lg:h-6/12 bg-white flex flex-col justify-end items-end relative rounded-xl border-1 border-white" style="box-shadow:0.5PX 0.5PX 5PX #d4d4e6">
+        <div class="w-1/2 min-h-full lg: bg-white flex flex-col justify-end items-end relative rounded-xl border-1 border-white" style="box-shadow:0.5PX 0.5PX 5PX #d4d4e6">
             <img src="{{asset('storage/home/949c2d04-e7eb-4bd4-92a4-4f6bffa86ddb.jpg')}}" alt="" class="object-cover size-10/12 lg:size-7/12">
 
             <div class="w-full h-full absolute py-1.5 pr-3 flex flex-col justify-between gap-1 items-start">
