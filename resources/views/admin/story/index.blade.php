@@ -5,9 +5,9 @@
         <div class="bg-white rounded-lg">
             <div class="flex items-center justify-between">
                 <span class="w-1/3"></span>
-                <h2 class="w-1/3 text-xs lg:text-lg font-bold text-gray-800 p-4 text-center"> لیست استوری ها' </h2>
-                <div class="w-1/3 flex justify-end px-19" href="{{route('story.create')}}">
-                    <a class="active:bg-[#0080e5] mt-2 bg-[#03A9F4] text-white p-3 max-md:p-2 rounded-md text-xs lg:text-lg hover:bg-blue-700 transition duration-200 font-medium cursor-pointer" href="{{route('story.create')}}">ایجاد استوری</a>
+                <h2 class="w-1/3 text-xs lg:text-lg font-bold text-gray-800 p-4 text-center text-nowrap"> لیست استوری ها' </h2>
+                <div class="w-1/3 flex justify-end lg:px-19 px-5" href="{{route('story.create')}}">
+                    <a class="active:bg-[#0080e5] mt-2 bg-[#03A9F4] text-white p-3 max-md:p-2 rounded-md text-[.6rem] lg:text-lg hover:bg-blue-700 transition duration-200 font-medium cursor-pointer" href="{{route('story.create')}}">ایجاد استوری</a>
                 </div>
             </div>
             <div class="flex flex-col gap-5">
