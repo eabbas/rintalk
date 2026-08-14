@@ -27,11 +27,10 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TextController;
 //leitnary
 use App\Http\Controllers\LeitnaryController;
+use App\Http\Controllers\StoryController;
 
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [UserController::class, 'home'])->name('home');
 
 Route::get('/login', [UserController::class, 'login'])->name('login')->middleware([LoginMiddleware::class]);
 Route::get('/signup', [UserController::class, "create"])->name('signup')->middleware([LoginMiddleware::class]);
@@ -62,7 +61,15 @@ Route::group([
     Route::post('/store_user', 'store_user')->name('store_user');
     Route::get('/dashboard', 'dashboard')->name('dashboard');
 });
-
+Route::group([
+    "prefix"=> "story",
+    "controller"=> StoryController::class,
+    "as"=> "story.",
+    "middleware"=> [UserMiddleware::class]
+], function(){
+    Route::get('/create' , 'create')->name('create');
+    Route::post('/store' , 'store')->name('store');
+});
 
 
 /// text

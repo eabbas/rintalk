@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" type="text/css">
     <title>ثبت نام | رین تاک</title>
-    <script src="{{ asset('assets/js/jquery.js') }}"></script>
-    <script src="{{ asset('assets/js/tailwind.js') }}"></script>
+    <script src="{{ asset('assets/jquery.js') }}"></script>
+    <script src="{{ asset('assets/tailwind.js') }}"></script>
     <style>
         input:focus {
             border-color: #8b5cf6 !important;
