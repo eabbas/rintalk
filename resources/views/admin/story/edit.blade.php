@@ -1,9 +1,10 @@
 @extends('welcome')
-    @section('title', 'ایجاد استوری')
+    @section('title', ' ویرایش استوری')
     @section('content')
     <h1 class="text-2xl font-bold text-gray-800 text-center mb-5">فرم ایجاد استوری</h1>
-        <form action="{{ route('story.store') }}" method="post" enctype='multipart/form-data'>
+        <form action="{{ route('story.update') }}" method="post" enctype='multipart/form-data'>
             @csrf
+            <input type="hidden" name="id" value="{{$story->id}}">
             <div class="min-h-screen flex items-start justify-center">
                 <div class="bg-white rounded-2xl shadow-md p-3 w-full md:w-9/12">
                     <div class="text-center mb-4">
@@ -14,7 +15,7 @@
                                 <div
                                     class="rounded-lg focus:border-none focus:outline-none focus:bg-[#F1F1F4] bg-[#F9F9F9] text-[#99A1B7] w-full flex">
                                     <input class="p-4 w-full focus:outline-none text-sm font-bold mr-2" type="text"
-                                        name='title' placeholder="عنوان" required>
+                                        name='title' placeholder="عنوان" required value="{{$story->title}}">
                                 </div>
                             </div>
                             <div class="w-full flex flex-col gap-3 max-md:flex-col max-md:gap-1">
@@ -24,7 +25,7 @@
                                     class="rounded-lg focus:border-none focus:outline-none focus:bg-[#F1F1F4] bg-[#F9F9F9] text-[#99A1B7] w-full flex">
                                     <input class="p-4 w-full focus:outline-none text-sm font-bold mr-2" type="file"
                                         name="path" required>
-                                </div>
+                                </div>  
                             </div> 
                         </div>
                         <div class="w-full text-left">

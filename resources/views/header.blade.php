@@ -378,7 +378,7 @@
                         </div>
                         <ul class="dropdown-menu hidden mr-6 mt-1 space-y-1">
                         <li><a href="{{ route('story.create') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">ایجاد استوری جدید</a></li>
-                        <li><a href="{{ route('user.create_user') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">لیست استوری ها </a></li>
+                        <li><a href="{{ route('story.list') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">لیست استوری ها </a></li>
                         </ul>
                     </div>
                     @endcan

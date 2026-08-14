@@ -69,6 +69,11 @@ Route::group([
 ], function(){
     Route::get('/create' , 'create')->name('create');
     Route::post('/store' , 'store')->name('store');
+    Route::get('/list' , 'index')->name('list');
+    Route::get('/single/{story}' , 'single')->name('single');
+    Route::get('/edit/{story}' , 'edit')->name('edit');
+    Route::post('/update' , 'update')->name('update');
+    Route::get('/delete/{story}' , 'delete')->name('delete');
 });
 
 
