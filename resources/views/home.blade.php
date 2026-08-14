@@ -73,120 +73,17 @@
 
 
     <section class="w-full flex justify-center relative mt-5">
-        <div class=" w-11/12 pt-1 rounded-lg flex items-center gap-5 justify-between overflow-hidden overflow-x-auto">
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 md:flex hidden flex-col gap-1 items-center pup_up_story">
-                <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
-                    <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
-                        <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
+        <div class=" w-11/12 pt-1 rounded-lg flex items-center gap-5 overflow-hidden overflow-x-auto">
+            @foreach($story as $story)
+                <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 md:flex hidden flex-col gap-1 items-center pup_up_story stoey cursor-pointer" onclick="story('open' , '{{$story->path}}')">
+                    <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
+                        <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
+                            <img src="{{asset('storage/' . $story->path)}}" alt="" class="object-cover rounded-full">
+                        </div>
                     </div>
+                    <span class="w-full text-xs md:text-[1rem] lg:text-[1.2rem] text-nowrap text-center">{{$story->title}}</span>
                 </div>
-                <span class="w-full text-xs md:text-[1rem] lg:text-[1.2rem] text-nowrap text-center"> ثبت </span>
-            </div>
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
-                <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
-                    <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
-                        <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
-                    </div>
-                </div>
-                <span class="w-full text-xs md:text-[1rem] lg:text-[1.2rem] text-nowrap text-center"> ثبت </span>
-            </div>
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
-                <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
-                    <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
-                        <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
-                    </div>
-                </div>
-                <span class="w-full text-xs md:text-[1rem] lg:text-[1.2rem] text-nowrap text-center"> ثبت </span>
-            </div>
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
-                <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
-                    <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
-                        <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
-                    </div>
-                </div>
-                <span class="w-full text-xs md:text-[1rem] lg:text-[1.2rem] text-nowrap text-center"> ثبت </span>
-            </div>
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
-                <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
-                    <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
-                        <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
-                    </div>
-                </div>
-                <span class="w-full text-xs md:text-[1rem] lg:text-[1.2rem] text-nowrap text-center"> ثبت </span>
-            </div>
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
-                <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
-                    <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
-                        <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
-                    </div>
-                </div>
-                <span class="w-full text-xs md:text-[1rem] lg:text-[1.2rem] text-nowrap text-center"> ثبت </span>
-            </div>
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
-                <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
-                    <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
-                        <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
-                    </div>
-                </div>
-                <span class="w-full text-xs md:text-[1rem] lg:text-[1.2rem] text-nowrap text-center"> ثبت </span>
-            </div>
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
-                <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
-                    <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
-                        <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
-                    </div>
-                </div>
-                <span class="text-xs md:text-[1rem] lg:text-[1.2rem] text-nowrap text-center"> پاور</span>
-            </div>
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
-                <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
-                    <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
-                        <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
-                    </div>
-                </div>
-                <span class="text-xs md:text-[1rem] lg:text-[1.2rem]"> پاور</span>
-            </div>
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
-                <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
-                    <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
-                        <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
-                    </div>
-                </div>
-                <span class="text-xs md:text-[1rem] lg:text-[1.2rem]"> پاور</span>
-            </div>
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
-                <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
-                    <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
-                        <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
-                    </div>
-                </div>
-                <span class="text-xs md:text-[1rem] lg:text-[1.2rem]"> پاور</span>
-            </div>
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
-                <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
-                    <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
-                        <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
-                    </div>
-                </div>
-                <span class="text-xs md:text-[1rem] lg:text-[1.2rem]"> پاور</span>
-            </div>
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
-                <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
-                    <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
-                        <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
-                    </div>
-                </div>
-                <span class="text-xs md:text-[1rem] lg:text-[1.2rem]"> پاور</span>
-            </div>
-            <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex flex-col gap-1 items-center pup_up_story">
-                <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
-                    <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
-                        <img src="{{asset('storage/home/images.jpg')}}" alt="" class="object-cover rounded-full">
-                    </div>
-                </div>
-                <span class="text-xs md:text-[1rem] lg:text-[1.2rem]"> پاور</span>
-            </div>
-            <!-- video_story -->
+            @endforeach
         </div>
     </section>
 
@@ -226,8 +123,12 @@
             </div>
         </div>
     </section>
-
-
+</div>
+<div class="fixed top-0 w-full h-dvh flex justify-center items-center opacity-0 invisible transition-all duration-300" id="popupstory">
+        <div class="w-full h-full bg-black/30 cursor-pointer" onclick="story('clos')"></div>
+        <div class="w-6/12 absolute h-150">
+            <img class="w-full h-full rounded-3xl" src="" alt="" id="imgstory">
+        </div>
 </div>
 {{--tasc mahdi--}}
 
@@ -332,6 +233,21 @@
 
 
     <script>
+        imgstory=document.getElementById('imgstory')
+        popupstory.document.getElementById('popupstory')
+        function story(dor , img){
+            if(dor=='open'){
+                imgstory.setAttribute("src" , "{{ asset('storage/') }}/" + img)
+                popupstory.classList.remove('opacity-0')
+                popupstory.classList.remove('invisible')
+            }
+            if(dor=="clos"){
+                popupstory.classList.add('opacity-0')
+                popupstory.classList.add('invisible')
+            }
+        }
+
+
         const audio = document.getElementById("audio");
         const playBtn = document.getElementById("playBtn");
         const progress = document.getElementById("progress");

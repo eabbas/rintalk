@@ -12,9 +12,14 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use App\Models\story;
 
 class UserController extends Controller
 {
+    public function home(){
+        $story=story::all();
+        return view('home' , ['story'=>$story]);
+    }
       public function create()
     {
         return view('client.signup');
