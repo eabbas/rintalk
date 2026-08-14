@@ -373,7 +373,7 @@
                     </div>
                 </div>
                 <div class="px-2 py-1.5 bg-[#002284] rounded-xl flex gap-1 justify-center items-center">
-                    <span class="text-[10px] text-white md:text-[1.2rem] lg:text-[1.6rem] font-bold">مشاهده دوره ها</span>
+                    <a href="{{route('course.courses')}}" class="text-[10px] text-white md:text-[1.2rem] lg:text-[1.6rem] font-bold">مشاهده دوره ها</a>
                     <div class="rounded-full  bg-[#121e32] flex justify-center items-center">
                         <svg viewBox="0 -50 448 512" class="size-3 md:size-4 lg:size-6 rotate-90" fill="white">
                             <!--! Font Awesome Pro 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
