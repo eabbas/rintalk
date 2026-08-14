@@ -56,10 +56,10 @@
                 </div>
             </div>
             <div class="w-4/12 lg:flex items-center justify-between hidden">
-                <div class="flex flex-col items-center group gap-1 cursor-pointer">
+                <a href="{{route('home')}}" class="flex flex-col items-center group gap-1 cursor-pointer">
                     <span class="group-hover:text-[#ff9a1e] transtion-all duration-300 font-bold">خانه</span>
                     <div class="w-0 group-hover:w-16/12 bg-[#ff9a1e] h-[2px] transtion-all duration-300"></div>
-                </div>
+                </a>
                 <div class="flex flex-col items-center group gap-1 cursor-pointer">
                     <span class="group-hover:text-[#ff9a1e] transtion-all duration-300 font-bold"> تعیین سطح </span>
                     <div class="w-0 group-hover:w-16/12 bg-[#ff9a1e] h-[2px] transtion-all duration-300"></div>
@@ -173,10 +173,10 @@
                 @endif
             </div>
         </div>
-            <div class="fixed top-0 w-full h-dvh bg-black/50 blur-[10px] opacity-0 invisible transtion-all duration-300 z-1" id="blackpage" onclick="menu('close')"></div>
+            <div class="fixed top-0 w-full h-dvh bg-black/50 blur-[10px] opacity-0 invisible transtion-all duration-300 z-1 lg:hidden" id="blackpage" onclick="menu('close')"></div>
                         
 
-            <div id="sidebar" class="fixed top-0 h-dvh w-6/12 bg-white translate-x-full transtion-all duration-300 z-2 overflow-auto">
+            <div id="sidebar" class="fixed top-0 h-dvh w-6/12 bg-white translate-x-full transtion-all duration-300 z-2 overflow-auto lg:hidden">
 
                 <!-- پروفایل کاربر -->
                 <div class="px-5 py-5 flex items-center gap-3 border-b border-gray-50">

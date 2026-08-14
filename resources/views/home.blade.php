@@ -75,7 +75,7 @@
     <section class="w-full flex justify-center relative mt-5">
         <div class=" w-11/12 pt-1 rounded-lg flex items-center gap-5 overflow-hidden overflow-x-auto">
             @foreach($story as $story)
-                <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 md:flex hidden flex-col gap-1 items-center pup_up_story stoey cursor-pointer" onclick="story('open' , '{{$story->path}}')">
+                <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex  flex-col gap-1 items-center pup_up_story stoey cursor-pointer" onclick="story('open' , '{{$story->path}}')">
                     <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
                         <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
                             <img src="{{asset('storage/' . $story->path)}}" alt="" class="object-cover rounded-full">
@@ -124,9 +124,9 @@
         </div>
     </section>
 </div>
-<div class="fixed top-0 w-full h-dvh flex justify-center items-center opacity-0 invisible transition-all duration-300" id="popupstory">
+<div class="fixed top-0 w-full h-dvh flex justify-center items-center opacity-0 invisible transition-all duration-300 z-2" id="popupstory">
         <div class="w-full h-full bg-black/30 cursor-pointer" onclick="story('clos')"></div>
-        <div class="w-6/12 absolute h-150">
+        <div class="w-6/12 absolute md:h-100 lg:h-150">
             <img class="w-full h-full rounded-3xl" src="" alt="" id="imgstory">
         </div>
 </div>
