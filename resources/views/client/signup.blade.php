@@ -274,7 +274,7 @@
             })
         }
     </script>
-    <script src="{{ asset('assets/js/rules.js') }}"></script>
+    <script src="{{ asset('assets/rules.js') }}"></script>
 </body>
 
 </html>
