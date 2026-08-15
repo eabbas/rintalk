@@ -75,7 +75,7 @@
     <section class="w-full flex justify-center relative mt-5">
         <div class=" w-11/12 pt-1 rounded-lg flex items-center gap-5 overflow-hidden overflow-x-auto">
             @foreach($story as $story)
-                <div class="min-w-16 max-w-16 lg:minw-w-17 lg:max-w-17 flex  flex-col gap-1 items-center pup_up_story stoey cursor-pointer" onclick="story('open' , '{{$story->path}}')">
+                <div class="min-w-16 max-w-16 lg:min-w-17 lg:max-w-17 flex  flex-col gap-1 items-center pup_up_story stoey cursor-pointer" onclick="story('open' , '{{$story->path}}')">
                     <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
                         <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
                             <img src="{{asset('storage/' . $story->path)}}" alt="" class="object-cover rounded-full">
@@ -343,7 +343,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-1/2 min-h-full lg: bg-white flex flex-col justify-end items-end relative rounded-xl border-1 border-white" style="box-shadow:0.5PX 0.5PX 5PX #d4d4e6">
+        <a href="{{route('course.listcourseuser')}}" class="w-1/2 min-h-full lg: bg-white flex flex-col justify-end items-end relative rounded-xl border-1 border-white" style="box-shadow:0.5PX 0.5PX 5PX #d4d4e6">
             <img src="{{asset('storage/home/949c2d04-e7eb-4bd4-92a4-4f6bffa86ddb.jpg')}}" alt="" class="object-cover size-10/12 lg:size-7/12">
 
             <div class="w-full h-full absolute py-1.5 pr-3 flex flex-col justify-between gap-1 items-start">
@@ -373,7 +373,7 @@
                     </div>
                 </div>
                 <div class="px-2 py-1.5 bg-[#002284] rounded-xl flex gap-1 justify-center items-center">
-                    <a href="{{route('course.courses')}}" class="text-[10px] text-white md:text-[1.2rem] lg:text-[1.6rem] font-bold">مشاهده دوره ها</a>
+                    <div class="text-[10px] text-white md:text-[1.2rem] lg:text-[1.6rem] font-bold">مشاهده دوره ها</div>
                     <div class="rounded-full  bg-[#121e32] flex justify-center items-center">
                         <svg viewBox="0 -50 448 512" class="size-3 md:size-4 lg:size-6 rotate-90" fill="white">
                             <!--! Font Awesome Pro 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
@@ -382,7 +382,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
 
     </section>
     <!-- تعیین سصح -->

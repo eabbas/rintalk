@@ -132,7 +132,7 @@
                                         left-0 right-auto 
                                         sm:left-auto sm:right-0">
 
-                            <a href="" class="flex items-center gap-3 px-4 py-2 text-gray-700 text-sm hover:bg-blue-50 transition-colors duration-150">
+                            <a href="{{route('home')}}" class="flex items-center gap-3 px-4 py-2 text-gray-700 text-sm hover:bg-blue-50 transition-colors duration-150 cursor-pointer">
                                 <svg class="w-4 h-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                                 </svg>
@@ -196,11 +196,19 @@
                 </div>
                 <!-- منوی اصلی با دراپ‌داون -->
                 <nav class="flex-1 px-4 py-6 space-y-1.5">
-                    <div class="px-4 py-2">خانه</div>
-                    <div class="px-4 py-2">تعیین سطح</div>
-                    <div class="px-4 py-2">هم بحثی</div>
+                    <div class="flex flex-col gap-2">
+                        <div>
+                            <a href="{{route('home')}}" class="px-4 py-2 hover:text-[#ff9a1e] cursor-pointer transition-all duration-300">خانه</a>
+                        </div>
+                        <div>
+                            <a href=""  class="px-4 py-2 hover:text-[#ff9a1e] cursor-pointer transition-all duration-300">تعیین سطح</a>
+                        </div>
+                        <div>
+                            <a href="{{route('course.listcourseuser')}}" class="px-4 py-2 hover:text-[#ff9a1e] cursor-pointer transition-all duration-300">هم بحثی</a>
+                        </div>
+                    </div>
                     @if(!Auth::check())
-                    @endif
+                    @else
                     <div class="dropdown-item">
                         <div class="dropdown-trigger flex items-center justify-between px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-50 transition-all cursor-pointer">
                             <div class="flex items-center gap-3">
@@ -386,6 +394,7 @@
                         <span class="w-5 text-center">⚙️</span>
                         <span>تنظیمات</span>
                     </a> -->
+                    @endif
                 </nav>
             </div>
     </header>
