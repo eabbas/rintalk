@@ -2,25 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\partnerRequests;
 use App\Models\phone_code;
 use App\Models\role;
 use App\Models\role_user;
-use App\Models\partnerRequests;
+use Illuminate\Http\Request;
 // use App\Models\address;
+use App\Models\story;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-use App\Models\story;
 
 class UserController extends Controller
 {
-    public function home(){
-        $story=story::all();
-        return view('home' , ['story'=>$story]);
+    public function home()
+    {
+        $story = story::all();
+        return view('home', ['story' => $story]);
     }
-      public function create()
+
+    public function create()
     {
         return view('client.signup');
     }
@@ -96,17 +98,17 @@ class UserController extends Controller
     public function edit(user $user)
     {
         $roles = role::all();
-        return view('admin.users.edit', ['user' => $user, 'roles'=>$roles]);
+        return view('admin.users.edit', ['user' => $user, 'roles' => $roles]);
     }
 
     public function update(Request $request)
     {
         $user = User::find($request->id);
-        if(isset($request->role)){
+        if (isset($request->role)) {
             $role = role_user::where('user_id', $user->id)->delete();
             role_user::create([
-                'user_id'=>$user->id,
-                'role_id'=>$request->role
+                'user_id' => $user->id,
+                'role_id' => $request->role
             ]);
         }
         $user->name = $request->name;
@@ -137,7 +139,6 @@ class UserController extends Controller
 
     public function delete(user $user)
     {
-        
         $user->delete();
         return to_route('user.list');
     }
@@ -173,17 +174,20 @@ class UserController extends Controller
         return view('admin.users.setting');
     }
 
-    public function checkAuth(Request $request){
+    public function checkAuth(Request $request)
+    {
         $user = User::where('phoneNumber', $request->phoneNumber)->first();
         return response()->json($user);
     }
 
-    public function create_user(){
+    public function create_user()
+    {
         $roles = role::all();
-        return view('admin.users.create', ['roles'=>$roles]);
+        return view('admin.users.create', ['roles' => $roles]);
     }
 
-    public function store_user(Request $request){
+    public function store_user(Request $request)
+    {
         $password = Hash::make($request->password);
         // $path = null;
         // if (isset($request->main_image)) {
@@ -192,22 +196,24 @@ class UserController extends Controller
         //     $path = $request->file('main_image')->storeAs('images', $fullName, 'public');
         // }
         $user_id = User::insertGetId([
-            'name'=>$request->name,
-            'family'=>$request->family,
-            'phoneNumber'=>$request->phoneNumber,
-            'email'=>$request->email,
-            'password'=>$password,
+            'name' => $request->name,
+            'family' => $request->family,
+            'phoneNumber' => $request->phoneNumber,
+            'email' => $request->email,
+            'password' => $password,
         ]);
         role_user::create([
-            'user_id'=>$user_id,
-            'role_id'=>$request->role
+            'user_id' => $user_id,
+            'role_id' => $request->role
         ]);
         return to_route('user.list');
     }
-    public function dashboard(){
-        $user=Auth::user();
-        $partner=partnerRequests::where('user_id',$user->id)->where('status',1)->get();
-        $partnerCount=$partner->count();
-        return view('admin.users.dashboard', ['user'=>$user,'partnerCount'=>$partnerCount]);
+
+    public function dashboard()
+    {
+        $user = Auth::user();
+        $partner = partnerRequests::where('user_id', $user->id)->where('status', 1)->get();
+        $partnerCount = $partner->count();
+        return view('admin.users.dashboard', ['user' => $user, 'partnerCount' => $partnerCount]);
     }
 }
