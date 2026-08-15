@@ -225,4 +225,8 @@ public function acceptRequest(Request $request){
         ]);
     } 
 }
+public function listcourseuser(){
+    $course=course::all();
+    return view('admin.course.listcourseuser' , ['course'=>$course]);
+}
 }

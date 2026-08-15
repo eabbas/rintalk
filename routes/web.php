@@ -137,6 +137,7 @@ Route::group([
     Route::post('/sendRequestToPartner/{User?}' , 'sendRequestToPartner')->name('sendRequestToPartner');
     Route::get('/requestList' , 'requestList')->name('requestList');
     Route::post('/acceptRequest' , 'acceptRequest')->name('acceptRequest');
+    Route::get('listcourseuser' , 'listcourseuser')->name('listcourseuser');
 });
 
 
