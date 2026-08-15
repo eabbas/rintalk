@@ -66,8 +66,8 @@
                     </div>
                 </div>
             </div>
-            <div class="min-w-17 max-w-17 flex items-center justify-center">
-                <img src="{{asset('storage/home/file_0000000068a071f4b4abc9e3fcc298aa.png')}}" alt="">
+            <div class="min-w-15 max-w-15 h-15 flex items-center justify-center">
+                <img class="w-full h-full rounded-2xl" src="{{asset('storage/home/file_0000000068a071f4b4abc9e3fcc298aa.png')}}" alt="">
             </div>
         </div>
         <div class="flex flex-col items-center">
@@ -120,8 +120,8 @@
                 </div>
             </div>
 
-            <div class="min-w-17 max-w-17 flex items-center justify-center">
-                <img src="{{asset('storage/home/file_0000000068a071f4b4abc9e3fcc298aa.png')}}" alt="">
+            <div class="min-w-15 max-w-15 h-15 flex items-center justify-center">
+                <img class="w-full h-full rounded-2xl" src="{{asset('storage/home/file_0000000068a071f4b4abc9e3fcc298aa.png')}}" alt="">
             </div>
         </div>
         <div class="flex flex-col items-center">
@@ -174,8 +174,8 @@
                 </div>
             </div>
 
-            <div class="min-w-17 max-w-17 flex items-center justify-center">
-                <img src="{{asset('storage/home/file_0000000068a071f4b4abc9e3fcc298aa.png')}}" alt="">
+            <div class="min-w-15 max-w-15 h-15 flex items-center justify-center">
+                <img class="w-full h-full rounded-2xl" src="{{asset('storage/home/file_0000000068a071f4b4abc9e3fcc298aa.png')}}" alt="">
             </div>
         </div>
         <div class="flex flex-col items-center">
@@ -228,8 +228,8 @@
                 </div>
             </div>
 
-            <div class="min-w-17 max-w-17 flex items-center justify-center">
-                <img src="{{asset('storage/home/file_0000000068a071f4b4abc9e3fcc298aa.png')}}" alt="">
+            <div class="min-w-15 max-w-15 h-15 flex items-center justify-center">
+                <img class="w-full h-full rounded-2xl" src="{{asset('storage/home/file_0000000068a071f4b4abc9e3fcc298aa.png')}}" alt="">
             </div>
         </div>
         <div class="flex flex-col items-center">
