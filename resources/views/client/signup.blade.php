@@ -287,11 +287,15 @@
                         'phoneNumber': phoneNumber.value
                     },
                     success: function(user){
-                        if (user.id) {
-                            alert("شما قبلا با این شماره ثبت نام کرده اید")
-                            location.assign("{{ route('login') }}")
+                        if(!user){
+                            alert('کد وارد شده نامعتبر')
                         } else {
-                            signupForm.submit()
+                            if (user.id) {
+                                alert("شما قبلا با این شماره ثبت نام کرده اید")
+                                location.assign("{{ route('login') }}")
+                            } else {
+                                signupForm.submit()
+                            }
                         }
                     },
                     error: function(){

@@ -32,27 +32,34 @@ class UserController extends Controller
         $validated = $request->validate([
             'phoneNumber'=>['required'],
             'password'=>['required'],
-            'rules'=>['required']
+            'rules'=>['required'],
+            'code'=>['required']
         ],[
             'phoneNumber.required'=>"وارد کردن شماره تلفن الزامی میباشد",
             'password.required'=>"وارد کردن گذرواژه الزامی میباشد",
             'rules.required'=>"پذیرفتن قوانین الزامی میباشد",
+            'code.required'=>" وارد کردن کد ارسال شده الزامی میباشد",
         ]);
-        if ($request->rules) {
-            $phone = User::where('phoneNumber', $request->phoneNumber)->first();
-            if ($phone) {
-                return redirect()->back()->with('message', 'این شماره تلفن قبلا استفاده شده');
+        $phoneCode = phone_code::where('phoneNumber', $request->phoneNumber)->first();
+        if($phoneCode !== $request->code){
+            return response()->json(false);
+        } else {
+            if ($request->rules) {
+                $phone = User::where('phoneNumber', $request->phoneNumber)->first();
+                if ($phone) {
+                    return redirect()->back()->with('message', 'این شماره تلفن قبلا استفاده شده');
+                }
+                $password = Hash::make($request->password);
+                $user_id = User::insertGetId([
+                    'phoneNumber' => $request->phoneNumber,
+                    'password' => $password,
+                ]);
+                role_user::create(['role_id' => 2, 'user_id' => $user_id]);
+                Auth::loginUsingId($user_id);
+                return to_route('home');
             }
-            $password = Hash::make($request->password);
-            $user_id = User::insertGetId([
-                'phoneNumber' => $request->phoneNumber,
-                'password' => $password,
-            ]);
-            role_user::create(['role_id' => 2, 'user_id' => $user_id]);
-            Auth::loginUsingId($user_id);
-            return to_route('home');
+            return to_route('signup');
         }
-        return to_route('signup');
     }
 
     public function check(Request $request)
