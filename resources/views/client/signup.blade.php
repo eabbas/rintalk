@@ -146,6 +146,22 @@
                               <span class="text-red-500 text-sm absolute bg-white right-3 -bottom-6">{{ $message }}</span>  
                             @enderror
                         </div>
+                        <div class="relative w-full group @error('password') mb-5 @enderror flex gap-3">
+                            <div class="w-3/4">
+                                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-purple-500 transition-colors">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                    </svg>
+                                </span>
+                                <input type="number"
+                                    class="w-full pr-10 pl-4 py-3 rounded-xl border-2 @error('code') border-red-500 @enderror border-gray-200 focus:border-purple-500 focus:ring-0 focus:outline-none transition-all duration-300 hover:border-purple-200 bg-gray-50/50"
+                                    name="code" id="code" placeholder="کد ارسال شده" required value="{{ old('code') }}">
+                                @error('code')
+                                  <span class="text-red-500 text-sm absolute bg-white right-3 -bottom-6">{{ $message }}</span>  
+                                @enderror
+                            </div>
+                            <button type="button" class="w-1/4 text-sm rounded-xl bg-purple-500 text-white cursor-pointer" onclick="sendCode(this)">ارسال کد</button>
+                        </div>
                         
                         <!-- چک‌باکس قوانین -->
                         <div class="w-full flex gap-3 items-center mt-2 p-3 bg-purple-50 rounded-xl border border-purple-200">
@@ -248,12 +264,14 @@
     </div>
 
     <script>
+        let link = "{{ url('/') }}/"
+        let phoneNumber = document.getElementById('phoneNumber')
+        let password = document.getElementById('password')
         let signupForm = document.getElementById('signupForm')
+        let code = document.getElementById('code')
         function checkAuth(e) {
             e.preventDefault()
-            let phoneNumber = document.getElementById('phoneNumber')
-            let password = document.getElementById('password')
-            if(phoneNumber.value == '' || password.value == ''){
+            if(phoneNumber.value == '' || password.value == '' || code.value == ''){
                 alert('پر کردن همه فیلد ها الزامی است')
             } else {
                 $.ajaxSetup({
@@ -271,12 +289,38 @@
                     success: function(user){
                         if (user.id) {
                             alert("شما قبلا با این شماره ثبت نام کرده اید")
+                            location.assign("{{ route('login') }}")
                         } else {
                             signupForm.submit()
                         }
                     },
                     error: function(){
                         alert('خطا در بارگیری اطلاعات')
+                    }
+                })
+            }
+        }
+        function sendCode(){
+            if(phoneNumber.value == '' || password.value == ''){
+                alert('پر کردن همه فیلد ها الزامی است')
+            } else {
+                $.ajax({
+                    url: link+"api/sendCode",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        'phoneNumber': phoneNumber.value
+                    },
+                    success: function(response){
+                       
+                        if(response){
+                            // counter
+                        } else {
+                            alert('کاربر قبلا با این شماره ثبت نام کرده است')
+                        }
+                    },
+                    error: function(){
+                        console.error('failed to load data')
                     }
                 })
             }

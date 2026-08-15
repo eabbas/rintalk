@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     {{-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> --}}
     <script src="{{ asset('assets/jquery.js') }}"></script>
     <script src="{{asset('assets/tailwind.js')}}"></script>
@@ -80,6 +81,7 @@
 </head>
 
 <body class="bg-gradient-to-br from-purple-50 to-white">
+
     <div class="w-full flex flex-col justify-start items-center md:flex-row-reverse">
     
         <div class="flex justify-center max-sm:h-30 max-md:h-35 md:h-dvh bg-purple-gradient relative overflow-hidden w-full lg:w-1/2">
@@ -108,6 +110,7 @@
                 
                 <div class="flex flex-col w-full">
                     <form action="{{ route('user.check') }}" class="flex flex-col items-center my-2 gap-4 w-full"
+                        id="loginForm"
                         method="post">
                         @csrf
                         
@@ -124,29 +127,37 @@
                                 placeholder="شماره تلفن"
                                 dir="ltr">
                         </div> --}}
-                            <div class="relative w-full group">
+                            <div class="relative w-full group @error('phoneNumber') mb-5 @enderror">
                             <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-purple-500 transition-colors">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                                 </svg>
                             </span>
                             <input type="text"
-                                class="w-full pr-10 pl-4 py-3 rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:ring-0 focus:outline-none transition-all duration-300 hover:border-purple-200 bg-gray-50/50"
+                                class="w-full pr-10 pl-4 py-3 rounded-xl border-2 @error('phoneNumber') border-red-500 @enderror border-gray-200 focus:border-purple-500 focus:ring-0 focus:outline-none transition-all duration-300 hover:border-purple-200 bg-gray-50/50"
                                 name="phoneNumber" 
-                                placeholder="شماره تلفن">
+                                id="phoneNumber"
+                                placeholder="شماره تلفن" value="{{ old('phoneNumber') }}" required>
+                            @error('phoneNumber')
+                              <span class="text-red-500 text-sm absolute bg-white right-3 -bottom-6">{{ $message }}</span>  
+                            @enderror
                         </div>
                         
                         <!-- فیلد کلمه عبور -->
-                        <div class="relative w-full group">
+                        <div class="relative w-full group @error('password') mb-5 @enderror">
                             <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-purple-500 transition-colors">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                                 </svg>
                             </span>
                             <input type="password"
-                                class="w-full pr-10 pl-4 py-3 rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:ring-0 focus:outline-none transition-all duration-300 hover:border-purple-200 bg-gray-50/50"
+                                class="w-full pr-10 pl-4 py-3 rounded-xl border-2 @error('password') border-red-500 @enderror border-gray-200 focus:border-purple-500 focus:ring-0 focus:outline-none transition-all duration-300 hover:border-purple-200 bg-gray-50/50"
                                 name="password" 
+                                id="password"
                                 placeholder="کلمه عبور">
+                            @error('password')
+                              <span class="text-red-500 text-sm absolute bg-white right-3 -bottom-6">{{ $message }}</span>  
+                            @enderror
                         </div>
                         
                         <!-- گزینه‌های اضافی -->
@@ -160,7 +171,7 @@
                         
                         <!-- دکمه ورود -->
                         <button type="submit"
-                            class="btn-purple w-full text-center text-white p-3.5 rounded-xl font-medium text-lg mt-4 cursor-pointer shadow-lg shadow-purple-200">
+                            class="btn-purple w-full text-center text-white p-3.5 rounded-xl font-medium text-lg mt-4 cursor-pointer shadow-lg shadow-purple-200" onclick="loginToAccount(event)">
                             ورود به حساب
                         </button>
                         
@@ -208,6 +219,19 @@
             <span class="text-gray-700 font-medium">09147794595</span>
         </a>
     </div>
+    <script>
+        let loginForm = document.getElementById('loginForm')
+        let phoneNumber = document.getElementById('phoneNumber')
+        let password = document.getElementById('password')
+        function loginToAccount(e){
+            e.preventDefault()
+            if(phoneNumber.value == '' || password.value == ''){
+                alert('پر کردن همه فیلد ها الزامی است')
+            } else {
+                loginForm.submit()
+            }
+        }
+    </script>
 </body>
 
 </html>

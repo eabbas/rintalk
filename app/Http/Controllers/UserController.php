@@ -57,6 +57,14 @@ class UserController extends Controller
 
     public function check(Request $request)
     {
+        $validated = $request->validate([
+            'phoneNumber'=>['required'],
+            'password'=>['required'],
+        ],[
+            'phoneNumber.required'=>"وارد کردن شماره تلفن الزامی میباشد",
+            'password.required'=>"وارد کردن گذرواژه الزامی میباشد",
+        ]);
+        
         $user = User::where('phoneNumber', $request->phoneNumber)->first();
 
         if ($user) {
@@ -66,7 +74,7 @@ class UserController extends Controller
                 Auth::login($user);
                 return to_route('user.profile', [$user]);
             }
-            return to_route('login');
+            return to_route('login')->with('error', 'لطفا اطلاعات خود را مجددا بررسی کنید');
         }
         return to_route('signup');
     }
@@ -225,5 +233,27 @@ class UserController extends Controller
         $partner = partnerRequests::where('user_id', $user->id)->where('status', 1)->get();
         $partnerCount = $partner->count();
         return view('admin.users.dashboard', ['user' => $user, 'partnerCount' => $partnerCount]);
+    }
+
+    public function sendCode(Request $request){
+        $phoneNumber = $request->get('phoneNumber');
+        $user = User::where('phoneNumber', $phoneNumber)->first();
+        if($user){
+            return response()->json(false);
+        }
+        $code = rand(1000, 10000);
+        $phoneCode = phone_code::upsert(['phoneNumber' => $request->phoneNumber, 'code' => $code], ['phoneNumber'], ['code']);
+        $apiKey = 'YTBhZjhlNDAtZGI1Zi00ZWQ1LTkwNmYtZWU2MWFhYTkzY2M0NTcxZGQ3ZjY2Yzk1MmNjZmFiM2M2ZjVmNjBhMDg2MTQ=';
+        $client = new \IPPanel\Client($apiKey);
+        $patternValues = [
+            'activation_code' => $code,
+        ];
+        $bulkID = $client->sendPattern(
+            '7fvdx77gveizxqn',  // pattern code
+            '+983000505',  // originator
+            $request->phoneNumber,  // recipient
+            $patternValues,  // pattern values
+        );
+        return response()->json($phoneCode);
     }
 }
