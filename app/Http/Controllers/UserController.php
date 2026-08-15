@@ -29,6 +29,15 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'phoneNumber'=>['required'],
+            'password'=>['required'],
+            'rules'=>['required']
+        ],[
+            'phoneNumber.required'=>"وارد کردن شماره تلفن الزامی میباشد",
+            'password.required'=>"وارد کردن گذرواژه الزامی میباشد",
+            'rules.required'=>"پذیرفتن قوانین الزامی میباشد",
+        ]);
         if ($request->rules) {
             $phone = User::where('phoneNumber', $request->phoneNumber)->first();
             if ($phone) {
@@ -40,7 +49,8 @@ class UserController extends Controller
                 'password' => $password,
             ]);
             role_user::create(['role_id' => 2, 'user_id' => $user_id]);
-            return to_route('login');
+            Auth::loginUsingId($user_id);
+            return to_route('home');
         }
         return to_route('signup');
     }
