@@ -65,7 +65,7 @@
         <div class="w-[265px] h-[41px] bg-[#fff2ea] rounded-full absolute -z-2 -top-[1.3rem] border-[3px] border-white box_shado3"></div>
         <div class="w-[250px] h-[42px] bg-[#fff2ea] rounded-full absolute -z-3 -top-[1.67rem] box_shado3"></div>
         <div class="w-19/24 rounded-3xl flex flex-col items-center p-3 py-4 box_shado bg-white gap-2">
-            <div class="flex w-11/12 flex items-center justify-between">
+            <div class="flex w-11/12 items-center justify-between">
                 <div>
                     <svg version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-unmute fill-[#777a88] size-5" aria-hidden="true">
                         <path fill-rule="evenodd" d="M7.563 2.069A.75.75 0 018 2.75v10.5a.75.75 0 01-1.238.57L3.472 11H1.75A1.75 1.75 0 010 9.25v-2.5C0 5.784.784 5 1.75 5h1.723l3.289-2.82a.75.75 0 01.801-.111zM6.5 4.38L4.238 6.319a.75.75 0 01-.488.181h-2a.25.25 0 00-.25.25v2.5c0 .138.112.25.25.25h2a.75.75 0 01.488.18L6.5 11.62V4.38zm6.096-2.038a.75.75 0 011.06 0 8 8 0 010 11.314.75.75 0 01-1.06-1.06 6.5 6.5 0 000-9.193.75.75 0 010-1.06v-.001zm-1.06 2.121a.75.75 0 10-1.061 1.061 3.5 3.5 0 010 4.95.75.75 0 101.06 1.06 5 5 0 000-7.07l.001-.001z"></path>
