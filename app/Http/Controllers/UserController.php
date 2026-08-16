@@ -63,9 +63,11 @@ class UserController extends Controller
         $validated = $request->validate([
             'phoneNumber'=>['required'],
             'password'=>['required'],
+            'code'=>['required'],
         ],[
             'phoneNumber.required'=>"وارد کردن شماره تلفن الزامی میباشد",
             'password.required'=>"وارد کردن گذرواژه الزامی میباشد",
+            'code.required'=>"وارد کردن کد یکبارمصرف الزامی میباشد",
         ]);
         
         $user = User::where('phoneNumber', $request->phoneNumber)->first();
