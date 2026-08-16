@@ -40,26 +40,22 @@ class UserController extends Controller
             'rules.required'=>"پذیرفتن قوانین الزامی میباشد",
             'code.required'=>" وارد کردن کد ارسال شده الزامی میباشد",
         ]);
-        $phoneCode = phone_code::where('phoneNumber', $request->phoneNumber)->first();
-        if($phoneCode !== $request->code){
-            return response()->json(false);
-        } else {
-            if ($request->rules) {
-                $phone = User::where('phoneNumber', $request->phoneNumber)->first();
-                if ($phone) {
-                    return redirect()->back()->with('message', 'این شماره تلفن قبلا استفاده شده');
-                }
-                $password = Hash::make($request->password);
-                $user_id = User::insertGetId([
-                    'phoneNumber' => $request->phoneNumber,
-                    'password' => $password,
-                ]);
-                role_user::create(['role_id' => 2, 'user_id' => $user_id]);
-                Auth::loginUsingId($user_id);
-                return to_route('home');
+        if ($request->rules) {
+            $phone = User::where('phoneNumber', $request->phoneNumber)->first();
+            if ($phone) {
+                return redirect()->back()->with('message', 'این شماره تلفن قبلا استفاده شده');
             }
-            return to_route('signup');
+            $password = Hash::make($request->password);
+            $user_id = User::insertGetId([
+                'phoneNumber' => $request->phoneNumber,
+                'password' => $password,
+            ]);
+            role_user::create(['role_id' => 2, 'user_id' => $user_id]);
+            Auth::loginUsingId($user_id);
+            return to_route('home');
         }
+        return to_route('signup');
+        
     }
 
     public function check(Request $request)
@@ -201,8 +197,17 @@ class UserController extends Controller
 
     public function checkAuth(Request $request)
     {
+        $flag = false;
         $user = User::where('phoneNumber', $request->phoneNumber)->first();
-        return response()->json($user);
+        $code = phone_code::where('phoneNumber', $request->phoneNumber)->first();
+        if($code->code == $request->code){
+            $flag = true;
+        }
+        return response()->json(['user'=>$user, 'flag'=>$flag]);
+    }
+
+    public function removeActivationCode(Request $request){
+        return response()->json($request->all());
     }
 
     public function create_user()

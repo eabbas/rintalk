@@ -10,3 +10,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/sendCode', [UserController::class, 'sendCode']);
+Route::post('/removeActivationCode', [UserController::class, 'removeActivationCode']);

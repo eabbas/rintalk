@@ -160,7 +160,7 @@
                                   <span class="text-red-500 text-sm absolute bg-white right-3 -bottom-6">{{ $message }}</span>  
                                 @enderror
                             </div>
-                            <button type="button" class="w-1/4 text-sm rounded-xl bg-purple-500 text-white cursor-pointer" onclick="sendCode(this)">ارسال کد</button>
+                            <button type="button" id="countDown" class="w-1/4 text-sm rounded-xl bg-purple-500 text-white cursor-pointer" onclick="sendCode(this)">ارسال کد</button>
                         </div>
                         
                         <!-- چک‌باکس قوانین -->
@@ -269,6 +269,7 @@
         let password = document.getElementById('password')
         let signupForm = document.getElementById('signupForm')
         let code = document.getElementById('code')
+        let countDown = document.getElementById('countDown')
         function checkAuth(e) {
             e.preventDefault()
             if(phoneNumber.value == '' || password.value == '' || code.value == ''){
@@ -284,13 +285,14 @@
                     type: "POST",
                     dataType: "json",
                     data: {
-                        'phoneNumber': phoneNumber.value
+                        'phoneNumber': phoneNumber.value,
+                        'code': code.value
                     },
-                    success: function(user){
-                        if(!user){
+                    success: function(data){
+                        if(!data.flag){
                             alert('کد وارد شده نامعتبر')
                         } else {
-                            if (user.id) {
+                            if (data.user) {
                                 alert("شما قبلا با این شماره ثبت نام کرده اید")
                                 location.assign("{{ route('login') }}")
                             } else {
@@ -328,6 +330,65 @@
                     }
                 })
             }
+        }
+        function counter() {
+            let phoneNumber = document.getElementById('phoneNumber')
+            countDown.classList.add('cursor-no-drop')
+            countDown.classList.remove('cursor-pointer')
+            countDown.classList.remove('hover:bg-(--hover-primary-color)')
+            countDown.classList.add('hover:bg-(--hover-primary-color)/50')
+            countDown.classList.remove('bg-(--primary-color)')
+            countDown.classList.add('bg-(--primary-color)/50')
+            countDown.setAttribute('disabled', true)
+            countDown.setAttribute('dir', 'ltr')
+            let count = 120
+            let result = setInterval(() => {
+                let minute = Math.floor(count / 60)
+                let seconds = count % 60
+                count -= 1
+                if (count < 0) {
+
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        }
+                    })
+                    $.ajax({
+                        url: link+'api/removeActivationCode',
+                        type: "POST",
+                        dataType: "json",
+                        data: {
+                            'phoneNumber': phoneNumber.value
+                        },
+                        success: function(data) {
+                            console.log(data)
+                            countDown.classList.remove('cursor-no-drop')
+                            countDown.classList.add('bg-(--primary-color)')
+                            countDown.classList.remove('bg-(--primary-color)/50')
+                            countDown.classList.add('cursor-pointer')
+                            countDown.classList.add('hover:bg-(--hover-primary-color)')
+                            countDown.classList.remove('hover:bg-(--hover-primary-color)/50')
+                            countDown.removeAttribute('disabled')
+                            countDown.removeAttribute('dir')
+                            countDown.innerText = "ارسال مجدد"
+                        },
+                        error: function() {
+                            showMessage('open')
+                            element.innerHTML = `
+                                <span>❌</span>
+                                <span class="text-shadw-lg">خطا در دریافت اطلاعات!</span>
+                            `
+                            message.children[0].appendChild(element)
+                            setTimeout(() => {
+                                showMessage('close')
+                            }, 2500)
+                        }
+                    })
+                    clearInterval(result)
+                }
+                countDown.innerText = minute.toString().padStart(2, "0") + " : " + seconds.toString().padStart(2,
+                    "0");
+            }, 1000)
         }
     </script>
     <script src="{{ asset('assets/rules.js') }}"></script>
