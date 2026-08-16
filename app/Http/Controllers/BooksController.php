@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\books;
+use App\Models\Books;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use App\Models\level;
+use App\Models\status;
+
 
 class BooksController extends Controller
 {
@@ -25,7 +28,7 @@ class BooksController extends Controller
         $fullName = Str::uuid() . '_' . $name;
         $image = $request->file('image')->storeAs('files', $fullName, 'public');
     }
-             $booksId = books::insertGetId([
+             $booksId = Books::insertGetId([
                 'title' => $request->title,
                 'description' => $request->description,
                 'summary' => $request->summary,
@@ -42,12 +45,12 @@ class BooksController extends Controller
     }
 
     public function index(){
-        $books = books::all();
+        $books = Books::all();
         return view('admin.books.index' , ['books'=>$books]);
     }
 
-    public function edit(books $book){
-        $book = books::find($book->id);
+    public function edit(Books $book){
+        $book = Books::find($book->id);
         return view('admin.books.edit' , ['book'=>$book]);
     }
 
@@ -62,7 +65,7 @@ class BooksController extends Controller
         $fullName = Str::uuid() . '_' . $name;
         $image = $request->file('image')->storeAs('files', $fullName, 'public');
     }
-        $book = books::find($request->book_id);
+        $book = Books::find($request->book_id);
         $book->title = $request->title;
         $book->description = $request->description;
         $book->summary = $request->summary;
@@ -79,16 +82,16 @@ class BooksController extends Controller
     }
 
     public function single(books $book){
-        $book = books::find($book->id);
+        $book = Books::find($book->id);
         return view('admin.books.single' , ['book'=>$book]);
     }
 
-     public function downloadFile(books $book){
+     public function downloadFile(Books $book){
     return Storage::disk("public")->download($book->file_path);                 
     }
 
      public function delete($id){
-         books::find($id)->delete();
+         Books::find($id)->delete();
          return to_route('books.index');
     }
 }
