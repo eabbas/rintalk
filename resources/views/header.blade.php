@@ -9,7 +9,7 @@
     <script src="{{ asset('assets/jquery.js') }}"></script>
     <!-- <link rel="stylesheet" href="{{asset('assets/css/style.css')}}"> -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
-    <title>Document</title>
+    <title>RinTalk</title>
     <style>
         @import url({{asset('assets/css/fontiran.css')}});
         *{
