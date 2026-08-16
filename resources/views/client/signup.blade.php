@@ -307,6 +307,7 @@
             }
         }
         function sendCode(){
+            counter()
             if(phoneNumber.value == '' || password.value == ''){
                 alert('پر کردن همه فیلد ها الزامی است')
             } else {
@@ -335,10 +336,10 @@
             let phoneNumber = document.getElementById('phoneNumber')
             countDown.classList.add('cursor-no-drop')
             countDown.classList.remove('cursor-pointer')
-            countDown.classList.remove('hover:bg-(--hover-primary-color)')
-            countDown.classList.add('hover:bg-(--hover-primary-color)/50')
-            countDown.classList.remove('bg-(--primary-color)')
-            countDown.classList.add('bg-(--primary-color)/50')
+            countDown.classList.remove('hover:bg-purple-500')
+            countDown.classList.add('hover:bg-purple-500/50')
+            countDown.classList.remove('bg-purple-500')
+            countDown.classList.add('bg-purple-500/50')
             countDown.setAttribute('disabled', true)
             countDown.setAttribute('dir', 'ltr')
             let count = 120
@@ -363,11 +364,11 @@
                         success: function(data) {
                             console.log(data)
                             countDown.classList.remove('cursor-no-drop')
-                            countDown.classList.add('bg-(--primary-color)')
-                            countDown.classList.remove('bg-(--primary-color)/50')
+                            countDown.classList.add('bg-purple-500')
+                            countDown.classList.remove('bg-purple-500/50')
                             countDown.classList.add('cursor-pointer')
-                            countDown.classList.add('hover:bg-(--hover-primary-color)')
-                            countDown.classList.remove('hover:bg-(--hover-primary-color)/50')
+                            countDown.classList.add('hover:bg-purple-500')
+                            countDown.classList.remove('hover:bg-purple-500/50')
                             countDown.removeAttribute('disabled')
                             countDown.removeAttribute('dir')
                             countDown.innerText = "ارسال مجدد"

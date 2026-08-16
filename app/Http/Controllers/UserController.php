@@ -207,7 +207,8 @@ class UserController extends Controller
     }
 
     public function removeActivationCode(Request $request){
-        return response()->json($request->all());
+        phone_code::where('phoneNumber', $request->phoneNumber)->delete();
+        return response()->json('code deleted');
     }
 
     public function create_user()
