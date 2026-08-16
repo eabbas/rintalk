@@ -84,7 +84,7 @@
                         <option value="">انتخاب سطح</option>
                         @foreach($levels as $level)
                         <option value="{{$level->id}}">{{$level->title}}</option>
-                        @endif
+                        @endforeach
                     </select>
                 </div>
 
@@ -95,7 +95,7 @@
                         <option value="">انتخاب وضعیت</option>
                         @foreach($statuses as $status)
                         <option value="{{$status->id}}">{{$status->title}}</option>
-                        @endif
+                        @endforeach
                     </select>
                 </div>
 

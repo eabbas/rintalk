@@ -72,13 +72,13 @@
 </style>
 
 
-    <section class="w-full flex justify-center relative mt-5">
+    <section class="w-full flex justify-center relative mt-5 mb-2">
         <div class=" w-11/12 pt-1 rounded-lg flex items-center gap-5 overflow-hidden overflow-x-auto">
             @foreach($story as $story)
                 <div class="min-w-16 max-w-16 lg:min-w-17 lg:max-w-17 flex  flex-col gap-1 items-center pup_up_story stoey cursor-pointer" onclick="story('open' , '{{$story->path}}')">
                     <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
                         <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
-                            <img src="{{asset('storage/' . $story->path)}}" alt="" class="object-cover rounded-full">
+                            <img src="{{asset('storage/' . $story->path)}}" alt="" class="object-cover rounded-full min-w-17 max-w-17 min-h-15 max-h-15">
                         </div>
                     </div>
                     <span class="w-full text-xs md:text-[1rem] lg:text-[1.2rem] text-nowrap text-center">{{$story->title}}</span>
@@ -87,43 +87,12 @@
         </div>
     </section>
 
-    <section class="w-11/12 bg-[#0b1a31] mx-auto rounded-xl flex relative mt-3">
-        <div class="w-7/12 h-7/12">
-            <img src="{{asset('storage/home/ei_1786388637947-removebg-preview (1).png')}}" alt="" class="object-cover w-full h-full rounded-xl"> 
-        </div>
-        <div class="w-5/12 h-full absolute left-0 flex flex-col justify-center  gap-1.5 items-end pl-5 lg:pl-15">
-            <p class="text-[6px] text-[#f6911e] md:text-[1.1rem] lg:text-[1.4rem] text-nowrap xl:text-[1.8rem]">یاد گیری زبان و فرصتی برای دنیای جدید</p>
-            <span class="text-sm font-bold text-white md:text-[1.7rem] lg:text-[2.5rem] xl:text-[3rem] lg:mt-2 xl:mt3">زبان یاد بگیر</span>
-            <span class="text-sm font-bold text-white text-nowrap md:text-[1.7rem] lg:text-[2.5rem] xl:text-[3rem] lg:mt-2 xl:mt3">زندگی ات را گسترش بده</span>
-            <p class="text-[7px] text-white md:text-[1.2rem] lg:text-[1.5rem] xl:text-[2.1rem] lg:mt-2 xl:mt3 text-nowrap">دوره های کاربردی اساتید حرفه ای</p>
-            <p class="text-[7px] text-white md:text-[1.2rem] lg:text-[1.5rem] xl:text-[2.1rem] lg:mt-2 xl:mt3">ثیاد گیری آسان و موثر</p>
-            <button class="w-7/12 h-5 md:h-7 md:py-2 lg:h-8 xl:h-11 lg:py-4 rounded-lg bg-[#ff9a1e] flex gap-1 items-center justify-center mt-2 xl:mt-5 ">
-                <span class="text-[7px] text-white md:text-[1rem] lg:text-[1.2rem] xl:text-[1.6rem]">مشاهده دوره ها</span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="size-2 md:size-4 lg:size-5 xl:size-7 rotate-90" fill="white">
-                    <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"/>
-                </svg>
-            </button>
-        </div>
-        <div class="w-15 h-7 md:w-32 md:h-15 lg:w-40 lg:h-22 xl:w-56 xl:h-29 bg-white absolute top-3 right-4 lg:top-9 lg:right-9 rounded-lg flex gap-1 justify-center items-center md:px-2">
-            <div class="flex flex-col items-start justify-center">
-                <span class="text-[6px] md:text-[.9rem] lg:text-[1.15rem] xl:text-[1.5rem] font-bold ">جلسه رایگان</span>
-                <span class="text-[5px] md:text-[.85rem] lg:text-{1.1rem} xl:text-[1.4rem] text-[#b2b3bb]">مشاهده کنید</span>
-            </div>
-            <div class="w-4 h-4 md:w-11 md:h-11 lg:w-14 lg:h-14 xl:w-20 xl:h-20 rounded-full overflow-hidden">
-                <img src="{{asset('storage/home/a4a2435b-73c3-49df-8dca-66f0f42a6c6b.jpg')}}" alt="">
-            </div>
-        </div>
-        <div class="bg-[#2e3952] absolute bottom-8 right-1/30 rounded-md flex gap-0.5 px-1.5 py-1 items-center justiyf-center justify-center">
-            <div class="flex flex-col items-start justify-center">
-                <span class="text-[5px] md:text-[1rem] lg:text-[1.15rem] xl:text-[1.8rem] text-white">پادکست</span>
-                <span class="text-[4px] md:text-[1rem] lg:text-[1.1rem] xl:text-[1.8rem] text-[#b2b3bb]">گوش دهید </span>
-            </div>
-            <div class="w-4 h-4 md:w-11 md:h-11 xl:w-25 xl:h-25 rounded-full overflow-hidden">
-                <img src="{{asset('storage/home/b8540b37-275e-4df2-88fa-b4a44b55abb6.jpg')}}" alt="">
-            </div>
+    <section class="w-full flex justify-center">
+        <div class="w-11/12 ">
+            <img class="w-full min-h-40 max-h-40 lg:min-h-100 lg:max-h-100 object-cover rounded-xl" src="{{asset('storage/home/72672931-5611-l__1599.webp')}}" alt="">
         </div>
     </section>
-</div>
+{{--</div>--}}
 <div class="fixed top-0 w-full h-dvh flex justify-center items-center opacity-0 invisible transition-all duration-300 z-2" id="popupstory">
         <div class="w-full h-full bg-black/30 cursor-pointer" onclick="story('clos')"></div>
         <div class="w-6/12 absolute md:h-100 lg:h-150">

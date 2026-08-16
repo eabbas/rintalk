@@ -6,7 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RinTalk | داشبورد</title>
-    <script src="{{ asset('assets/js/tailwind.js') }}"></script>
+    <script src="{{ asset('assets/tailwind.js') }}"></script>
+    <script src="{{ asset('assets/jquery.js') }}"></script>
     <link rel="stylesheet" href="{{ url('assets/css/style.css') }}" type="text/css">
     <!-- Tailwind CSS v3 (فایل محلی یا CDN - در اینجا از CDN استفاده شده، اما شما می‌توانید asset خود را جایگزین کنید) -->
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
