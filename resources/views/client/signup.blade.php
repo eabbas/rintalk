@@ -320,9 +320,7 @@
                     },
                     success: function(response){
                        
-                        if(response){
-                            // counter
-                        } else {
+                        if(!response){
                             alert('کاربر قبلا با این شماره ثبت نام کرده است')
                         }
                     },

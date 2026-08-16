@@ -13,6 +13,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use IPPanel\Models\Response;
 
 class UserController extends Controller
 {
@@ -60,26 +61,50 @@ class UserController extends Controller
 
     public function check(Request $request)
     {
-        $validated = $request->validate([
-            'phoneNumber'=>['required'],
-            'password'=>['required'],
-            'code'=>['required'],
-        ],[
-            'phoneNumber.required'=>"وارد کردن شماره تلفن الزامی میباشد",
-            'password.required'=>"وارد کردن گذرواژه الزامی میباشد",
-            'code.required'=>"وارد کردن کد یکبارمصرف الزامی میباشد",
-        ]);
+        if($request->code){
+            $validated = $request->validate([
+                'phoneNumber'=>['required'],
+                'code'=>['required'],
+            ],[
+                'phoneNumber.required'=>"وارد کردن شماره تلفن الزامی میباشد",
+                'code.required'=>"وارد کردن کد یکبارمصرف الزامی میباشد",
+            ]);
+        }
+        if($request->password){
+            $validated = $request->validate([
+                'phoneNumber'=>['required'],
+                'password'=>['required'],
+            ],[
+                'phoneNumber.required'=>"وارد کردن شماره تلفن الزامی میباشد",
+                'password.required'=>"وارد کردن گذرواژه الزامی میباشد",
+            ]);
+        }
+        
         
         $user = User::where('phoneNumber', $request->phoneNumber)->first();
 
+     
         if ($user) {
-            $checkHash = Hash::check($request->password, $user->password);
-            if ($checkHash) {
-                $user->role;
-                Auth::login($user);
-                return to_route('user.profile', [$user]);
+            if(isset($request->password)){
+                $checkHash = Hash::check($request->password, $user->password);
+                if ($checkHash) {
+                    $user->role;
+                    Auth::login($user);
+                    return to_route('user.profile', [$user]);
+                }
+            }
+            if(isset($request->code)){
+                $phoneCode = phone_code::where('phoneNumber', $request->phoneNumber)->first();
+                if($phoneCode){
+                    if($phoneCode->code == $request->code){
+                        $user->role;
+                        Auth::login($user);
+                        return to_route('user.profile', [$user]);
+                    }
+                }
             }
             return to_route('login')->with('error', 'لطفا اطلاعات خود را مجددا بررسی کنید');
+            
         }
         return to_route('signup');
     }
@@ -254,6 +279,48 @@ class UserController extends Controller
         $phoneNumber = $request->get('phoneNumber');
         $user = User::where('phoneNumber', $phoneNumber)->first();
         if($user){
+            return response()->json(false);
+        }
+        $code = rand(1000, 10000);
+        $phoneCode = phone_code::upsert(['phoneNumber' => $request->phoneNumber, 'code' => $code], ['phoneNumber'], ['code']);
+        $apiKey = 'YTBhZjhlNDAtZGI1Zi00ZWQ1LTkwNmYtZWU2MWFhYTkzY2M0NTcxZGQ3ZjY2Yzk1MmNjZmFiM2M2ZjVmNjBhMDg2MTQ=';
+        $client = new \IPPanel\Client($apiKey);
+        $patternValues = [
+            'activation_code' => $code,
+        ];
+        $bulkID = $client->sendPattern(
+            '7fvdx77gveizxqn',  // pattern code
+            '+983000505',  // originator
+            $request->phoneNumber,  // recipient
+            $patternValues,  // pattern values
+        );
+        return response()->json($phoneCode);
+    }
+
+    public function checkCode(Request $request){
+        $flag = false;
+        $phoneCode = phone_code::where('phoneNumber', $request->phoneNumber)->first();
+        if($phoneCode->code == $request->code){
+            $flag = true;
+        }
+        return response()->json($flag);
+    }
+
+    public function checkPassKey(Request $request){
+        $flag = false;
+        $user = User::where('phoneNumber', $request->phoneNumber)->first();
+        if($user){
+            if(Hash::check($request->password, $user->password)){
+                $flag = true;
+            }
+        }
+        return response()->json($flag);
+    }
+
+    public function sendActivationCode(Request $request){
+        $phoneNumber = $request->get('phoneNumber');
+        $user = User::where('phoneNumber', $phoneNumber)->first();
+        if(!$user){
             return response()->json(false);
         }
         $code = rand(1000, 10000);

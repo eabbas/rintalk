@@ -133,7 +133,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                                 </svg>
                             </span>
-                            <input type="text"
+                            <input type="number"
                                 class="w-full pr-10 pl-4 py-3 rounded-xl border-2 @error('phoneNumber') border-red-500 @enderror border-gray-200 focus:border-purple-500 focus:ring-0 focus:outline-none transition-all duration-300 hover:border-purple-200 bg-gray-50/50"
                                 name="phoneNumber" 
                                 id="phoneNumber"
@@ -177,7 +177,7 @@
                         <!-- دکمه ورود -->
                         <button type="submit"
                             id="submitBtn"
-                            class="btn-purple w-full text-center text-white p-3.5 rounded-xl font-medium text-lg mt-4 cursor-pointer shadow-lg shadow-purple-200" onclick="loginToAccount(event)">
+                            class="btn-purple w-full text-center text-white p-3.5 rounded-xl font-medium text-lg mt-4 cursor-pointer shadow-lg shadow-purple-200" onclick="loginToAccount(event, 'code')">
                             ورود به حساب
                         </button>
                         
@@ -231,17 +231,62 @@
         let phoneNumber = document.getElementById('phoneNumber')
         let password = document.getElementById('password')
         let loginWay = document.getElementById('loginWay')
-        function loginToAccount(e){
+        let code = document.getElementById('code')
+        let link = "{{ url('/') }}/"
+        function loginToAccount(e, way){
+            password = document.getElementById('password')
+            code = document.getElementById('code')
             e.preventDefault()
             if(phoneNumber.value == '' || (password && password.value == '') || (code && code.value == '')){
                 alert('پر کردن همه فیلد ها الزامی است')
             } else {
-                loginForm.submit()
+                if(way == 'code'){
+                    $.ajax({
+                        url: link+'api/checkCode',
+                        type: "POST",
+                        dataType: "json",
+                        data: {
+                            'phoneNumber': phoneNumber.value,
+                            'code': code.value
+                        },
+                        success: function(response){
+                            if(response){
+                                loginForm.submit()
+                            } else {
+                                alert('کد وارد شده نامعتبر')
+                            }
+                        },
+                        error: function(){
+                            console.error('failed to load data')
+                        }
+                    })
+                }
+                if(way == 'password'){
+                    $.ajax({
+                        url: link+"api/checkPassKey",
+                        type: "POST",
+                        dataType: "json",
+                        data: {
+                            'phoneNumber': phoneNumber.value,
+                            'password': password.value
+                        },
+                        success: function(response){
+                            if(response){
+                                loginForm.submit()
+                            } else {
+                                alert('رمز وارد شده نامعتبر')
+                            }
+                        },
+                        error: function(){
+                            console.error('faied to load data')
+                        }
+                    })
+                }
             }
         }
         function loginWithActivationCode(el){
-            submitBtn.setAttribute('onclick', 'loginToAccount(event, "code")')
             loginWay.innerHTML = ''
+            submitBtn.setAttribute('onclick', 'loginToAccount(event, "code")')
             el.setAttribute('onclick', 'loginWithPassKey(this)')
             el.innerText = "ورود با رمز عبور"
             let element = document.createElement('div')
@@ -264,8 +309,8 @@
             loginWay.appendChild(element)
         }
         function loginWithPassKey(el){
-            submitBtn.setAttribute('onclick', 'loginToAccount(event, "password")')
             loginWay.innerHTML = ''
+            submitBtn.setAttribute('onclick', 'loginToAccount(event, "password")')
             el.setAttribute('onclick', 'loginWithActivationCode(this)')
             el.innerText = 'ورود با رمز یکبار مصرف'
             let element = document.createElement('div')
@@ -283,6 +328,90 @@
                 placeholder="کلمه عبور">
             `
             loginWay.appendChild(element)
+        }
+        function sendCode(){
+            
+            if(phoneNumber.value == ''){
+                alert('پر کردن همه فیلد ها الزامی است')
+            } else {
+                counter()
+                $.ajax({
+                    url: link+"api/sendActivationCode",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        'phoneNumber': phoneNumber.value
+                    },
+                    success: function(response){
+                       console.log(response)
+                        if(!response){
+                            alert('کاربر قبلا با این شماره ثبت نام کرده است')
+                        }
+                    },
+                    error: function(){
+                        console.error('failed to load data')
+                    }
+                })
+            }
+        }
+        function counter() {
+            let phoneNumber = document.getElementById('phoneNumber')
+            countDown.classList.add('cursor-no-drop')
+            countDown.classList.remove('cursor-pointer')
+            countDown.classList.remove('hover:bg-purple-500')
+            countDown.classList.add('hover:bg-purple-500/50')
+            countDown.classList.remove('bg-purple-500')
+            countDown.classList.add('bg-purple-500/50')
+            countDown.setAttribute('disabled', true)
+            countDown.setAttribute('dir', 'ltr')
+            let count = 120
+            let result = setInterval(() => {
+                let minute = Math.floor(count / 60)
+                let seconds = count % 60
+                count -= 1
+                if (count < 0) {
+
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        }
+                    })
+                    $.ajax({
+                        url: link+'api/removeActivationCode',
+                        type: "POST",
+                        dataType: "json",
+                        data: {
+                            'phoneNumber': phoneNumber.value
+                        },
+                        success: function(data) {
+                            console.log(data)
+                            countDown.classList.remove('cursor-no-drop')
+                            countDown.classList.add('bg-purple-500')
+                            countDown.classList.remove('bg-purple-500/50')
+                            countDown.classList.add('cursor-pointer')
+                            countDown.classList.add('hover:bg-purple-500')
+                            countDown.classList.remove('hover:bg-purple-500/50')
+                            countDown.removeAttribute('disabled')
+                            countDown.removeAttribute('dir')
+                            countDown.innerText = "ارسال مجدد"
+                        },
+                        error: function() {
+                            showMessage('open')
+                            element.innerHTML = `
+                                <span>❌</span>
+                                <span class="text-shadw-lg">خطا در دریافت اطلاعات!</span>
+                            `
+                            message.children[0].appendChild(element)
+                            setTimeout(() => {
+                                showMessage('close')
+                            }, 2500)
+                        }
+                    })
+                    clearInterval(result)
+                }
+                countDown.innerText = minute.toString().padStart(2, "0") + " : " + seconds.toString().padStart(2,
+                    "0");
+            }, 1000)
         }
     </script>
 </body>
