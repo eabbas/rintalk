@@ -104,12 +104,6 @@
                     </select>
                 </div>
 
-                <!-- مدرس دوره -->
-                <div class="col-span-1">
-                    <label class="form-label">مدرس دوره <span class="text-red-500">*</span></label>
-                     <input type="text" name="master_name" class="form-input" placeholder="نام استاد را وارد کنید" required>
-                </div>
-
                 <!-- دسته‌بندی -->
                 <div class="col-span-1">
                     <label class="form-label">دسته‌بندی</label>
