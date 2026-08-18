@@ -71,6 +71,11 @@
                     <input type="text" name="title" class="form-input" value="{{$course->title}}" placeholder="مثال: آموزش جامع زبان انگلیسی" required>
                 </div>
 
+                <div class="col-span-1">
+                    <label class="form-label">تصویر دوره</label>
+                    <input type="file" name="image" class="form-input" placeholder="تصویر دوره">
+                </div>
+
                 <!-- کد دوره -->
                 {{-- <div class="col-span-1">
                     <label class="form-label">کد دوره</label>
