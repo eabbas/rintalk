@@ -99,7 +99,7 @@
                     <select name="status_id" class="form-select" required>
                         <option value="">انتخاب وضعیت</option>
                         @foreach ($statuses as $status)
-                        <option value="{{$status->id}}">{{$status->title}}</option>
+                        <option value="{{$status->id}}" @if($course->status->id == $status->id) selected @endif>{{$status->title}}</option>
                         @endforeach
                     </select>
                 </div>
