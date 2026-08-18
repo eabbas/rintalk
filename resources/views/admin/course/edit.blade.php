@@ -110,7 +110,7 @@
                     <select name="category_id" class="form-select" required>
                         <option value="">انتخاب دسته‌بندی</option>
                         @foreach ($categories as $category)
-                        <option value="{{$category->id}}">{{$category->title}}</option>
+                        <option value="{{$category->id}}" @if($course->category->id == $category->id) selected @endif>{{$category->title}}</option>
                         @endforeach
                     </select>
                 </div>
