@@ -88,7 +88,7 @@
                     <select name="level_id" class="form-select" required>
                         <option value="">انتخاب سطح</option>
                         @foreach ($levels as $level)
-                        <option value="{{$level->id}}">{{$level->title}}</option>
+                        <option value="{{$level->id}}" @if ($course->level->id == $level->id) selected @endif>{{$level->title}}</option>
                         @endforeach
                     </select>
                 </div>
