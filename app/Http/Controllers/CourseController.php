@@ -1,66 +1,89 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\category;
 use App\Models\course;
+use App\Models\CourseAttachment;
+use App\Models\courseCategory;
 use App\Models\level;
+use App\Models\partnerRequests;
 use App\Models\status;
 use App\Models\User;
-use App\Models\category;
-use App\Models\courseCategory;
-use App\Models\partnerRequests;
-use App\Models\CourseAttachment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Auth;
+use DB;
 
 class CourseController extends Controller
 {
-    public function create(){
+    public function create()
+    {
         $levels = level::all();
         $statuses = status::all();
         $categories = category::all();
-        return view('admin.course.create' , ['levels'=>$levels , 'statuses'=>$statuses , 'categories'=>$categories]);
+        return view('admin.course.create', ['levels' => $levels, 'statuses' => $statuses, 'categories' => $categories]);
     }
 
-    public function store(Request $request){
-             $courseId = course::insertGetId([
-                'user_id'=>1,
-                'master_name'=>$request->master_name,
-                'title' => $request->title,
-                'description' => $request->description,
-                'summary' => $request->summary,
-                'duration' => $request->duration,
-                'price' => $request->price,
-                'discount' => $request->discount,
-                'level_id' => $request->level_id,
-                'status_id' => $request->status_id,
-                'active' => $request->active,
-                'show_in_home' => $request->show_in_home,
-                'prerequisite' => $request->prerequisite
-             ]);
-             courseCategory::create([
-                'course_id'=> $courseId,
-                'category_id'=> $request->category_id,
-             ]);
+    public function store(Request $request)
+    {
+        $imagePath = null;
+        if(isset($request->image)){
+            $name = $request->image->getClientOriginalName();
+            $fullName = time().'_'.$name;
+            $imagePath = $request->file('image')->storeAs('courses', $fullName, 'public');
+        }
+        $courseId = course::insertGetId([
+            'user_id' => 1,
+            'master_name' => $request->master_name,
+            'title' => $request->title,
+            'description' => $request->description,
+            'summary' => $request->summary,
+            'duration' => $request->duration,
+            'price' => $request->price,
+            'discount' => $request->discount,
+            'level_id' => $request->level_id,
+            'status_id' => $request->status_id,
+            'active' => $request->active,
+            'show_in_home' => $request->show_in_home,
+            'prerequisite' => $request->prerequisite,
+            'image'=>$imagePath
+        ]);
+        courseCategory::create([
+            'course_id' => $courseId,
+            'category_id' => $request->category_id,
+        ]);
         return to_route('course.courses');
     }
 
-    public function index(){
-       $courses =  course::all();
-       return view('admin.course.index' , ['courses'=>$courses]);
+    public function index()
+    {
+        $courses = course::all();
+        return view('admin.course.index', ['courses' => $courses]);
     }
 
-    public function edit(course $course){
-    //   $course = course::find($course->id);
-    $levels=level::all();
-    $statuses=status::all();
-    $categories=category::all();
-      return view('admin.course.edit', ['course'=>$course,'levels'=>$levels,'statuses'=>$statuses,'categories'=>$categories]);
+    public function edit(course $course)
+    {
+        //   $course = course::find($course->id);
+        $levels = level::all();
+        $statuses = status::all();
+        $categories = category::all();
+        return view('admin.course.edit', ['course' => $course, 'levels' => $levels, 'statuses' => $statuses, 'categories' => $categories]);
     }
 
-    public function update(Request $request){
+    public function update(Request $request)
+    {
         $course = course::find($request->course_id);
+        if(isset($request->image)){
+            if($course->image){
+                Storage::disk('public')->delete($course->image);
+            }
+            $name = $request->image->getClientOriginalName();
+            $fullName = time().'_'.$name;
+            $imagePath = $request->file('image')->storeAs('courses', $fullName, 'public');
+            $course->image = $imagePath;
+        }
         $course->user_id = 1;
         $course->master_name = $request->master_name;
         $course->title = $request->title;
@@ -77,26 +100,29 @@ class CourseController extends Controller
         $course->save();
         return to_route('course.courses');
     }
-    
-    public function single(course $course){
+
+    public function single(course $course)
+    {
         $course = course::find($course->id);
-        return view('admin.course.single' , ['course'=>$course]);
+        return view('admin.course.single', ['course' => $course]);
     }
 
     public function media(course $course)
     {
-        return view("admin.course.medias",['course'=>$course]);
+        return view('admin.course.medias', ['course' => $course]);
     }
 
-     public function delete($id){
+    public function delete($id)
+    {
         $course = course::find($id)->delete();
-         if($course->media->file_path){
+        if ($course->media->file_path) {
             Storage::disk('public')->delete($course->media->file_path);
         }
-         return to_route('course.courses');
+        return to_route('course.courses');
     }
 
-    public function CreateChapter(course $course){
+    public function CreateChapter(course $course)
+    {
         return view('admin.course.createChapter');
     }
 
@@ -128,105 +154,111 @@ class CourseController extends Controller
     //     partnerRequests::create(['user_id'=>$authUser->id ,'applicant'=>$User->id ,'status'=>0]);
     //     return to_route('course.courses');
     // }
-    public function requestList(){
-        $requests=null;
-        $authUser=Auth::user();
-        $partnerRequests=partnerRequests::where('applicant',$authUser->id)->get();
+    public function requestList()
+    {
+        $requests = null;
+        $authUser = Auth::user();
+        $partnerRequests = partnerRequests::where('applicant', $authUser->id)->get();
         $status = partnerRequests::where('applicant', $authUser->id)->where('status', 1)->first();
         // dd($status);
-        $partnerCount = partnerRequests::where('applicant',$authUser->id)->where('status',1)->count();
-        foreach($partnerRequests as $partner){
-        $requests[]=User::find($partner->user_id);
+        $partnerCount = partnerRequests::where('applicant', $authUser->id)->where('status', 1)->count();
+        foreach ($partnerRequests as $partner) {
+            $requests[] = User::find($partner->user_id);
         }
-        return view("admin.course.requestList",['requests'=>$requests,'status'=>$status,'partnerCount'=>$partnerCount]);
+        return view('admin.course.requestList', ['requests' => $requests, 'status' => $status, 'partnerCount' => $partnerCount]);
+    }
 
-    }
-   public function courseUserList(course $course){
-    $courseUsers = $course->users;
-    $authUser = Auth::user();
-    $status = partnerRequests::where('user_id', $authUser->id)->where('status', 1)->first();
-    $sentRequests = partnerRequests::where('user_id', $authUser->id)->where('status', 0)->pluck('applicant')->toArray();
-    // dd($status);
-    $sentRequestsCount = partnerRequests::where('user_id', $authUser->id)->where('status', 0)->count();
-    
-    return view("admin.course.courseUserList",['courseUsers' => $courseUsers,'status' => $status,'authUser' => $authUser,'sentRequests' => $sentRequests,'sentRequestsCount' => $sentRequestsCount]);
-}
+    public function courseUserList(course $course)
+    {
+        $courseUsers = $course->users;
+        $authUser = Auth::user();
+        $status = partnerRequests::where('user_id', $authUser->id)->where('status', 1)->first();
+        $sentRequests = partnerRequests::where('user_id', $authUser->id)->where('status', 0)->pluck('applicant')->toArray();
+        // dd($status);
+        $sentRequestsCount = partnerRequests::where('user_id', $authUser->id)->where('status', 0)->count();
 
-public function sendRequestToPartner(Request $request) 
-{
-    $authUser = Auth::user();
-    $userId = $request->user_id;
-    
-    $oneRequest = partnerRequests::where('user_id', $authUser->id)->where('status', 1)->first();
-    if($oneRequest) {
+        return view('admin.course.courseUserList', ['courseUsers' => $courseUsers, 'status' => $status, 'authUser' => $authUser, 'sentRequests' => $sentRequests, 'sentRequestsCount' => $sentRequestsCount]);
+    }
+
+    public function sendRequestToPartner(Request $request)
+    {
+        $authUser = Auth::user();
+        $userId = $request->user_id;
+
+        $oneRequest = partnerRequests::where('user_id', $authUser->id)->where('status', 1)->first();
+        if ($oneRequest) {
+            return response()->json([
+                'success' => false,
+                'message' => 'شما قبلاً یک هم‌تیم تایید کرده‌اید'
+            ]);
+        }
+
+        $requestCount = partnerRequests::where('user_id', $authUser->id)->where('status', 0)->count();
+        if ($requestCount >= 2) {
+            return response()->json([
+                'success' => false,
+                'message' => 'شما فقط میتوانید به 2 کاربر درخواست ارسال کنید'
+            ]);
+        }
+
+        $existingRequest = partnerRequests::where('user_id', $authUser->id)->where('applicant', $userId)->first();
+        if ($existingRequest) {
+            return response()->json([
+                'success' => false,
+                'message' => 'شما قبلاً به این کاربر درخواست ارسال کرده‌اید'
+            ]);
+        }
+
+        $partnerRequest = partnerRequests::create([
+            'user_id' => $authUser->id,
+            'applicant' => $userId,
+            'status' => 0
+        ]);
+
+        if ($partnerRequest) {
+            return response()->json([
+                'success' => true,
+                'message' => 'درخواست با موفقیت ارسال شد'
+            ]);
+        }
+
         return response()->json([
             'success' => false,
-            'message' => 'شما قبلاً یک هم‌تیم تایید کرده‌اید'
+            'message' => 'خطادرارسال درخواست'
         ]);
     }
-    
-    $requestCount = partnerRequests::where('user_id', $authUser->id)->where('status', 0)->count();
-    if($requestCount >= 2) {
-        return response()->json([
-            'success' => false,
-            'message' => 'شما فقط میتوانید به 2 کاربر درخواست ارسال کنید'
-        ]);
+
+    public function acceptRequest(Request $request)
+    {
+        $authUser = Auth::user();
+        $user = User::find($request->user_id);
+        $partnerCount = partnerRequests::where('applicant', $authUser->id)->where('status', 1)->count();
+        if ($partnerCount >= 2) {
+            return response()->json([
+                'success' => false,
+                'message' => 'شما فقط میتوانید 2 کاربر را تایید کنید'
+            ]);
+        }
+
+        $partnerRequests = partnerRequests::where('user_id', $authUser->id)->where('status', 1)->first();
+        if ($partnerRequests) {
+            return response()->json([
+                'success' => false,
+                'message' => 'شما قبلاً یک کاربر را تایید کرده‌اید'
+            ]);
+        }
+        $x = partnerRequests::where('applicant', $authUser->id)->where('user_id', $user->id)->update(['status' => 1]);
+        if ($x) {
+            return response()->json([
+                'success' => true,
+                'message' => 'کاربر با موفقیت تایید شد'
+            ]);
+        }
     }
-    
-    $existingRequest = partnerRequests::where('user_id', $authUser->id)->where('applicant', $userId)->first();
-    if($existingRequest) {
-        return response()->json([
-            'success' => false,
-            'message' => 'شما قبلاً به این کاربر درخواست ارسال کرده‌اید'
-        ]);
+
+    public function listcourseuser()
+    {
+        $courses = course::select('*', DB::raw("IFNULL(image , 'home/file_0000000068a071f4b4abc9e3fcc298aa.png') image"))->get();
+        return view('admin.course.listcourseuser', ['courses' => $courses]);
     }
-    
-    $partnerRequest = partnerRequests::create([
-        'user_id' => $authUser->id,
-        'applicant' => $userId,
-        'status' => 0
-    ]);
-    
-    if($partnerRequest) {
-        return response()->json([
-            'success' => true,
-            'message' => 'درخواست با موفقیت ارسال شد'
-        ]);
-    }
-    
-    return response()->json([
-        'success' => false,
-        'message' => 'خطادرارسال درخواست'
-    ]);
-}
-public function acceptRequest(Request $request){
-    $authUser = Auth::user();
-    $user = User::find($request->user_id);
-    $partnerCount = partnerRequests::where('applicant', $authUser->id)->where('status', 1)->count();
-    if($partnerCount >= 2) {
-        return response()->json([
-            'success' => false,
-            'message' => 'شما فقط میتوانید 2 کاربر را تایید کنید'
-        ]);
-    }
-    
-    $partnerRequests = partnerRequests::where('user_id', $authUser->id)->where('status', 1)->first();
-    if($partnerRequests) {
-        return response()->json([
-            'success' => false,
-            'message' => 'شما قبلاً یک کاربر را تایید کرده‌اید'
-        ]);
-    }
-    $x = partnerRequests::where('applicant', $authUser->id)->where('user_id', $user->id)->update(['status' => 1]);
-    if($x) {
-        return response()->json([
-            'success' => true,
-            'message' => 'کاربر با موفقیت تایید شد'
-        ]);
-    } 
-}
-public function listcourseuser(){
-    $course=course::all();
-    return view('admin.course.listcourseuser' , ['course'=>$course]);
-}
 }
