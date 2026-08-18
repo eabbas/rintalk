@@ -173,10 +173,10 @@
                 @endif
             </div>
         </div>
-            <div class="fixed top-0 w-full h-dvh bg-black/50 blur-[10px] opacity-0 invisible transtion-all duration-300 z-1 lg:hidden" id="blackpage" onclick="menu('close')"></div>
+            <div class="fixed top-0 right-0 w-full h-dvh bg-black/50 blur-[10px] opacity-0 invisible transtion-all duration-300 z-1 lg:hidden" id="blackpage" onclick="menu('close')"></div>
                         
 
-            <div id="sidebar" class="fixed top-0 h-dvh w-6/12 bg-white translate-x-full transtion-all duration-300 z-2 overflow-auto lg:hidden">
+            <div id="sidebar" class="fixed top-0 h-dvh w-3/4 bg-white translate-x-full transtion-all duration-300 z-2 overflow-auto lg:hidden">
 
                 <!-- پروفایل کاربر -->
                 <div class="px-5 py-5 flex items-center gap-3 border-b border-gray-50">
@@ -218,11 +218,9 @@
                             <span class="chevron text-gray-400 text-sm">▼</span>
                         </div>
                         <ul class="dropdown-menu hidden mr-6 mt-1 space-y-1">
-                            @can('panelCan' , ['admin'])
-                            <li><a href="{{route('course.create')}}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">ایجاد دروه</a></li>
-                            @endcan
                             <li><a href="{{route('course.courses')}}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">لیست همه دوره ها</a></li>
                             @can('panelCan' , ['admin'])
+                            <li><a href="{{route('course.create')}}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">ایجاد دروه</a></li>
                             <li><a href="{{route('books.create')}}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">افزودن کتاب</a></li>
                             <li><a href="{{route('books.index')}}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">لیست کتاب ها</a></li>
                             <li><a href="{{route('courseMedia.create')}}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">ایجادمدیا</a></li>
@@ -443,7 +441,7 @@
 
                 // چرخش آیکون chevron
                 if (chevronIcon) {
-                    chevronIcon.style.transform = 'rotate(180deg)';
+                    // chevronIcon.style.transform = 'rotate(180deg)';
                 }
             } else {
                 if (chevronIcon) {
@@ -480,14 +478,15 @@
 
             dropdownTriggers.forEach(trigger => {
                 trigger.addEventListener('click', function(e) {
+                 
                     e.preventDefault();
                     // بستن سایر دراپ‌داون‌ها (اختیاری)
                     // این کار باعث می‌شود فقط یکی باز بماند. برای تجربه بهتر می‌توانید آن را فعال کنید.
                     // اما بنا بر نیاز کاربر، معمولاً بهتر است همزمان چند تا باز باشند. ما هر کدام را مستقل می‌کنیم.
-
                     const parentItem = this.closest('.dropdown-item');
                     const menu = parentItem.querySelector('.dropdown-menu');
                     const chevron = this.querySelector('.chevron');
+                    console.log(menu)
 
                     if (menu.classList.contains('hidden')) {
                         menu.classList.remove('hidden');

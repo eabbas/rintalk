@@ -1,32 +1,7 @@
 @extends('welcome')
 @section('title', 'ویرایش دوره')
 @section('content')
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ویرایش دوره | RinTalk</title>
-    <script src="{{ asset('assets/js/tailwind.js') }}"></script>
-    <link rel="stylesheet" href="{{ url('assets/css/style.css') }}" type="text/css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'sans': ['system-ui', 'Segoe UI', 'Tahoma', 'sans-serif'],
-                    },
-                    colors: {
-                        'primary': {
-                            50: '#eff6ff',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+
     <style>
         .form-label {
             display: block;
@@ -50,7 +25,7 @@
             background-color: #ffffff;
         }
     </style>
-</head>
+
 <body class="bg-gradient-to-br from-slate-50 to-blue-50 font-sans p-6 lg:p-8">
 
     <div class="max-w-5xl mx-auto">
@@ -107,7 +82,7 @@
                 <!-- دسته‌بندی -->
                 <div class="col-span-1">
                     <label class="form-label">دسته‌بندی</label>
-                    <select name="category_id" class="form-select" multiple size="1" required>
+                    <select name="category_id[]" class="form-select" multiple size="1" required>
                         <option value="">انتخاب دسته‌بندی</option>
                         @foreach ($categories as $category)
                         <option value="{{$category->id}}" @if(in_array($category->id, $course->catIds)) selected @endif>{{$category->title}}</option>

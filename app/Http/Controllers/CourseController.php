@@ -50,10 +50,12 @@ class CourseController extends Controller
             'prerequisite' => $request->prerequisite,
             'image'=>$imagePath
         ]);
-        courseCategory::create([
-            'course_id' => $courseId,
-            'category_id' => $request->category_id,
-        ]);
+        foreach($request->category_id as $catId){
+            courseCategory::create([
+                'course_id' => $courseId,
+                'category_id' => $catId,
+            ]);
+        }
         return to_route('course.courses');
     }
 
@@ -69,12 +71,15 @@ class CourseController extends Controller
         $levels = level::all();
         $statuses = status::all();
         $categories = category::all();
-        $course->catIds = $course->categories()->pluck('categories.id')->toArray();
+        // $course->catIds = $course->categories()->pluck('categories.id')->toArray();
+        $course->catIds = courseCategory::where('course_id', $course->id)->pluck('category_id')->toArray();
+        // dd($course);
         return view('admin.course.edit', ['course' => $course, 'levels' => $levels, 'statuses' => $statuses, 'categories' => $categories]);
     }
 
     public function update(Request $request)
     {
+        // dd($request->all());
         $course = course::find($request->course_id);
         if(isset($request->image)){
             if($course->image){
@@ -84,6 +89,13 @@ class CourseController extends Controller
             $fullName = time().'_'.$name;
             $imagePath = $request->file('image')->storeAs('courses', $fullName, 'public');
             $course->image = $imagePath;
+        }
+        courseCategory::where('course_id', $course->id)->delete();
+        foreach($request->category_id as $catId){
+            courseCategory::create([
+                'course_id' => $course->id,
+                'category_id' => $catId,
+            ]);
         }
         $course->user_id = 1;
         $course->master_name = $request->master_name;

@@ -113,7 +113,7 @@
                 <!-- دسته‌بندی -->
                 <div class="col-span-1">
                     <label class="form-label">دسته‌بندی</label>
-                    <select name="category_id" class="form-select" required>
+                    <select name="category_id[]" class="form-select" required multiple size="1">
                         <option value="">انتخاب دسته‌بندی</option>
                         @foreach ($categories as $category)
                         <option value="{{$category->id}}">{{$category->title}}</option>

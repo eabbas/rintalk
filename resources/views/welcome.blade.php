@@ -1,44 +1,5 @@
 @include("header")
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RinTalk | داشبورد</title>
-    <script src="{{ asset('assets/tailwind.js') }}"></script>
-    <script src="{{ asset('assets/jquery.js') }}"></script>
-    <link rel="stylesheet" href="{{ url('assets/css/style.css') }}" type="text/css">
-    <!-- Tailwind CSS v3 (فایل محلی یا CDN - در اینجا از CDN استفاده شده، اما شما می‌توانید asset خود را جایگزین کنید) -->
-    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
-    <!-- در صورت استفاده از assets محلی، خط زیر را فعال کنید و خط بالایی را غیرفعال -->
-    {{-- <script src="{{ asset('assets/js/tailwind.js') }}"></script> --}}
-    <link rel="stylesheet" href="{{ url('assets/css/fontiran.css') }}" type="text/css">
-    <!-- <style>
-        * {
-    font-family: "Samim";
-}
-    </style> -->
-    <script>
-        // tailwind.config = {
-        //     theme: {
-        //         extend: {
-        //             fontFamily: {
-        //                 'sans': ['Segoe UI', 'Tahoma', 'system-ui', 'sans-serif'],
-        //             },
-        //             colors: {
-        //                 primary: {
-        //                     50: '#eff6ff',
-        //                     100: '#dbeafe',
-        //                     500: '#3b82f6',
-        //                     600: '#2563eb',
-        //                     700: '#1d4ed8',
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
-    </script>
     <style>
         .sidebar-transition {
             transition: transform 0.25s ease-in-out;
@@ -405,28 +366,28 @@
             });
 
             // ========== مدیریت دراپ‌داون‌های منو (دوره‌ها، فصل‌ها، درس‌ها) ==========
-            const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
+            // const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
 
-            dropdownTriggers.forEach(trigger => {
-                trigger.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    // بستن سایر دراپ‌داون‌ها (اختیاری)
-                    // این کار باعث می‌شود فقط یکی باز بماند. برای تجربه بهتر می‌توانید آن را فعال کنید.
-                    // اما بنا بر نیاز کاربر، معمولاً بهتر است همزمان چند تا باز باشند. ما هر کدام را مستقل می‌کنیم.
+            // dropdownTriggers.forEach(trigger => {
+            //     trigger.addEventListener('click', function(e) {
+            //         e.preventDefault();
+            //         // بستن سایر دراپ‌داون‌ها (اختیاری)
+            //         // این کار باعث می‌شود فقط یکی باز بماند. برای تجربه بهتر می‌توانید آن را فعال کنید.
+            //         // اما بنا بر نیاز کاربر، معمولاً بهتر است همزمان چند تا باز باشند. ما هر کدام را مستقل می‌کنیم.
 
-                    const parentItem = this.closest('.dropdown-item');
-                    const menu = parentItem.querySelector('.dropdown-menu');
-                    const chevron = this.querySelector('.chevron');
+            //         const parentItem = this.closest('.dropdown-item');
+            //         const menu = parentItem.querySelector('.dropdown-menu');
+            //         const chevron = this.querySelector('.chevron');
 
-                    if (menu.classList.contains('hidden')) {
-                        menu.classList.remove('hidden');
-                        chevron.classList.add('rotate-180');
-                    } else {
-                        menu.classList.add('hidden');
-                        chevron.classList.remove('rotate-180');
-                    }
-                });
-            });
+            //         if (menu.classList.contains('hidden')) {
+            //             menu.classList.remove('hidden');
+            //             chevron.classList.add('rotate-180');
+            //         } else {
+            //             menu.classList.add('hidden');
+            //             chevron.classList.remove('rotate-180');
+            //         }
+            //     });
+            // });
 
             // جلوگیری از بسته شدن وقتی روی لینک‌های زیرمنو کلیک می‌شود
             document.querySelectorAll('.dropdown-menu a').forEach(link => {
