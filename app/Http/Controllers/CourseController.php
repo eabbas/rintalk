@@ -69,7 +69,7 @@ class CourseController extends Controller
         $levels = level::all();
         $statuses = status::all();
         $categories = category::all();
-        $course->catIds = $course->categories()->pluck('id')->toArray();
+        $course->catIds = $course->categories()->pluck('categories.id')->toArray();
         return view('admin.course.edit', ['course' => $course, 'levels' => $levels, 'statuses' => $statuses, 'categories' => $categories]);
     }
 
