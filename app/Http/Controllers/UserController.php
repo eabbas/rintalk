@@ -121,16 +121,6 @@ class UserController extends Controller
         return view('admin.users.index', ['users' => $users]);
     }
 
-    // public function panel()
-    // {
-    //     $user = Auth::user();
-    //     $user->role;
-    //     if (!Auth::check()) {
-    //         return to_route('login');
-    //     }
-    //     return view('admin.app.panel', ['user' => $user]);
-    // }
-
     public function profile()
     {
         $user = Auth::user();
@@ -300,8 +290,10 @@ class UserController extends Controller
     public function checkCode(Request $request){
         $flag = false;
         $phoneCode = phone_code::where('phoneNumber', $request->phoneNumber)->first();
-        if($phoneCode->code == $request->code){
-            $flag = true;
+        if($phoneCode){
+            if($phoneCode->code == $request->code){
+                $flag = true;
+            }
         }
         return response()->json($flag);
     }

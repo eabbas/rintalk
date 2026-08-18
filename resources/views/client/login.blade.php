@@ -82,6 +82,8 @@
 
 <body class="bg-gradient-to-br from-purple-50 to-white">
 
+    <div class="absolute -top-5 invisible opacity-0 right-1/2 translate-x-1/2 w-2/3 z-999999 transition-all duration-500 ease-in-out" id="message"></div>
+
     <div class="w-full flex flex-col justify-start items-center md:flex-row-reverse">
     
         <div class="flex justify-center max-sm:h-30 max-md:h-35 md:h-dvh bg-purple-gradient relative overflow-hidden w-full lg:w-1/2">
@@ -226,6 +228,7 @@
         </a>
     </div>
     <script>
+        let message = document.getElementById('message')
         let submitBtn = document.getElementById('submitBtn')
         let loginForm = document.getElementById('loginForm')
         let phoneNumber = document.getElementById('phoneNumber')
@@ -238,9 +241,13 @@
             code = document.getElementById('code')
             e.preventDefault()
             if(phoneNumber.value == '' || (password && password.value == '') || (code && code.value == '')){
-                alert('پر کردن همه فیلد ها الزامی است')
+                openMessage('پر کردن همه فیلد ها الزامی است')
+                setTimeout(function(){
+                    closeMessage()
+                }, 2000)
             } else {
                 if(way == 'code'){
+                    console.log('code')
                     $.ajax({
                         url: link+'api/checkCode',
                         type: "POST",
@@ -250,18 +257,26 @@
                             'code': code.value
                         },
                         success: function(response){
+                            console.log(response)
                             if(response){
                                 loginForm.submit()
                             } else {
-                                alert('کد وارد شده نامعتبر')
+                                openMessage('کد وارد شده نامعتبر')
+                                setTimeout(function(){
+                                    closeMessage()
+                                }, 2000)
                             }
                         },
                         error: function(){
-                            console.error('failed to load data')
+                            openMessage('خطا در بارگیری اطلاعات')
+                            setTimeout(function(){
+                                closeMessage()
+                            }, 2000)
                         }
                     })
                 }
                 if(way == 'password'){
+                    console.log('pass')
                     $.ajax({
                         url: link+"api/checkPassKey",
                         type: "POST",
@@ -274,11 +289,17 @@
                             if(response){
                                 loginForm.submit()
                             } else {
-                                alert('رمز وارد شده نامعتبر')
+                                openMessage('لطفا اطلاعات خودرا مجددا بررسی نمایید')
+                                setTimeout(function(){
+                                    closeMessage()
+                                }, 2000)
                             }
                         },
                         error: function(){
-                            console.error('faied to load data')
+                            openMessage('خطا در دریافت داده')
+                            setTimeout(function(){
+                                closeMessage()
+                            }, 2000)
                         }
                     })
                 }
@@ -329,12 +350,15 @@
             `
             loginWay.appendChild(element)
         }
-        function sendCode(){
-            
+        function sendCode(el){
+            el.innerHTML = "<div class='size-8 mx-auto border-2 border-white border-t-[#eb3153]/0 rounded-full animate-spin'></div>"
             if(phoneNumber.value == ''){
-                alert('پر کردن همه فیلد ها الزامی است')
-            } else {
-                counter()
+                el.innerHTML = 'ارسال کد'
+                openMessage('پر کردن همه فیلد ها الزامیه')
+                setTimeout(function(){
+                    closeMessage()
+                }, 2000)
+            } else {     
                 $.ajax({
                     url: link+"api/sendActivationCode",
                     type: "POST",
@@ -343,13 +367,21 @@
                         'phoneNumber': phoneNumber.value
                     },
                     success: function(response){
-                       console.log(response)
                         if(!response){
-                            alert('کاربر قبلا با این شماره ثبت نام کرده است')
+                            el.innerHTML = 'ارسال کد'
+                            openMessage('کاربر قبلا با این شماره ثبت نام نکرده است')
+                            setTimeout(function(){
+                                closeMessage()
+                            }, 2000)
+                        } else {
+                            counter()
                         }
                     },
                     error: function(){
-                        console.error('failed to load data')
+                        openMessage('خطا در دریافت داده!')
+                        setTimeout(function(){
+                            closeMessage()
+                        }, 2000)
                     }
                 })
             }
@@ -412,6 +444,29 @@
                 countDown.innerText = minute.toString().padStart(2, "0") + " : " + seconds.toString().padStart(2,
                     "0");
             }, 1000)
+        }
+        function openMessage(content){
+            message.innerHTML = ''
+            let element = document.createElement('div')
+            element.classList = 'bg-white rounded-md flex items-center justify-center shadow-md'
+            element.innerHTML = `
+            <div class="p-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-4 fill-gray-800 cursor-pointer" onclick="closeMessage()" viewBox="0 0 384 512">
+                    <path d="M345 137c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-119 119L73 103c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l119 119L39 375c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l119-119L311 409c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-119-119L345 137z"/>
+                </svg>
+            </div>
+            <span class="text-sm text-red-500 py-3 pl-3 pr-0 inline-block">${content}</span>`
+            message.appendChild(element)
+            message.classList.remove('-top-5')
+            message.classList.remove('invisible')
+            message.classList.remove('opacity-0')
+            message.classList.add('top-10')
+        }
+        function closeMessage(){
+            message.classList.remove('top-10')
+            message.classList.add('-top-5')
+            message.classList.add('invisible')
+            message.classList.add('opacity-0')
         }
     </script>
 </body>
