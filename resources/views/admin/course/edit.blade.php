@@ -107,10 +107,10 @@
                 <!-- دسته‌بندی -->
                 <div class="col-span-1">
                     <label class="form-label">دسته‌بندی</label>
-                    <select name="category_id" class="form-select" required>
+                    <select name="category_id" class="form-select" multiple size="1" required>
                         <option value="">انتخاب دسته‌بندی</option>
                         @foreach ($categories as $category)
-                        <option value="{{$category->id}}" @if($course->category->id == $category->id) selected @endif>{{$category->title}}</option>
+                        <option value="{{$category->id}}" @if(in_array($category->id, $course->catIds)) selected @endif>{{$category->title}}</option>
                         @endforeach
                     </select>
                 </div>
