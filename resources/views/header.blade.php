@@ -486,15 +486,15 @@
                     const parentItem = this.closest('.dropdown-item');
                     const menu = parentItem.querySelector('.dropdown-menu');
                     const chevron = this.querySelector('.chevron');
-                    console.log(menu)
+                
 
-                    if (menu.classList.contains('hidden')) {
-                        menu.classList.remove('hidden');
-                        chevron.classList.add('rotate-180');
-                    } else {
-                        menu.classList.add('hidden');
-                        chevron.classList.remove('rotate-180');
-                    }
+                    // if (menu.classList.contains('hidden')) {
+                    //     menu.classList.remove('hidden');
+                    //     chevron.classList.add('rotate-180');
+                    // } else {
+                    //     menu.classList.add('hidden');
+                    //     chevron.classList.remove('rotate-180');
+                    // }
                 });
             });
 

@@ -366,28 +366,28 @@
             });
 
             // ========== مدیریت دراپ‌داون‌های منو (دوره‌ها، فصل‌ها، درس‌ها) ==========
-            // const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
+            const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
 
-            // dropdownTriggers.forEach(trigger => {
-            //     trigger.addEventListener('click', function(e) {
-            //         e.preventDefault();
-            //         // بستن سایر دراپ‌داون‌ها (اختیاری)
-            //         // این کار باعث می‌شود فقط یکی باز بماند. برای تجربه بهتر می‌توانید آن را فعال کنید.
-            //         // اما بنا بر نیاز کاربر، معمولاً بهتر است همزمان چند تا باز باشند. ما هر کدام را مستقل می‌کنیم.
+            dropdownTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // بستن سایر دراپ‌داون‌ها (اختیاری)
+                    // این کار باعث می‌شود فقط یکی باز بماند. برای تجربه بهتر می‌توانید آن را فعال کنید.
+                    // اما بنا بر نیاز کاربر، معمولاً بهتر است همزمان چند تا باز باشند. ما هر کدام را مستقل می‌کنیم.
 
-            //         const parentItem = this.closest('.dropdown-item');
-            //         const menu = parentItem.querySelector('.dropdown-menu');
-            //         const chevron = this.querySelector('.chevron');
+                    const parentItem = this.closest('.dropdown-item');
+                    const menuD = parentItem.querySelector('.dropdown-menu');
+                    const chevron = this.querySelector('.chevron');
 
-            //         if (menu.classList.contains('hidden')) {
-            //             menu.classList.remove('hidden');
-            //             chevron.classList.add('rotate-180');
-            //         } else {
-            //             menu.classList.add('hidden');
-            //             chevron.classList.remove('rotate-180');
-            //         }
-            //     });
-            // });
+                    if (menuD.classList.contains('hidden')) {
+                        menuD.classList.remove('hidden');
+                        chevron.classList.add('rotate-180');
+                    } else {
+                        menuD.classList.add('hidden');
+                        chevron.classList.remove('rotate-180');
+                    }
+                });
+            });
 
             // جلوگیری از بسته شدن وقتی روی لینک‌های زیرمنو کلیک می‌شود
             document.querySelectorAll('.dropdown-menu a').forEach(link => {
