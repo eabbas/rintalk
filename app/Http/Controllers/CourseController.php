@@ -67,19 +67,15 @@ class CourseController extends Controller
 
     public function edit(course $course)
     {
-        //   $course = course::find($course->id);
         $levels = level::all();
         $statuses = status::all();
         $categories = category::all();
-        // $course->catIds = $course->categories()->pluck('categories.id')->toArray();
         $course->catIds = courseCategory::where('course_id', $course->id)->pluck('category_id')->toArray();
-        // dd($course);
         return view('admin.course.edit', ['course' => $course, 'levels' => $levels, 'statuses' => $statuses, 'categories' => $categories]);
     }
 
     public function update(Request $request)
     {
-        // dd($request->all());
         $course = course::find($request->course_id);
         if(isset($request->image)){
             if($course->image){
@@ -173,7 +169,6 @@ class CourseController extends Controller
         $authUser = Auth::user();
         $partnerRequests = partnerRequests::where('applicant', $authUser->id)->get();
         $status = partnerRequests::where('applicant', $authUser->id)->where('status', 1)->first();
-        // dd($status);
         $partnerCount = partnerRequests::where('applicant', $authUser->id)->where('status', 1)->count();
         foreach ($partnerRequests as $partner) {
             $requests[] = User::find($partner->user_id);
@@ -187,7 +182,6 @@ class CourseController extends Controller
         $authUser = Auth::user();
         $status = partnerRequests::where('user_id', $authUser->id)->where('status', 1)->first();
         $sentRequests = partnerRequests::where('user_id', $authUser->id)->where('status', 0)->pluck('applicant')->toArray();
-        // dd($status);
         $sentRequestsCount = partnerRequests::where('user_id', $authUser->id)->where('status', 0)->count();
 
         return view('admin.course.courseUserList', ['courseUsers' => $courseUsers, 'status' => $status, 'authUser' => $authUser, 'sentRequests' => $sentRequests, 'sentRequestsCount' => $sentRequestsCount]);
