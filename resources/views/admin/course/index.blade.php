@@ -40,7 +40,7 @@
                             <span class="block w-20 lg:w-full">عنوان</span>
                         </div>
                         <div class="px-1 lg:px-6 py-3 text-center text-xs font-medium text-gray-600 bg-gray-100 col-span-2">
-                            <span class="block w-30 lg:w-full"> صاحب دوره</span>
+                            <span class="block w-30 lg:w-full">مالک</span>
                         </div>
                         <div class="px-1 lg:px-6 py-3 text-center text-xs font-medium text-gray-600 bg-gray-100 col-span-2">
                             <span class="block w-20 lg:w-full">وضعیت</span>
@@ -73,10 +73,10 @@
                                     <span class="block w-10 lg:w-full">{{ $i }}</span>
                                 </div>
                                 <div class="p-1 lg:p-3 text-xs lg:text-sm h-full flex items-center justify-center text-gray-900">
-                                    <div class="w-20 lg:w-full">
-                                        @if($course->picture)
+                                    <div class="w-20 lg:w-full text-center">
+                                        @if($course->image)
                                             <img class="max-w-[50px] max-h-[50px] mx-auto size-12 object-cover rounded-md"
-                                                 src="{{ asset('storage/' . $course->picture) }}" alt="{{ $course->title }}">
+                                                 src="{{ asset('storage/' . $course->image) }}" alt="{{ $course->title }}">
                                         @else
                                             <span class="text-gray-400 text-xs">بدون تصویر</span>
                                         @endif
@@ -88,9 +88,9 @@
                                     </a>
                                 </div>
                                 <div class="p-1 lg:p-3 text-xs lg:text-sm h-full flex items-center justify-center text-gray-900 text-center col-span-2">
-                                    @if($course->user)
-                                        <a href="{{ route('user.show', [$course->user->id]) }}" class="block w-30 lg:w-full hover:text-sky-600">
-                                            {{ $course->user->name }} {{ $course->user->family }}
+                                    @if($course->owner)
+                                        <a href="{{ route('user.show', [$course->owner->id]) }}" class="block w-30 lg:w-full hover:text-sky-600">
+                                            {{ $course->owner->name ?? 'بدون نام' }} {{ $course->owner->family ?? '' }}
                                         </a>
                                     @else
                                         <span class="text-gray-400">نامشخص</span>
