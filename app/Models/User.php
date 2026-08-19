@@ -24,27 +24,32 @@ class User extends Authenticatable
         'phoneNumber',
         'family'
     ];
-     public function leitnaries(){
 
-    return $this->hasMany(leitnary::class , 'user_id');
-    
+    public function leitnaries()
+    {
+        return $this->hasMany(leitnary::class, 'user_id');
     }
-    public function partnerRequests(){
 
-    return $this->hasMany(partnerRequests::class , 'user_id');
-    
+    public function partnerRequests()
+    {
+        return $this->hasMany(partnerRequests::class, 'user_id');
     }
-     public function courses(){
-      return $this->belongsToMany(course::class,'user_courses');
 
+    public function courses()
+    {
+        return $this->belongsToMany(course::class, 'user_courses');
     }
-     public function role(){
-      return $this->belongsToMany(role::class,'role_users');
 
+    public function role()
+    {
+        return $this->belongsToMany(role::class, 'role_users');
     }
-    public function hasRoles($role){
-        return $this->role()->whereIn('title' , $role)->exists();
+
+    public function hasRoles($role)
+    {
+        return $this->role()->whereIn('title', $role)->exists();
     }
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -66,5 +71,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function course()
+    {
+        return $this->hasMany(course::class, 'user_id');
     }
 }
