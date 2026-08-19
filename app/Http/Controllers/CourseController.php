@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\category;
 use App\Models\course;
 use App\Models\CourseAttachment;
-use App\Models\courseCategory;
+use App\Models\CourseCategory;
 use App\Models\level;
 use App\Models\partnerRequests;
 use App\Models\status;
