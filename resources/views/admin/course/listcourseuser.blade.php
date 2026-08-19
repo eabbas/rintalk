@@ -20,8 +20,13 @@
             right: 3px;
         }
     </style>
+
+    <section class="w-full flex justify-center mb-5">
+        <img class="w-full min-h-40 max-h-40 lg:min-h-100 lg:max-h-100 object-cover rounded-xl" src="{{asset('assets/image/hero.webp')}}" alt="">
+    </section>
+
     <div class="w-full bg-white p-3">
-        <div class="w-11/12 mx-auto flex flex-row justify-between mt-3">
+        <div class="w-full flex flex-row justify-between mt-3">
             <div class="flex bg-white rounded-md box-shadow px-3 py-1">
                 <svg xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -46,7 +51,7 @@
             <div class="font-bold">لیست دوره ها</div>
         </div>
         @foreach ($courses as $course)
-            <a href="{{ route('course.single', $course->id) }}" class="w-11/12 mx-auto flex gap-3">
+            <a href="{{ route('course.single', $course->id) }}" class="w-full flex gap-3">
                 <div class="w-full bg-white box-shadow rounded-lg mt-3 flex flex-row-reverse items-center gap-2 relative p-2">
                     <div class="w-3/24 h-full flex items-center justify-center">
                         <div class="w-5 h-5 rounded-full flex items-center justify-center box-shadow">
@@ -81,7 +86,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="min-w-14 max-w-14 h-14 flex items-center justify-center">
+                    <div class="min-w-16 max-w-16 h-16 flex items-center justify-center">
                         <img class="w-full h-full rounded-2xl object-cover" src="{{asset('storage/'.$course->image)}}" alt="">
                     </div>
                 </div>

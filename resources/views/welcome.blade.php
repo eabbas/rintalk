@@ -322,7 +322,8 @@
                 </button>
             </div>
         </main>
-        <div class="w-full h-dvh lg:w-[calc(100%-265px)] float-end pt-15 lg:px-5 overflow-y-auto px-5 relative bg-[#F2F2F2]"
+        {{-- pt-15 --}}
+        <div class="w-full h-dvh lg:w-[calc(100%-265px)] float-end pt-5 lg:px-5 overflow-y-auto px-5 relative bg-[#F2F2F2]"
             style="scrollbar-width:none;">
             @yield('content')
         </div>
