@@ -9,7 +9,7 @@
     <script src="{{ asset('assets/jquery.js') }}"></script>
     <!-- <link rel="stylesheet" href="{{asset('assets/css/style.css')}}"> -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
-    <title>@yield('title')</title>
+    <title>@yield('title', 'رینتاک')</title>
     <style>
         @import url({{asset('assets/css/fontiran.css')}});
         *{
@@ -85,7 +85,7 @@
 
                 @if(!Auth::check())
                     <a href="{{route('login')}}" class=" bg-[#06173d] flex p-3  rounded-3xl items-center justify-between lg:gap-3 group cursor-pointer">
-                        <span class="text-white text-nowrap lg:text-[1.1rem] text-[.6rem] md:text-[.75rem] group-hover:text-[#ff9a1e] transtion-all duration-300">ورود / ثبت نام </span>
+                        <span class="text-white text-nowrap text-xs group-hover:text-[#ff9a1e] transtion-all duration-300">ورود / ثبت نام </span>
                     </a>
                 @endif
                 @if(Auth::check())

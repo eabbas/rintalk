@@ -75,10 +75,10 @@
     <section class="w-full flex justify-center relative mt-5 mb-2">
         <div class=" w-11/12 pt-1 rounded-lg flex items-center gap-5 overflow-hidden overflow-x-auto">
             @foreach($story as $story)
-                <div class="min-w-16 max-w-16 lg:min-w-17 lg:max-w-17 flex  flex-col gap-1 items-center pup_up_story stoey cursor-pointer" onclick="story('open' , '{{$story->path}}')">
+                <div class="min-w-17 max-w-17 lg:min-w-17 lg:max-w-17 flex  flex-col gap-1 items-center pup_up_story stoey cursor-pointer pb-3" onclick="story('open' , '{{$story->path}}')">
                     <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
                         <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
-                            <img src="{{asset('storage/' . $story->path)}}" alt="" class="object-cover rounded-full min-w-17 max-w-17 min-h-15 max-h-15">
+                            <img src="{{asset('storage/' . $story->path)}}" alt="" class="object-cover rounded-full size-15">
                         </div>
                     </div>
                     <span class="w-full text-xs md:text-[1rem] lg:text-[1.2rem] text-nowrap text-center">{{$story->title}}</span>
@@ -89,7 +89,7 @@
 
     <section class="w-full flex justify-center">
         <div class="w-11/12 ">
-            <img class="w-full min-h-40 max-h-40 lg:min-h-100 lg:max-h-100 object-cover rounded-xl" src="{{asset('storage/home/72672931-5611-l__1599.webp')}}" alt="">
+            <img class="w-full min-h-40 max-h-40 lg:min-h-100 lg:max-h-100 object-cover rounded-xl" src="{{asset('assets/image/hero.webp')}}" alt="">
         </div>
     </section>
 {{--</div>--}}
@@ -272,7 +272,7 @@
 
 
     <!-- تعیین سصح -->
-    <section class="w-11/12 mx-auto mt-5 flex gap-1"> 
+    <section class="w-11/12 mx-auto mt-5 flex gap-2.5"> 
         <div class="w-1/2 h-full bg-white flex flex-col relative rounded-xl border-1 border-white" style="box-shadow:0.5PX 0.5PX 5PX #d4d4e6">
             <img src="{{asset('storage/home/file_00000000fb4471fbbcb3f2b09783b365.png')}}" alt="" class="object-cover w-full h-full lg:size-7/12 rounded-xl">
             <div class="w-full h-full absolute py-1.5 pl-3 flex flex-col justify-between gap-1 items-end">
@@ -357,27 +357,27 @@
     <!-- تعیین سصح -->
 
     <!-- پادکست -->
-    <section class="w-11/12 mx-auto mt-5 flex gap-1 ">
-        <div class="w-5/12 min-h-full flex relative rounded-xl border-1 border-white" style="box-shadow:0.5PX 0.5PX 5PX #d4d4e6">
+    <section class="w-11/12 mx-auto mt-5 flex gap-2.5">
+        <div class="w-1/2 min-h-full flex relative rounded-xl border-1 border-white" style="box-shadow:0.5PX 0.5PX 5PX #d4d4e6">
             <img src="{{asset('storage/home/file_000000009644720aa1772eca64c64eda.png')}}" alt="" class="object-cover w-full h-full rounded-xl">
             <div class="w-11/20 h-full absolute flex flex-col justify-between items-center py-4">
-                <span class="text-[6px] text-[#ff9a1e] font-bold">پادکست صوتی</span>
-                <h5 class="text-[8px] font-bold">یادگیری زبان در سفر</h5>
-                <span class="text-[6px] text-[#ff9a1e]">پادکست صو صوتی</span>
-                <button class="w-14 py-1 bg-white rounded-lg flex gap-1 justify-center items-center">
-                    <span class="text-[6px]">گوش دهید</span>
+                <span class="text-xs text-[#ff9a1e] font-bold">پادکست صوتی</span>
+                <h5 class="text-xs font-bold">یادگیری زبان در سفر</h5>
+                <span class="text-xs text-[#ff9a1e]">پادکست صو صوتی</span>
+                <button class="p-1.5 bg-white rounded-lg flex gap-1 justify-center items-center">
+                    <span class="text-[10px]">گوش دهید</span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="size-2"><defs><style>.fa-secondary{opacity:.4}</style></defs><path class="fa-secondary" d=""/><path class="fa-primary" d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
                 </button>
             </div>
         </div>
-        <div class="w-7/12 min-h-full bg-[#2A137F] rounded-xl relative flex justify-start items-end border-1 border-[#8975c4] " style="box-shadow:0.5PX 0.5PX 5PX #c4b1f8">
+        <div class="w-1/2 min-h-full bg-[#2A137F] rounded-xl relative flex justify-start items-end border-1 border-[#8975c4] " style="box-shadow:0.5PX 0.5PX 5PX #c4b1f8">
 
             <img src="{{asset('storage/home/ChatGPT Image Jun 6, 2026, 04_45_18 PM.png')}}" alt="" class="size-15">
 
             <div class="w-full h-full absolute flex flex-col  justify-between items-end pl-7 py-3">
                 <h3 class="text-[17px] text-white font-bold">هم بحثیتو پیدا کن</h3>
-                <button class="w-5/12 h-6  rounded-xl flex gap-1 justify-center items-center border-1 border-white">
-                    <span class="text-[8px] text-white">بیشتر بخوانید</span>
+                <button class="rounded-xl flex gap-1 p-1.5 justify-center items-center border-1 border-white">
+                    <span class="text-xs text-white">بیشتر بخوانید</span>
                     <div class="w-3 h-3 rounded-full flex justify-center items-center">
                         <svg viewBox="0 -50 448 512" class="size-2 rotate-90" fill="white">
                             <!--! Font Awesome Pro 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
@@ -393,7 +393,7 @@
         </div>
     </section>
     <!-- پادکست -->
-    <section class="w-full mt-5 md:mt-20">
+    <section class="w-11/12 mx-auto mt-5 md:mt-20">
         <div class="w-full flex items-center mx-auto">
             <span
                     class="w-48 min-w-fit text-zinc-700 text-xs md:text-sm md:font-yekanBakhBold"
