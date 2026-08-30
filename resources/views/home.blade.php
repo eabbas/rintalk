@@ -73,7 +73,7 @@
 
 
     <section class="w-full flex justify-center relative mt-5 mb-2">
-        <div class=" w-11/12 pt-1 rounded-lg flex items-center gap-5 overflow-hidden overflow-x-auto">
+        <div class=" w-11/12 pt-1 rounded-lg flex items-center gap-5 justify-between">
             @foreach($story as $story)
                 <div class="min-w-17 max-w-17 lg:min-w-17 lg:max-w-17 flex  flex-col gap-1 items-center pup_up_story stoey cursor-pointer pb-3" onclick="story('open' , '{{$story->path}}')">
                     <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
