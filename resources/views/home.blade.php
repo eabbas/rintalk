@@ -287,7 +287,7 @@
                 </div>
                 <div id="waveform" class=""></div>
                 <div class="flex items-center justify-between px-5 mt-8">
-                    <div class="w-1/3"></div>
+                    <div class="w-1/3 sm:flex hidden"></div>
                     <div class="text-nowrap sm:text-[.8rem] text-[.6rem] flex items-center justify-center ">
                         <p>یادگیری وا›گان ساده و پر کاربرد اینگلیسی</p>
                     </div>
