@@ -166,18 +166,18 @@
             gap:3px;
         }
 
-        .waveform span{
+        /* .waveform span{
             width:4px;
             background:#ff8c1a;
             border-radius:10px;
 
-        }
+        } */
 
         .animate{
             animation:wave 1.2s infinite ease-in-out;
         }
 
-        .waveform span:nth-child(1){height:11px;}
+        /* .waveform span:nth-child(1){height:11px;}
         .waveform span:nth-child(2){height:25px;}
         .waveform span:nth-child(3){height:39px;}
         .waveform span:nth-child(4){height:58px;}
@@ -188,7 +188,7 @@
         .waveform span:nth-child(9){height:50px;}
         .waveform span:nth-child(10){height:30px;}
         .waveform span:nth-child(11){height:17px;}
-        .waveform span:nth-child(12){height:10px;}
+        .waveform span:nth-child(12){height:10px;} */
 
         @keyframes wave{
             0%,100%{
@@ -198,78 +198,119 @@
                 transform:scaleY(1);
             }
         }
+        .playboxshadow{
+            box-shadow: 0px 3px 15px #e5e2e2
+        }
+        .playsvegboxshadow{
+            box-shadow: 0px 3px 15px #d0cbcb
+        }
+        .playsvegplayboxshadow{
+            box-shadow: 0px 3px 21px #ff8600
+        }
     </style>
 
 
     <script>
-        imgstory=document.getElementById('imgstory')
-        popupstory.document.getElementById('popupstory')
-        function story(dor , img){
-            if(dor=='open'){
-                imgstory.setAttribute("src" , "{{ asset('storage/') }}/" + img)
-                popupstory.classList.remove('opacity-0')
-                popupstory.classList.remove('invisible')
-            }
-            if(dor=="clos"){
-                popupstory.classList.add('opacity-0')
-                popupstory.classList.add('invisible')
-            }
-        }
+        // imgstory=document.getElementById('imgstory')
+        // popupstory.document.getElementById('popupstory')
+        // function story(dor , img){
+        //     if(dor=='open'){
+        //         imgstory.setAttribute("src" , "{{ asset('storage/') }}/" + img)
+        //         popupstory.classList.remove('opacity-0')
+        //         popupstory.classList.remove('invisible')
+        //     }
+        //     if(dor=="clos"){
+        //         popupstory.classList.add('opacity-0')
+        //         popupstory.classList.add('invisible')
+        //     }
+        // }
 
 
-        const audio = document.getElementById("audio");
-        const playBtn = document.getElementById("playBtn");
-        const progress = document.getElementById("progress");
-        const currentTime = document.getElementById("currentTime");
-        const duration = document.getElementById("duration");
+        // const audio = document.getElementById("audio");
+        // const playBtn = document.getElementById("playBtn");
+        // const progress = document.getElementById("progress");
+        // const currentTime = document.getElementById("currentTime");
+        // const duration = document.getElementById("duration");
 
-        let wave=document.querySelector('.waveform')
+        // let wave=document.querySelector('.waveform')
 
-        playBtn.addEventListener("click", () => {
-            wave.classList.toggle('animate')
-            if(audio.paused){
-                audio.play();
-                playBtn.textContent = "❚❚";
+        // playBtn.addEventListener("click", () => {
+        //     wave.classList.toggle('animate')
+        //     if(audio.paused){
+        //         audio.play();
+        //         playBtn.textContent = "❚❚";
 
-            }else{
-                audio.pause();
-                playBtn.innerHTML=""
-                let cree=document.createElement('div')
-                cree.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="w-4" fill="white"><!--! Font Awesome Pro 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>`
-                playBtn.appendChild(cree)
-            }
-        });
+        //     }else{
+        //         audio.pause();
+        //         playBtn.innerHTML=""
+        //         let cree=document.createElement('div')
+        //         cree.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="w-4" fill="white"><!--! Font Awesome Pro 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>`
+        //         playBtn.appendChild(cree)
+        //     }
+        // });
 
-        audio.addEventListener("loadedmetadata", () => {
-            duration.textContent = formatTime(audio.duration);
-        });
+        // audio.addEventListener("loadedmetadata", () => {
+        //     duration.textContent = formatTime(audio.duration);
+        // });
 
-        audio.addEventListener("timeupdate", () => {
-            currentTime.textContent = formatTime(audio.currentTime);
+        // audio.addEventListener("timeupdate", () => {
+        //     currentTime.textContent = formatTime(audio.currentTime);
 
-            const percent =
-                (audio.currentTime / audio.duration) * 100;
+        //     const percent =
+        //         (audio.currentTime / audio.duration) * 100;
 
-            progress.value = percent || 0;
-        });
+        //     progress.value = percent || 0;
+        // });
 
-        progress.addEventListener("input", () => {
-            audio.currentTime =
-                (progress.value / 100) * audio.duration;
-        });
+        // progress.addEventListener("input", () => {
+        //     audio.currentTime =
+        //         (progress.value / 100) * audio.duration;
+        // });
 
-        audio.addEventListener("ended", () => {
-            playBtn.textContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>`
-        });
+        // audio.addEventListener("ended", () => {
+        //     playBtn.textContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>`
+        // });
 
-        function formatTime(seconds){
-            const mins = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
+        // function formatTime(seconds){
+        //     const mins = Math.floor(seconds / 60);
+        //     const secs = Math.floor(seconds % 60);
 
-            return `${String(mins).padStart(2,"0")}:${String(secs).padStart(2,"0")}`;
-        }
+        //     return `${String(mins).padStart(2,"0")}:${String(secs).padStart(2,"0")}`;
+        // }
     </script>
-
+    
+    <section class="w-11/12 mx-auto mt-5 flex flex-col items-center justify-center rounded-3xl playboxshadow p-6">
+        <div class="w-full flex items-center justify-between gap-5">
+            <div class="w-21/24 flex flex-col">
+                <div class="w-full flex items-center justify-center">
+                    <span class="text-xl text-bold">واژگان پر کاربرد</span>
+                </div>
+                <div id="waveform" class="lg:h-25 h-17"></div>
+                <div class="flex items-center justify-between px-5 mt-14">
+                    <div class="w-1/3"></div>
+                    <div class="text-nowrap sm:text-[.8rem] text-[.6rem] flex items-center justify-center ">
+                        <p>یادگیری وا›گان ساده و پر کاربرد اینگلیسی</p>
+                    </div>
+                    <div class="flex items-center w-1/3 justify-end">
+                        <span id="duration" class="w-12 text-center text-[1.1rem]">00:00</span>
+                        <span class="text-gray-400 text-[1.1rem]">/</span>
+                        <span id="currentTime" class="w-12 text-center text-[1.1rem] text-[#fa6004]">00:00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="w-3/24 flex items-center justify-around">
+                <div class="lg:min-w-30 lg:max-w-30 lg:h-30 md:h-25 md:25 md:min-w-25 md:max-w-25 min-w-17 max-w-17 h-17 rounded-full flex items-center justify-center playsvegboxshadow">
+                    <div id="playBtn" class="lg:min-w-20 lg:max-w-20 md:min-w-15 md:max-w-15 lg:h-20 md:h-15 min-w-9 max-w-9 h-9 bg-[#fa6004] rounded-full flex items-center justify-center playsvegplayboxshadow">
+                        <span id="playIcon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="lg:size-7 md:size-6 size-3 fill-white">
+                                <path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- تعیین سصح -->
     <section class="w-11/12 mx-auto mt-5 flex gap-2.5"> 
@@ -474,6 +515,47 @@
 
 
 <script>
+        let playBtn=document.getElementById('playBtn')
+        const currentTimeEl = document.getElementById('currentTime');
+        const durationEl = document.getElementById('duration');
+        const playIcon = document.getElementById('playIcon');
+        const wavesurfer = WaveSurfer.create({
+                    container: '#waveform',    // جعبه‌ای که waveform توش کشیده میشه
+                    waveColor: '#fba26e',      // رنگ موج (ارغوانی)
+                    progressColor: '#ff6900',  // رنگ قسمتی که پخش شده
+                    url: "{{asset('assets/image/voisce/Mobile Ringtones 01 [SevilMusic].mp3')}}",          // آدرس فایل صوتی شما
+                    height: 110,               // ارتفاع waveform
+                    barWidth: 3,               // پهنای هر نوار
+                    barRadius: 3,              // گردی گوشه نوارها
+                });
+                playBtn.addEventListener('click', () => {
+                    wavesurfer.playPause(); 
+                });
+                wavesurfer.on('play', () => {
+                    playIcon.innerHTML=""
+                    playIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="size-7 fill-white"><path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"/></svg>';
+                });
+                wavesurfer.on('pause', () => {
+                    playIcon.innerHTML=""
+                    playIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="size-7 fill-white"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>';
+                });
+                wavesurfer.on('timeupdate', (currentTime) => {
+                    const minutes = Math.floor(currentTime / 60);
+                    const seconds = Math.floor(currentTime % 60);
+                    currentTimeEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                });
+                wavesurfer.on('ready', () => {
+                    const duration = wavesurfer.getDuration();
+                    const minutes = Math.floor(duration / 60);
+                    const seconds = Math.floor(duration % 60);
+                    durationEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                });
+
+
+
+
+
+
     for(let j=0;j<7;j++){
         let mmjjjkk=`<div class="w-full min-py-1 flex gap-2 pr-2 justify-between border-r-2 border-[blue]" id="mmjjjkk">
                                             <div class="w-10/12 flex gap-2">
@@ -595,76 +677,76 @@
             {{--tasc mahdi--}}
 
 //     amir.script
-    const audio = document.getElementById("myAudio");
-    const playBtn = document.getElementById("playBtn");
-    const playIcon = document.getElementById("playIcon");
-    const progress = document.getElementById("progress");
-    const currentTimeEl = document.getElementById("currentTime");
-    const durationEl = document.getElementById("duration");
-    const volume = document.getElementById("volume");
+    // const audio = document.getElementById("myAudio");
+    // const playBtn = document.getElementById("playBtn");
+    // const playIcon = document.getElementById("playIcon");
+    // const progress = document.getElementById("progress");
+    // const currentTimeEl = document.getElementById("currentTime");
+    // const durationEl = document.getElementById("duration");
+    // const volume = document.getElementById("volume");
 
-    let isPlaying = false;
+    // let isPlaying = false;
 
-    // پخش/توقف
-    function togglePlay() {
-        if (isPlaying) {
-            audio.pause();
-        } else {
-            audio.play();
-        }
-    }
+    // // پخش/توقف
+    // function togglePlay() {
+    //     if (isPlaying) {
+    //         audio.pause();
+    //     } else {
+    //         audio.play();
+    //     }
+    // }
 
     // آپدیت UI
-    audio.addEventListener("play", () => {
-        isPlaying = true;
-        playIcon.textContent = "⏸️";
-        playBtn.classList.add("bg-pink-600", "hover:bg-pink-700");
-    });
+    // audio.addEventListener("play", () => {
+    //     isPlaying = true;
+    //     playIcon.textContent = "⏸️";
+    //     playBtn.classList.add("bg-pink-600", "hover:bg-pink-700");
+    // });
 
-    audio.addEventListener("pause", () => {
-        isPlaying = false;
-        playIcon.textContent = "▶️";
-        playBtn.classList.remove("bg-pink-600", "hover:bg-pink-700");
-        playBtn.classList.add("bg-purple-600", "hover:bg-purple-700");
-    });
+    // audio.addEventListener("pause", () => {
+    //     isPlaying = false;
+    //     playIcon.textContent = "▶️";
+    //     playBtn.classList.remove("bg-pink-600", "hover:bg-pink-700");
+    //     playBtn.classList.add("bg-purple-600", "hover:bg-purple-700");
+    // });
 
     // Progress bar
-    audio.addEventListener("timeupdate", () => {
-        const percent = (audio.currentTime / audio.duration) * 100;
-        progress.style.width = percent + "%";
+    // audio.addEventListener("timeupdate", () => {
+    //     const percent = (audio.currentTime / audio.duration) * 100;
+    //     progress.style.width = percent + "%";
 
-        currentTimeEl.textContent = formatTime(audio.currentTime);
-    });
+    //     currentTimeEl.textContent = formatTime(audio.currentTime);
+    // });
 
-    audio.addEventListener("loadedmetadata", () => {
-        durationEl.textContent = formatTime(audio.duration);
-    });
+    // audio.addEventListener("loadedmetadata", () => {
+    //     durationEl.textContent = formatTime(audio.duration);
+    // });
 
-    // تنظیم موقعیت
-    function setPosition(event) {
-        const rect = event.target.getBoundingClientRect();
-        const pos = (event.clientX - rect.left) / rect.width;
-        audio.currentTime = pos * audio.duration;
-    }
+    // // تنظیم موقعیت
+    // function setPosition(event) {
+    //     const rect = event.target.getBoundingClientRect();
+    //     const pos = (event.clientX - rect.left) / rect.width;
+    //     audio.currentTime = pos * audio.duration;
+    // }
 
-    // صدا
-    volume.addEventListener("input", () => {
-        audio.volume = volume.value;
-    });
+    // // صدا
+    // volume.addEventListener("input", () => {
+    //     audio.volume = volume.value;
+    // });
 
-    // فرمت زمان
-    function formatTime(seconds) {
-        const mins = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        return `${mins.toString().padStart(2, "0")}:${secs
-            .toString()
-            .padStart(2, "0")}`;
-    }
+    // // فرمت زمان
+    // function formatTime(seconds) {
+    //     const mins = Math.floor(seconds / 60);
+    //     const secs = Math.floor(seconds % 60);
+    //     return `${mins.toString().padStart(2, "0")}:${secs
+    //         .toString()
+    //         .padStart(2, "0")}`;
+    // }
 
-    function menu(meno) {
-        meno.classList.toggle("h-20");
-        meno.classList.toggle("py-5");
-    }
+    // function menu(meno) {
+    //     meno.classList.toggle("h-20");
+    //     meno.classList.toggle("py-5");
+    // }
 
 
 </script>

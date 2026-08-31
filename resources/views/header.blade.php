@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="{{asset('assets/tailwind.js')}}"></script>
     <script src="{{ asset('assets/jquery.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/wavesurfer.js@7"></script>
     <!-- <link rel="stylesheet" href="{{asset('assets/css/style.css')}}"> -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
     <title>@yield('title', 'رینتاک')</title>
