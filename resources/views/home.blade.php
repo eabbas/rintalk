@@ -281,7 +281,7 @@
     
     <section class="w-11/12 mx-auto mt-5 flex flex-col items-center justify-center rounded-3xl playboxshadow sm:px-6 px-4 p-3">
         <div class="w-full flex items-center justify-between gap-5">
-            <div class="sm:w-21/24 w-20/24 flex flex-col justify-between">
+            <div class="sm:w-21/24 w-19/24 flex flex-col justify-between">
                 <div class="w-full flex items-center justify-center">
                     <span class="text-xl text-bold">واژگان پر کاربرد</span>
                 </div>
