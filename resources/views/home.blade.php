@@ -279,28 +279,28 @@
         // }
     </script>
     
-    <section class="w-11/12 mx-auto mt-5 flex flex-col items-center justify-center rounded-3xl playboxshadow p-6">
+    <section class="w-11/12 mx-auto mt-5 flex flex-col items-center justify-center rounded-3xl playboxshadow sm:px-6 px-4 p-3">
         <div class="w-full flex items-center justify-between gap-5">
-            <div class="w-21/24 flex flex-col">
+            <div class="w-21/24 flex flex-col justify-between">
                 <div class="w-full flex items-center justify-center">
                     <span class="text-xl text-bold">واژگان پر کاربرد</span>
                 </div>
-                <div id="waveform" class="lg:h-25 h-17"></div>
-                <div class="flex items-center justify-between px-5 mt-14">
+                <div id="waveform" class=""></div>
+                <div class="flex items-center justify-between px-5 mt-8">
                     <div class="w-1/3"></div>
                     <div class="text-nowrap sm:text-[.8rem] text-[.6rem] flex items-center justify-center ">
                         <p>یادگیری وا›گان ساده و پر کاربرد اینگلیسی</p>
                     </div>
                     <div class="flex items-center w-1/3 justify-end">
-                        <span id="duration" class="w-12 text-center text-[1.1rem]">00:00</span>
-                        <span class="text-gray-400 text-[1.1rem]">/</span>
-                        <span id="currentTime" class="w-12 text-center text-[1.1rem] text-[#fa6004]">00:00</span>
+                        <span id="duration" class="w-12 text-center sm:text-[1.1rem] text-[.9rem]">00:00</span>
+                        <span class="text-gray-400 sm:text-[1.1rem] text-[.9rem]">/</span>
+                        <span id="currentTime" class="w-12 text-center sm:text-[1.1rem] text-[.9rem] text-[#fa6004]">00:00</span>
                     </div>
                 </div>
             </div>
-            <div class="w-3/24 flex items-center justify-around">
-                <div class="lg:min-w-30 lg:max-w-30 lg:h-30 md:h-25 md:25 md:min-w-25 md:max-w-25 min-w-17 max-w-17 h-17 rounded-full flex items-center justify-center playsvegboxshadow">
-                    <div id="playBtn" class="lg:min-w-20 lg:max-w-20 md:min-w-15 md:max-w-15 lg:h-20 md:h-15 min-w-9 max-w-9 h-9 bg-[#fa6004] rounded-full flex items-center justify-center playsvegplayboxshadow">
+            <div class="w-3/24 flex items-center justify-center mb-5">
+                <div class="lg:min-w-30 lg:max-w-30 lg:h-30 md:h-25 md:25 md:min-w-25 md:max-w-25 min-w-16 max-w-16 h-16 rounded-full flex items-center justify-center playsvegboxshadow">
+                    <div id="playBtn" class="lg:min-w-20 lg:max-w-20 md:min-w-15 md:max-w-15 lg:h-20 md:h-15 min-w-8 max-w-8 h-8 bg-[#fa6004] rounded-full flex items-center justify-center playsvegplayboxshadow">
                         <span id="playIcon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="lg:size-7 md:size-6 size-3 fill-white">
                                 <path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/>
@@ -524,7 +524,7 @@
                     waveColor: '#fba26e',      // رنگ موج (ارغوانی)
                     progressColor: '#ff6900',  // رنگ قسمتی که پخش شده
                     url: "{{asset('assets/image/voisce/Mobile Ringtones 01 [SevilMusic].mp3')}}",          // آدرس فایل صوتی شما
-                    height: 110,               // ارتفاع waveform
+                    height: 100,               // ارتفاع waveform
                     barWidth: 3,               // پهنای هر نوار
                     barRadius: 3,              // گردی گوشه نوارها
                 });
