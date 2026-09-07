@@ -11,7 +11,7 @@ class LessonMediaController extends Controller
 {
       public function create(lesson $lesson)
     {
-        return view('admin.LessonMedia.create',['lesson'=>$lesson]);
+        return view('admin.lessonMedia.create',['lesson'=>$lesson]);
     }
       public function createLessonMedia(){
         $lessons=lesson::all();

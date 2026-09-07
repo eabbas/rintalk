@@ -69,10 +69,31 @@
      /*       transform: translateY(2px);*/
      /*       box-shadow: 0 2px 0 #2c3e50, 0 4px 6px rgba(0,0,0,0.2);*/
      /*   }*/
+    .boxgradeanet{
+        background-image: linear-gradient(160deg , #03057f , #0019d6) ;
+    }
 </style>
 
-
-    <section class="w-full flex justify-center relative mt-5 mb-2">
+    <section class="w-full">
+        <a href="{{route('course.listcourseuser')}}" class="w-full mx-auto bg-[#07086a] h-14 flex justify-between items-center px-2 boxgradeanet border-2 border-[#bb9dfa]">
+            <div class="rounded-full p-[1px] flex justify-center items-center">
+                <div class="rounded-full p-1.5 flex justify-center items-center overflow-hidden">
+                    <span class="text-2xl">🎓</span>
+                </div>
+            </div>
+            <span class="text-white"> لیست دوره ها  </span>
+            <div class="px-2 py-1.5 bg-[#003ce8] rounded-xl flex gap-1 justify-center items-center">
+                <div class="text-[12px] text-white md:text-[1.2rem] lg:text-[1.6rem] font-bold"> دوره ها</div>
+                <div class="rounded-full  bg-[#121e32] flex justify-center items-center">
+                    <svg viewBox="0 -50 448 512" class="size-3 md:size-4 lg:size-6 rotate-90" fill="white">
+                        <!--! Font Awesome Pro 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"></path>
+                    </svg>
+                </div>
+            </div>
+        </a>
+    </section>
+    <section class="w-full flex justify-center relative mt-5 mb-1">
         <div class=" w-11/12 pt-1 rounded-lg flex items-center gap-5 justify-between">
             @foreach($story as $story)
                 <div class="min-w-17 max-w-17 lg:min-w-17 lg:max-w-17 flex  flex-col gap-1 items-center pup_up_story stoey cursor-pointer pb-3" onclick="story('open' , '{{$story->path}}')">
@@ -89,7 +110,7 @@
 
     <section class="w-full flex justify-center">
         <div class="w-11/12 ">
-            <img class="w-full min-h-40 max-h-40 lg:min-h-100 lg:max-h-100 object-cover rounded-xl" src="{{asset('assets/image/hero.webp')}}" alt="">
+            <img class="w-full min-h-48 max-h-48 lg:min-h-100 lg:max-h-100 object-cover rounded-xl" src="{{asset('assets/image/hero.webp')}}" alt="">
         </div>
     </section>
 {{--</div>--}}
@@ -160,11 +181,6 @@
             cursor:pointer;
         }
 
-        .waveform{
-            display:flex;
-            align-items:center;
-            gap:3px;
-        }
 
         /* .waveform span{
             width:4px;
@@ -177,27 +193,89 @@
             animation:wave 1.2s infinite ease-in-out;
         }
 
-        /* .waveform span:nth-child(1){height:11px;}
-        .waveform span:nth-child(2){height:25px;}
-        .waveform span:nth-child(3){height:39px;}
-        .waveform span:nth-child(4){height:58px;}
-        .waveform span:nth-child(5){height:70px;}
-        .waveform span:nth-child(6){height:52px;}
-        .waveform span:nth-child(7){height:35px;}
-        .waveform span:nth-child(8){height:60px;}
-        .waveform span:nth-child(9){height:50px;}
-        .waveform span:nth-child(10){height:30px;}
-        .waveform span:nth-child(11){height:17px;}
-        .waveform span:nth-child(12){height:10px;} */
 
-        @keyframes wave{
-            0%,100%{
-                transform:scaleY(.7);
-            }
-            50%{
-                transform:scaleY(1);
+        @media (min-width: 641px) {
+        }
+        @media (max-width: 640px) {
+        }
+
+
+
+        @media (max-width: 640px) {
+            #waveform ::part(cursor) {
+                height: 35px;
+                width: 3px !important;           /* پهنای نشانگر */
+                background: #002284 !important;  /* رنگ نشانگر */
+                border-radius: 4px !important;   /* گردی گوشه‌ها */
+                opacity: 0.9 !important;
             }
         }
+
+
+        @media (min-width: 641px) {
+            /* ۴. استایل دادن به نشانگر موقعیت پخش */
+            #waveform ::part(cursor) {
+                height: 77px;
+                width: 3px !important;           /* پهنای نشانگر */
+                background: #002284 !important;  /* رنگ نشانگر */
+                border-radius: 4px !important;   /* گردی گوشه‌ها */
+                opacity: 0.9 !important;
+            }
+        }
+
+
+        @media (max-width: 640px) {
+            #waveform1 ::part(cursor) {
+                height: 35px;
+                width: 3px !important;           /* پهنای نشانگر */
+                background: #002284 !important;  /* رنگ نشانگر */
+                border-radius: 4px !important;   /* گردی گوشه‌ها */
+                opacity: 0.9 !important;
+            }
+        }
+
+
+        @media (min-width: 641px) {
+            /* ۴. استایل دادن به نشانگر موقعیت پخش */
+            #waveform1 ::part(cursor) {
+                height: 77px;
+                width: 3px !important;           /* پهنای نشانگر */
+                background: #002284 !important;  /* رنگ نشانگر */
+                border-radius: 4px !important;   /* گردی گوشه‌ها */
+                opacity: 0.9 !important;
+            }
+        }
+
+        @media (max-width: 640px) {
+            #waveform2 ::part(cursor) {
+                height: 35px;
+                width: 3px !important;           /* پهنای نشانگر */
+                background: #002284 !important;  /* رنگ نشانگر */
+                border-radius: 4px !important;   /* گردی گوشه‌ها */
+                opacity: 0.9 !important;
+            }
+        }
+
+
+        @media (min-width: 641px) {
+            /* ۴. استایل دادن به نشانگر موقعیت پخش */
+            #waveform2 ::part(cursor) {
+                height: 77px;
+                width: 3px !important;           /* پهنای نشانگر */
+                background: #002284 !important;  /* رنگ نشانگر */
+                border-radius: 4px !important;   /* گردی گوشه‌ها */
+                opacity: 0.9 !important;
+            }
+        }
+        /* ۵. استایل دادن به حاشیه یا پس‌زمینه محفظه */
+        /*#waveform ::part(wrapper) {*/
+        /*    background: transparent !important;*/
+        /*    border: 2px solid #dfe6e9;*/
+        /*    border-radius: 12px;*/
+        /*}*/
+
+
+
         .playboxshadow{
             box-shadow: 0px 3px 15px #e5e2e2
         }
@@ -205,7 +283,7 @@
             box-shadow: 0px 3px 15px #d0cbcb
         }
         .playsvegplayboxshadow{
-            box-shadow: 0px 3px 21px #ff8600
+            box-shadow: 0px 0px 2px 2px #002284
         }
     </style>
 
@@ -276,42 +354,210 @@
         //     const secs = Math.floor(seconds % 60);
 
         //     return `${String(mins).padStart(2,"0")}:${String(secs).padStart(2,"0")}`;
-        // }
+        // }    
     </script>
-    
-    <section class="w-11/12 mx-auto mt-5 flex flex-col items-center justify-center rounded-3xl playboxshadow sm:px-6 px-4 p-3">
-        <div class="w-full flex items-center justify-between gap-5">
-            <div class="sm:w-21/24 w-19/24 flex flex-col justify-between">
-                <div class="w-full flex items-center justify-center">
-                    <span class="text-xl text-bold">واژگان پر کاربرد</span>
-                </div>
-                <div id="waveform" class=""></div>
-                <div class="flex items-center justify-between px-5 mt-8">
-                    <div class="w-1/3 sm:flex hidden"></div>
-                    <div class="text-nowrap sm:text-[.8rem] text-[.6rem] flex items-center justify-center ">
-                        <p>یادگیری وا›گان ساده و پر کاربرد اینگلیسی</p>
+    <section class="w-11/12 mx-auto mt-5 flex gap-2.5">
+        <div class="w-1/2 h-full bg-white flex flex-col relative rounded-xl border-1 border-white" style="box-shadow:0.5PX 0.5PX 5PX #d4d4e6">
+            <img src="{{asset('storage/home/file_00000000fb4471fbbcb3f2b09783b365.png')}}" alt="" class="object-cover w-full h-full lg:size-7/12 rounded-xl">
+            <div class="w-full h-full absolute py-1.5 pl-3 flex flex-col justify-between gap-1 items-end">
+                <div class="w-full flex gap-4 items-center justify-center">
+                    <div class="flex flex-col">
+                        <h3 class="text-[16px] md:text-[1.4rem] lg:text-[2rem] font-bold">تعیین سطج</h3>
+                        <h4 class="text-[12px] md:text-[1.2rem] lg:text-[1.8rem] font-bold">سطح خود </h4>
                     </div>
-                    <div class="flex items-center w-1/3 justify-end">
-                        <span id="duration" class="w-12 text-center sm:text-[1.1rem] text-[.9rem]">00:00</span>
-                        <span class="text-gray-400 sm:text-[1.1rem] text-[.9rem]">/</span>
-                        <span id="currentTime" class="w-12 text-center sm:text-[1.1rem] text-[.9rem] text-[#fa6004]">00:00</span>
+                    <div class="w-12 h-12 md:w-18 md:h-18 lg:w-22 lg:h-22 bg-white rounded-full border-3 border-[#f5d5b2] p-[1px] flex justify-center items-center">
+                        <div class="w-full h-full bg-[#fa6004] rounded-full  p-1.5 flex justify-center items-center overflow-hidden">
+                            <img src="{{asset('storage/home/file_0000000083ec71f489146d02f60521c4.png')}}" alt="" class="object-cover w-full h-full ">
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1 items-start">
+                    <div class="flex gap-1 items-center">
+                        <svg  class="size-3 lg:size-5" viewBox="0 0 36 36" fill="#ff9a1e"><path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path><path  d="M16.34,23.74l-5-5a1,1,0,0,1,1.41-1.41l3.59,3.59,6.78-6.78a1,1,0,0,1,1.41,1.41Z"></path><path class="clr-i-solid clr-i-solid-path-1" d="M30,18A12,12,0,1,1,18,6,12,12,0,0,1,30,18Zm-4.77-2.16a1.4,1.4,0,0,0-2-2l-6.77,6.77L13,17.16a1.4,1.4,0,0,0-2,2l5.45,5.45Z" style="display:none"></path></svg>
+                        <span class="text-[10px] md:text-[1.2rem] lg:text-[1.8rem] font-bold">تست استاندارد </span>
+                    </div>
+                    <div class="flex gap-1 items-center">
+                        <svg  class="size-3 lg:size-5" viewBox="0 0 36 36" fill="#ff9a1e"><path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path><path  d="M16.34,23.74l-5-5a1,1,0,0,1,1.41-1.41l3.59,3.59,6.78-6.78a1,1,0,0,1,1.41,1.41Z"></path><path class="clr-i-solid clr-i-solid-path-1" d="M30,18A12,12,0,1,1,18,6,12,12,0,0,1,30,18Zm-4.77-2.16a1.4,1.4,0,0,0-2-2l-6.77,6.77L13,17.16a1.4,1.4,0,0,0-2,2l5.45,5.45Z" style="display:none"></path></svg>
+                        <span class="text-[10px] md:text-[1.2rem] lg:text-[1.8rem] font-bold">مشخص کردن</span>
+                    </div>
+                    <div class="flex gap-1 items-center">
+                        <svg  class="size-3 lg:size-5" viewBox="0 0 36 36" fill="#ff9a1e"><path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path><path  d="M16.34,23.74l-5-5a1,1,0,0,1,1.41-1.41l3.59,3.59,6.78-6.78a1,1,0,0,1,1.41,1.41Z"></path><path class="clr-i-solid clr-i-solid-path-1" d="M30,18A12,12,0,1,1,18,6,12,12,0,0,1,30,18Zm-4.77-2.16a1.4,1.4,0,0,0-2-2l-6.77,6.77L13,17.16a1.4,1.4,0,0,0-2,2l5.45,5.45Z" style="display:none"></path></svg>
+                        <span class="text-[10px] md:text-[1.2rem] lg:text-[1.8rem] font-bold">تست استاندارد</span>
+                    </div>
+                </div>
+                <div class="px-3 py-1.5 bg-[#ff9a1e] rounded-xl flex gap-1 justify-center items-center">
+                    <span class="text-[10px] text-white md:text-[1.2rem] lg:text-[1.6rem] font-bold">تعیین سطح </span>
+                    <div class=" rounded-full  bg-[#f98300] flex justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -50 448 512" class="size-3 md:size-4 lg:size-6 rotate-90" fill="white">
+                            <!--! Font Awesome Pro 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                            <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"></path>
+                        </svg>
                     </div>
                 </div>
             </div>
-            <div class="w-3/24 flex items-center justify-center mb-5">
-                <div class="lg:min-w-30 lg:max-w-30 lg:h-30 md:h-25 md:25 md:min-w-25 md:max-w-25 min-w-16 max-w-16 h-16 rounded-full flex items-center justify-center playsvegboxshadow">
-                    <div id="playBtn" class="lg:min-w-20 lg:max-w-20 md:min-w-15 md:max-w-15 lg:h-20 md:h-15 min-w-8 max-w-8 h-8 bg-[#fa6004] rounded-full flex items-center justify-center playsvegplayboxshadow">
-                        <span id="playIcon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="lg:size-7 md:size-6 size-3 fill-white">
-                                <path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/>
+        </div>
+        <a href="{{route('course.listcourseuser')}}" class="w-1/2 min-h-full lg: bg-white flex flex-col justify-end items-end relative rounded-xl border-1 border-white" style="box-shadow:0.5PX 0.5PX 5PX #d4d4e6">
+            <img src="{{asset('storage/home/949c2d04-e7eb-4bd4-92a4-4f6bffa86ddb.jpg')}}" alt="" class="object-cover size-10/12 lg:size-7/12">
+
+            <div class="w-full h-full absolute py-1.5 pr-3 flex flex-col justify-between gap-1 items-start">
+                <div class="w-full flex gap-4 items-center justify-center">
+                    <div class="flex flex-col text-center">
+                        <h4 class="text-[16px] md:text-[1.4rem] lg:text-[2rem] font-bold text-[#051b61]">شرکت در دوره</h4>
+                        <span class="text-[12px] md:text-[1.3rem] lg:text-[1.8rem] font-bold text-[#051b61]">همین حالا </span>
+                    </div>
+                    <div class="w-12 h-12 md:w-18 md:h-18 lg:w-22 lg:h-22 bg-white rounded-full border-3 border-[#E6EBF1] p-[1px] flex justify-center items-center">
+                        <div class="w-full h-full bg-[#002284] rounded-full  p-1.5 flex justify-center items-center overflow-hidden">
+                            <img src="{{asset('storage/home/file_0000000068a071f4b4abc9e3fcc298aa.png')}}" alt="" class="object-cover w-full h-full">
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1 items-start">
+                    <div class="flex gap-1 items-center">
+                        <svg  class="size-3 lg:size-5" viewBox="0 0 36 36" fill="#1a2940"><path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path><path  d="M16.34,23.74l-5-5a1,1,0,0,1,1.41-1.41l3.59,3.59,6.78-6.78a1,1,0,0,1,1.41,1.41Z"></path><path class="clr-i-solid clr-i-solid-path-1" d="M30,18A12,12,0,1,1,18,6,12,12,0,0,1,30,18Zm-4.77-2.16a1.4,1.4,0,0,0-2-2l-6.77,6.77L13,17.16a1.4,1.4,0,0,0-2,2l5.45,5.45Z" style="display:none"></path></svg>
+                        <span class="text-[11px] md:text-[1.2rem] lg:text-[1.8rem] font-bold text-[#051b61]">دوره های کاربردی</span>
+                    </div>
+                    <div class="flex gap-1 items-center">
+                        <svg  class="size-3 lg:size-5" viewBox="0 0 36 36" fill="#1a2940"><path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path><path  d="M16.34,23.74l-5-5a1,1,0,0,1,1.41-1.41l3.59,3.59,6.78-6.78a1,1,0,0,1,1.41,1.41Z"></path><path class="clr-i-solid clr-i-solid-path-1" d="M30,18A12,12,0,1,1,18,6,12,12,0,0,1,30,18Zm-4.77-2.16a1.4,1.4,0,0,0-2-2l-6.77,6.77L13,17.16a1.4,1.4,0,0,0-2,2l5.45,5.45Z" style="display:none"></path></svg>
+                        <span class="text-[11px] md:text-[1.2rem] lg:text-[1.8rem] font-bold text-[#051b61]">اسانید حرفه ای</span>
+                    </div>
+                    <div class="flex gap-1 items-center">
+                        <svg  class="size-3 lg:size-5" viewBox="0 0 36 36" fill="#1a2940"><path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path><path  d="M16.34,23.74l-5-5a1,1,0,0,1,1.41-1.41l3.59,3.59,6.78-6.78a1,1,0,0,1,1.41,1.41Z"></path><path class="clr-i-solid clr-i-solid-path-1" d="M30,18A12,12,0,1,1,18,6,12,12,0,0,1,30,18Zm-4.77-2.16a1.4,1.4,0,0,0-2-2l-6.77,6.77L13,17.16a1.4,1.4,0,0,0-2,2l5.45,5.45Z" style="display:none"></path></svg>
+                        <span class="text-[11px] md:text-[1.2rem] lg:text-[1.8rem] font-bold text-[#051b61]">تست استاندارد </span>
+                    </div>
+                </div>
+                <div class="px-2 py-1.5 bg-[#002284] rounded-xl flex gap-1 justify-center items-center">
+                    <div class="text-[10px] text-white md:text-[1.2rem] lg:text-[1.6rem] font-bold">مشاهده دوره ها</div>
+                    <div class="rounded-full  bg-[#121e32] flex justify-center items-center">
+                        <svg viewBox="0 -50 448 512" class="size-3 md:size-4 lg:size-6 rotate-90" fill="white">
+                            <!--! Font Awesome Pro 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                            <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+    </section>
+{{--    <section class="w-full flex justify-center mt-5">--}}
+{{--        <div class="w-11/12 flex items-center justify-end ">--}}
+{{--            <a href="{{route('course.listcourseuser')}}" class="w-1/2 min-h-full lg: bg-white flex justify-end items-end relative rounded-xl border-1 border-white h-20" style="box-shadow:0.5PX 0.5PX 5PX #d4d4e6">--}}
+{{--                <div class="w-full"></div>--}}
+{{--                <div class="w-full h-full py-1.5 pr-3 flex flex-col justify-between gap-1 items-start absolute left-11 top-3">--}}
+{{--                    <div class="w-full flex gap-4 items-center justify-center">--}}
+{{--                        <div class="flex flex-col text-center ">--}}
+{{--                            <h4 class="text-[16px] md:text-[1.4rem] lg:text-[2rem] font-bold text-[#051b61]">شرکت در دوره</h4>--}}
+{{--                            <span class="text-[12px] md:text-[1.3rem] lg:text-[1.8rem] font-bold text-[#051b61]">همین حالا </span>--}}
+{{--                        </div>--}}
+
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <img src="{{asset('storage/home/949c2d04-e7eb-4bd4-92a4-4f6bffa86ddb.jpg')}}" alt="" class="object-cover size-12/12 lg:size-7/12">--}}
+{{--            </a>--}}
+{{--        </div>--}}
+{{--    </section>--}}
+    <section class="flex flex-col gap-2 mt-5">
+        <div class="w-11/12 mx-auto flex flex-col items-center justify-center rounded-[4.5rem] playboxshadow px-4 xl:px-6 p-2 xl:p-4">
+            <div class="w-full flex items-center justify-between gap-5">
+                <div class="sm:w-21/24 w-21/24 flex flex-col justify-between xl:gap-2">
+                    <div class="w-full px-3 sm:px-1">
+                        <div class="flex gap-2 items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 512" class="size-3 xl:size-5 fill-gray-500">
+                                <path d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z"/>
                             </svg>
-                        </span>
+                            <span class="sm:text-xl text-[.8rem] text-bold"> هدف </span>
+                        </div>
+                    </div>
+                    <div id="waveform"></div>
+                    <div class="flex items-center justify-between gap-2 w-full ">
+                        <div class="flex items-center justify-center lg:justify-end ">
+                            <span id="duration" class="w-12 text-center sm:text-[1.1rem] text-[.6rem]">00:00</span>
+                            <span class="text-gray-400 sm:text-[1.1rem] text-[.6rem]">/</span>
+                            <span id="currentTime" class="w-12 text-center sm:text-[1.1rem] text-[.6rem] text-[#002284]">00:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sm:w-3/24 w-3/24 flex items-center justify-center">
+                    <div class="lg:min-w-30 lg:max-w-30 lg:h-30 md:h-25 md:25 md:min-w-25 md:max-w-25 min-w-12 max-w-12 h-12 rounded-full flex items-center justify-center playsvegboxshadow">
+                        <div id="playBtn" class="lg:min-w-20 lg:max-w-20 md:min-w-15 md:max-w-15 lg:h-20 md:h-15 min-w-7 max-w-7 h-7 bg-[#002284] rounded-full flex items-center justify-center playsvegplayboxshadow">
+                            <span id="playIcon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="lg:size-7 md:size-6 size-3 fill-white">
+                                    <path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-11/12 mx-auto flex flex-col items-center justify-center rounded-[4.5rem] playboxshadow px-4 xl:px-6 p-2 xl:p-4">
+            <div class="w-full flex items-center justify-between gap-5">
+                <div class="sm:w-21/24 w-21/24 flex flex-col justify-between xl:gap-2">
+                    <div class="w-full px-3 sm:px-1">
+                        <div class="flex gap-2 items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 512" class="size-3 xl:size-5 fill-gray-500">
+                                <path d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z"/>
+                            </svg>
+                            <span class="sm:text-xl text-[.8rem] text-bold"> یادگیری </span>
+                        </div>
+                    </div>
+                    <div id="waveform1"></div>
+                    <div class="flex items-center justify-between gap-2 w-full">
+                        <div class="flex items-center justify-center lg:justify-end ">
+                            <span id="duration1" class="w-12 text-center sm:text-[1.1rem] text-[.6rem]">00:00</span>
+                            <span class="text-gray-400 sm:text-[1.1rem] text-[.6rem]">/</span>
+                            <span id="currentTime1" class="w-12 text-center sm:text-[1.1rem] text-[.6rem] text-[#002284]">00:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sm:w-3/24 w-3/24 flex items-center justify-center">
+                    <div class="lg:min-w-30 lg:max-w-30 lg:h-30 md:h-25 md:25 md:min-w-25 md:max-w-25 min-w-12 max-w-12 h-12 rounded-full flex items-center justify-center playsvegboxshadow">
+                        <div id="playBtn1" class="lg:min-w-20 lg:max-w-20 md:min-w-15 md:max-w-15 lg:h-20 md:h-15 min-w-7 max-w-7 h-7 bg-[#002284] rounded-full flex items-center justify-center playsvegplayboxshadow">
+                            <span id="playIcon1">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="lg:size-7 md:size-6 size-3 fill-white">
+                                    <path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-11/12 mx-auto flex flex-col items-center justify-center rounded-[4.5rem] playboxshadow px-4 xl:px-6 p-2 xl:p-4">
+            <div class="w-full flex items-center justify-between gap-5">
+                <div class="sm:w-21/24 w-21/24 flex flex-col justify-between xl:gap-2">
+                    <div class="w-full px-3 sm:px-1">
+                        <div class="flex gap-2 items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 512" class="size-3 xl:size-5 fill-gray-500">
+                                <path d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z"/>
+                            </svg>
+                            <span class="sm:text-xl text-[.8rem] text-bold">برنامه ریزی</span>
+                        </div>
+                    </div>
+                    <div id="waveform2"></div>
+                    <div class="flex items-center justify-between gap-2 w-full">
+                        <div class="flex items-center justify-center lg:justify-end ">
+                            <span id="duration2" class="w-12 text-center sm:text-[1.1rem] text-[.6rem]">00:00</span>
+                            <span class="text-gray-400 sm:text-[1.1rem] text-[.6rem]">/</span>
+                            <span id="currentTime2" class="w-12 text-center sm:text-[1.1rem] text-[.6rem] text-[#002284]">00:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sm:w-3/24 w-3/24 flex items-center justify-center">
+                    <div class="lg:min-w-30 lg:max-w-30 lg:h-30 md:h-25 md:25 md:min-w-25 md:max-w-25 min-w-12 max-w-12 h-12 rounded-full flex items-center justify-center playsvegboxshadow">
+                        <div id="playBtn2" class="lg:min-w-20 lg:max-w-20 md:min-w-15 md:max-w-15 lg:h-20 md:h-15 min-w-7 max-w-7 h-7 bg-[#002284] rounded-full flex items-center justify-center playsvegplayboxshadow">
+                            <span id="playIcon2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="lg:size-7 md:size-6 size-3 fill-white">
+                                    <path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/>
+                                </svg>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- تعیین سصح -->
     <section class="w-11/12 mx-auto mt-5 flex gap-2.5"> 
         <div class="w-1/2 h-full bg-white flex flex-col relative rounded-xl border-1 border-white" style="box-shadow:0.5PX 0.5PX 5PX #d4d4e6">
@@ -519,13 +765,31 @@
         const currentTimeEl = document.getElementById('currentTime');
         const durationEl = document.getElementById('duration');
         const playIcon = document.getElementById('playIcon');
+        function getWaveHeight() {
+            if (window.innerWidth < 640) {
+                return 22;   // موبایل: ارتفاع کم
+            } else if (window.innerWidth < 1024) {
+                return 60;  // تبلت: ارتفاع متوسط
+            } else {
+                return 70;  // دسکتاپ: ارتفاع زیاد
+            }
+        }
+        function barWidth() {
+            if (window.innerWidth < 640) {
+                return 1.5;   // موبایل: ارتفاع کم
+            } else if (window.innerWidth < 1024) {
+                return 2;  // تبلت: ارتفاع متوسط
+            } else {
+                return 3;  // دسکتاپ: ارتفاع زیاد
+            }
+        }
         const wavesurfer = WaveSurfer.create({
                     container: '#waveform',    // جعبه‌ای که waveform توش کشیده میشه
-                    waveColor: '#fba26e',      // رنگ موج (ارغوانی)
-                    progressColor: '#ff6900',  // رنگ قسمتی که پخش شده
+                    waveColor: '#053feb',      // رنگ موج (ارغوانی)
+                    progressColor: '#01258e',  // رنگ قسمتی که پخش شده
                     url: "{{asset('assets/image/voisce/Mobile Ringtones 01 [SevilMusic].mp3')}}",          // آدرس فایل صوتی شما
-                    height: 100,               // ارتفاع waveform
-                    barWidth: 3,               // پهنای هر نوار
+                    height: getWaveHeight(),  // ← ارتفاع بر اساس اندازه صفحه
+                    barWidth: barWidth(),               // پهنای هر نوار
                     barRadius: 3,              // گردی گوشه نوارها
                 });
                 playBtn.addEventListener('click', () => {
@@ -533,11 +797,11 @@
                 });
                 wavesurfer.on('play', () => {
                     playIcon.innerHTML=""
-                    playIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="size-7 fill-white"><path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"/></svg>';
+                    playIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="lg:size-7 md:size-6 size-3 fill-white"><path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"/></svg>';
                 });
                 wavesurfer.on('pause', () => {
                     playIcon.innerHTML=""
-                    playIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="size-7 fill-white"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>';
+                    playIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="lg:size-7 md:size-6 size-3 fill-white"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>';
                 });
                 wavesurfer.on('timeupdate', (currentTime) => {
                     const minutes = Math.floor(currentTime / 60);
@@ -552,6 +816,113 @@
                 });
 
 
+        let playBtn1=document.getElementById('playBtn1')
+        const currentTimeEl1 = document.getElementById('currentTime1');
+        const durationEl1 = document.getElementById('duration1');
+        const playIcon1 = document.getElementById('playIcon1');
+        function getWaveHeight1() {
+            if (window.innerWidth < 640) {
+                return 22;   // موبایل: ارتفاع کم
+            } else if (window.innerWidth < 1024) {
+                return 60;  // تبلت: ارتفاع متوسط
+            } else {
+                return 70;  // دسکتاپ: ارتفاع زیاد
+            }
+        }
+        function barWidth1() {
+            if (window.innerWidth < 640) {
+                return 1.5;   // موبایل: ارتفاع کم
+            } else if (window.innerWidth < 1024) {
+                return 2;  // تبلت: ارتفاع متوسط
+            } else {
+                return 3;  // دسکتاپ: ارتفاع زیاد
+            }
+        }
+        const wavesurfer1 = WaveSurfer.create({
+            container: '#waveform1',    // جعبه‌ای که waveform توش کشیده میشه
+            waveColor: '#053feb',      // رنگ موج (ارغوانی)
+            progressColor: '#01258e',  // رنگ قسمتی که پخش شده
+            url: "{{asset('assets/image/voisce/Mobile Ringtones 01 [SevilMusic].mp3')}}",          // آدرس فایل صوتی شما
+            height: getWaveHeight1(),  // ← ارتفاع بر اساس اندازه صفحه
+            barWidth: barWidth1(),               // پهنای هر نوار
+            barRadius: 3,              // گردی گوشه نوارها
+        });
+        playBtn1.addEventListener('click', () => {
+            wavesurfer1.playPause();
+        });
+        wavesurfer1.on('play', () => {
+            playIcon1.innerHTML=""
+            playIcon1.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="lg:size-7 md:size-6 size-3 fill-white"><path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"/></svg>';
+        });
+        wavesurfer1.on('pause', () => {
+            playIcon1.innerHTML=""
+            playIcon1.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="lg:size-7 md:size-6 size-3 fill-white"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>';
+        });
+        wavesurfer1.on('timeupdate', (currentTime) => {
+            const minutes = Math.floor(currentTime / 60);
+            const seconds = Math.floor(currentTime % 60);
+            currentTimeEl1.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        });
+        wavesurfer1.on('ready', () => {
+            const duration = wavesurfer1.getDuration();
+            const minutes = Math.floor(duration / 60);
+            const seconds = Math.floor(duration % 60);
+            durationEl1.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        });
+
+        let playBtn2=document.getElementById('playBtn2')
+        const currentTimeEl2 = document.getElementById('currentTime2');
+        const durationEl2 = document.getElementById('duration2');
+        const playIcon2 = document.getElementById('playIcon2');
+        function getWaveHeight2() {
+            if (window.innerWidth < 640) {
+                return 22;   // موبایل: ارتفاع کم
+            } else if (window.innerWidth < 1024) {
+                return 60;  // تبلت: ارتفاع متوسط
+            } else {
+                return 70;  // دسکتاپ: ارتفاع زیاد
+            }
+        }
+        function barWidth2() {
+            if (window.innerWidth < 640) {
+                return 1.5;   // موبایل: ارتفاع کم
+            } else if (window.innerWidth < 1024) {
+                return 2;  // تبلت: ارتفاع متوسط
+            } else {
+                return 3;  // دسکتاپ: ارتفاع زیاد
+            }
+        }
+        const wavesurfer2 = WaveSurfer.create({
+            container: '#waveform2',    // جعبه‌ای که waveform توش کشیده میشه
+            waveColor: '#053feb',      // رنگ موج (ارغوانی)
+            progressColor: '#01258e',  // رنگ قسمتی که پخش شده
+            url: "{{asset('assets/image/voisce/Mobile Ringtones 01 [SevilMusic].mp3')}}",          // آدرس فایل صوتی شما
+            height: getWaveHeight2(),  // ← ارتفاع بر اساس اندازه صفحه
+            barWidth: barWidth2(),               // پهنای هر نوار
+            barRadius: 3,              // گردی گوشه نوارها
+        });
+        playBtn2.addEventListener('click', () => {
+            wavesurfer2.playPause();
+        });
+        wavesurfer2.on('play', () => {
+            playIcon2.innerHTML=""
+            playIcon2.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="lg:size-7 md:size-6 size-3 fill-white"><path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"/></svg>';
+        });
+        wavesurfer2.on('pause', () => {
+            playIcon2.innerHTML=""
+            playIcon2.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="lg:size-7 md:size-6 size-3 fill-white"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>';
+        });
+        wavesurfer2.on('timeupdate', (currentTime) => {
+            const minutes = Math.floor(currentTime / 60);
+            const seconds = Math.floor(currentTime % 60);
+            currentTimeEl2.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        });
+        wavesurfer2.on('ready', () => {
+            const duration = wavesurfer2.getDuration();
+            const minutes = Math.floor(duration / 60);
+            const seconds = Math.floor(duration % 60);
+            durationEl2.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        });
 
 
 

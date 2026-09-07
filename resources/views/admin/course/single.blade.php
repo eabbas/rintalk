@@ -2,15 +2,16 @@
 @section('title', "سینگل دوره")
 @section('content')
     <div class="w-full">
-        <div class="pb-5 w-full">
-            <h1 class="text-xl text-center lg:text-start">{{ $course->title }}</h1>
-        </div>
-
-        <div class="flex flex-row border-none rounded-[7px]">
-            <div class="block lg:flex flex-row justify-between gap-8">
-                <div class="flex flex-col xm:flex-row lg:flex-row gap-5 py-3">
-                </div>
+        <div class="pb-5 w-full flex items-center justify-between">
+            <h1 class="text-xl text-center lg:text-start text-nowrap">{{ $course->title }}</h1>
+            <div class="w-full flex justify-end ">
+                <a href="" class="p-3 rounded-2xl bg-[#006ce7] text-white">
+                    شرکت در دوره
+                </a>
             </div>
+        </div>
+        <div class="flex justify-center">
+            <img class="rounded-2xl" src="{{asset('storage/'.$course->image)}}" alt="">
         </div>
         <div class="mt-4 lg:mt-5 bg-white">
             <div class="shadow__profaill__karbary rounded-md lg:p-5 p-2 mb-3 lg:mb-5">
