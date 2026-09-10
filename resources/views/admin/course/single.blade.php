@@ -99,7 +99,7 @@
             </div>
         </div>
     </div>
-    <div class="w-full h-dvh fixed top-0 right-0  " id='popupcourse'>
+    <div class="w-full h-dvh fixed top-0 right-0 invisible opacity-0 " id='popupcourse'>
         <div class="w-full h-full flex items-center justify-center">
             <div class="w-full h-full bg-black/40 cursor-pointer" onclick="logincourse('close')"></div>
             <div class="absolute z-1 bg-white md:w-190 w-full h-11/12 rounded-2xl justify-between flex flex-col p-3 px-7 overflow-hidden overflow-y-auto">
