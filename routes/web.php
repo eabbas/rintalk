@@ -124,6 +124,7 @@ Route::group([
     'prefix' => 'course',
     'controller' => CourseController::class,
     'as' =>'course.',
+    "middleware"=> [UserMiddleware::class]
 ], function(){
     Route::get('/create', 'create')->name('create');
     Route::post('/store','store')->name('store');
@@ -137,7 +138,8 @@ Route::group([
     Route::post('/sendRequestToPartner/{User?}' , 'sendRequestToPartner')->name('sendRequestToPartner');
     Route::get('/requestList' , 'requestList')->name('requestList');
     Route::post('/acceptRequest' , 'acceptRequest')->name('acceptRequest');
-    Route::get('listcourseuser' , 'listcourseuser')->name('listcourseuser');
+    Route::get('listcourseuser' , 'listcourseuser')->name('listcourseuser')->withoutMiddleware([UserMiddleware::class]);
+    Route::get('insertUser/{course}' , 'insertUser')->name('insertUser');
 });
 
 

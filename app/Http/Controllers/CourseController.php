@@ -10,6 +10,7 @@ use App\Models\level;
 use App\Models\partnerRequests;
 use App\Models\status;
 use App\Models\User;
+use App\Models\user_courses;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -267,5 +268,10 @@ class CourseController extends Controller
     {
         $courses = course::select('*', DB::raw("IFNULL(image , 'home/file_0000000068a071f4b4abc9e3fcc298aa.png') image"))->get();
         return view('admin.course.listcourseuser', ['courses' => $courses]);
+    }
+    public function insertUser($course){
+        $user_id=Auth::id();
+        user_courses::create(['course_id'=>$course,'user_id'=>$user_id]);
+        return to_route('course.listcourseuser');
     }
 }

@@ -90,7 +90,7 @@ class UserController extends Controller
                 if ($checkHash) {
                     $user->role;
                     Auth::login($user);
-                    return to_route('user.profile', [$user]);
+                    return redirect()->back();
                 }
             }
             if(isset($request->code)){
@@ -99,7 +99,7 @@ class UserController extends Controller
                     if($phoneCode->code == $request->code){
                         $user->role;
                         Auth::login($user);
-                        return to_route('user.profile', [$user]);
+                        return redirect()->back();
                     }
                 }
             }
