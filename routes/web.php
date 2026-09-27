@@ -129,7 +129,7 @@ Route::group([
     Route::get('/create', 'create')->name('create');
     Route::post('/store','store')->name('store');
     Route::get('/index' , 'index')->name('courses');
-    Route::get('/single/{course}', 'single')->name('single');
+    Route::get('/single/{course}', 'single')->name('single')->withoutMiddleware([UserMiddleware::class])->middleware([sendMiddelware::class]);
     Route::get('/edit/{course}', 'edit')->name('edit');
     Route::post('/update', 'update')->name('update');
     Route::get('/delete/{course}', 'delete')->name('delete');
@@ -140,6 +140,8 @@ Route::group([
     Route::post('/acceptRequest' , 'acceptRequest')->name('acceptRequest');
     Route::get('listcourseuser' , 'listcourseuser')->name('listcourseuser')->withoutMiddleware([UserMiddleware::class]);
     Route::get('insertUser/{course}' , 'insertUser')->name('insertUser');
+    Route::get('registrationCourse' , 'registrationCourse')->name('registrationCourse');
+
 });
 
 

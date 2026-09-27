@@ -70,19 +70,19 @@
      /*       box-shadow: 0 2px 0 #2c3e50, 0 4px 6px rgba(0,0,0,0.2);*/
      /*   }*/
     .boxgradeanet{
-        background-image: linear-gradient(160deg , #03057f , #0019d6) ;
+        background-image: linear-gradient(160deg , #0e2547 , #1d3b68) ;
     }
 </style>
 
     <section class="w-full">
-        <a href="{{route('course.listcourseuser')}}" class="w-full mx-auto bg-[#07086a] h-14 flex justify-between items-center px-2 boxgradeanet border-2 border-[#bb9dfa]">
+        <a href="{{route('course.listcourseuser')}}" class="w-full mx-auto  h-14 flex justify-between items-center px-2 boxgradeanet ">
             <div class="rounded-full p-[1px] flex justify-center items-center">
                 <div class="rounded-full p-1.5 flex justify-center items-center overflow-hidden">
                     <span class="text-2xl">🎓</span>
                 </div>
             </div>
             <span class="text-white"> لیست دوره ها  </span>
-            <div class="px-2 py-1.5 bg-[#003ce8] rounded-xl flex gap-1 justify-center items-center">
+            <div class="px-2 py-1.5 bg-[#1c3d66] rounded-xl flex gap-1 justify-center items-center">
                 <div class="text-[12px] text-white md:text-[1.2rem] lg:text-[1.6rem] font-bold"> دوره ها</div>
                 <div class="rounded-full  bg-[#121e32] flex justify-center items-center">
                     <svg viewBox="0 -50 448 512" class="size-3 md:size-4 lg:size-6 rotate-90" fill="white">
