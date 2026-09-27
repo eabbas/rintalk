@@ -51,10 +51,10 @@
                 <div class="bg-gradient-to-br from-purple-500 via-[#c989da] to-purple-600  text-white p-2.5 rounded-2xl shadow-lg">
                     <i class="fas fa-brain text-xl"></i>
                 </div>
-                <div>
+                <a href="{{route('home')}}">
                     <h1 class="text-2xl font-black tracking-tight bg-gradient-to-r from-purple-500 via-[#ce2eff] to-purple-500 bg-clip-text text-transparent">RinTalk</h1>
                     <p class="text-[11px] font-semibold text-gray-400">پلتفرم هوشمند آموزش زبان</p>
-                </div>
+                </a>
             </div>
             <div class="w-4/12 lg:flex items-center justify-between hidden">
                 <a href="{{route('home')}}" class="flex flex-col items-center group gap-1 cursor-pointer">

@@ -274,4 +274,7 @@ class CourseController extends Controller
         user_courses::create(['course_id'=>$course,'user_id'=>$user_id]);
         return to_route('course.listcourseuser');
     }
+    public function registrationCourse(Request $id){
+        dd($id);
+    }
 }
