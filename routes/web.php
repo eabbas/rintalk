@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\LoginMiddleware;
 use App\Http\Middleware\UserMiddleware;
+use App\Http\Middleware\sendMiddlewar; 
 ///course
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\CourseAttachmentController;
@@ -129,7 +130,7 @@ Route::group([
     Route::get('/create', 'create')->name('create');
     Route::post('/store','store')->name('store');
     Route::get('/index' , 'index')->name('courses');
-    Route::get('/single/{course}', 'single')->name('single')->withoutMiddleware([UserMiddleware::class])->middleware([sendMiddelware::class]);
+    Route::get('/single/{course}', 'single')->name('single')->withoutMiddleware([UserMiddleware::class]);
     Route::get('/edit/{course}', 'edit')->name('edit');
     Route::post('/update', 'update')->name('update');
     Route::get('/delete/{course}', 'delete')->name('delete');
@@ -138,9 +139,9 @@ Route::group([
     Route::post('/sendRequestToPartner/{User?}' , 'sendRequestToPartner')->name('sendRequestToPartner');
     Route::get('/requestList' , 'requestList')->name('requestList');
     Route::post('/acceptRequest' , 'acceptRequest')->name('acceptRequest');
-    Route::get('listcourseuser' , 'listcourseuser')->name('listcourseuser')->withoutMiddleware([UserMiddleware::class]);
-    Route::get('insertUser/{course}' , 'insertUser')->name('insertUser');
-    Route::get('registrationCourse' , 'registrationCourse')->name('registrationCourse');
+    Route::get('/listcourseuser' , 'listcourseuser')->name('listcourseuser')->withoutMiddleware([UserMiddleware::class]);
+    Route::get('/insertUser/{course}' , 'insertUser')->name('insertUser');
+    Route::get('/registrationCourse/{course_id}' , 'registrationCourse')->name('registrationCourse')->withoutMiddleware([UserMiddleware::class])->middleware(sendMiddlewar::class);
 
 });
 

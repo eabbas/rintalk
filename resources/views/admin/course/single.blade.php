@@ -130,7 +130,7 @@
                             <span class="text-gray-500">تومان</span>
                         </div>
                     </div>
-                    <a href="{{route('course.registrationCourse')}}"  class="w-full text-center py-5 bg-[#011a42] text-white rounded-2xl cursor-pointer">
+                    <a href="{{route('course.registrationCourse' , $course->id)}}"  class="w-full text-center py-5 bg-[#011a42] text-white rounded-2xl cursor-pointer">
                         ثبت نام در دوره
                     </a>
                 </div>
