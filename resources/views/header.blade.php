@@ -47,15 +47,6 @@
                 <div class="w-8 h-[2px] bg-black"></div>
                 <div class="w-8 h-[2px] bg-black"></div>
             </div>
-            <div class=" gap-3 flex items-center justify-center lg:justify-start">
-                <div class="bg-gradient-to-br from-purple-500 via-[#c989da] to-purple-600  text-white p-2.5 rounded-2xl shadow-lg">
-                    <i class="fas fa-brain text-xl"></i>
-                </div>
-                <a href="{{route('home')}}">
-                    <h1 class="text-2xl font-black tracking-tight bg-gradient-to-r from-purple-500 via-[#ce2eff] to-purple-500 bg-clip-text text-transparent">RinTalk</h1>
-                    <p class="text-[11px] font-semibold text-gray-400">پلتفرم هوشمند آموزش زبان</p>
-                </a>
-            </div>
             <div class="w-4/12 lg:flex items-center justify-between hidden">
                 <a href="{{route('home')}}" class="flex flex-col items-center group gap-1 cursor-pointer">
                     <span class="group-hover:text-[#ff9a1e] transtion-all duration-300 font-bold">خانه</span>
@@ -85,7 +76,7 @@
             <div class="flex items-center justify-end gap-2 lg:gap-5">
 
                 @if(!Auth::check())
-                    <a href="{{route('login')}}" class=" bg-[#06173d] flex p-3  rounded-3xl items-center justify-between lg:gap-3 group cursor-pointer">
+                    <a href="{{route('login')}}" class=" bg-[#342d64] flex p-3  rounded-3xl items-center justify-between lg:gap-3 group cursor-pointer">
                         <span class="text-white text-nowrap text-xs group-hover:text-[#ff9a1e] transtion-all duration-300">ورود / ثبت نام </span>
                     </a>
                 @endif
