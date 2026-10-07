@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\LoginMiddleware;
 use App\Http\Middleware\UserMiddleware;
-use App\Http\Middleware\sendMiddlewar; 
+use App\Http\Middleware\sendMiddleware; 
 ///course
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\CourseAttachmentController;
@@ -141,7 +141,7 @@ Route::group([
     Route::post('/acceptRequest' , 'acceptRequest')->name('acceptRequest');
     Route::get('/listcourseuser' , 'listcourseuser')->name('listcourseuser')->withoutMiddleware([UserMiddleware::class]);
     Route::get('/insertUser/{course}' , 'insertUser')->name('insertUser');
-    Route::get('/registrationCourse/{course_id}' , 'registrationCourse')->name('registrationCourse')->withoutMiddleware([UserMiddleware::class])->middleware(sendMiddlewar::class);
+    Route::get('/registrationCourse/{course_id}' , 'registrationCourse')->name('registrationCourse')->withoutMiddleware([UserMiddleware::class])->middleware(sendMiddleware::class);
 
 });
 
