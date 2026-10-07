@@ -5,8 +5,12 @@
         <div class="pb-5 w-full flex items-center justify-between">
             <h1 class="text-xl text-center lg:text-start text-nowrap">{{ $course->title }}</h1>
             <div class="w-full flex justify-end" >
-                <div class="p-3 rounded-2xl bg-[#011a42] text-white cursor-pointer" onclick="logincourse('open')">
+                <div class="p-3 rounded-2xl bg-[#011a42] text-white cursor-pointer" @if(isset(Auth::user()->courses)) @else onclick="logincourse('open')" @endif>
+                    @if(isset(Auth::user()->courses))
+                        عضو
+                    @else
                     شرکت در دوره
+                    @endif
                 </div>
             </div>
         </div>
