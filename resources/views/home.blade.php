@@ -70,19 +70,19 @@
      /*       box-shadow: 0 2px 0 #2c3e50, 0 4px 6px rgba(0,0,0,0.2);*/
      /*   }*/
     .boxgradeanet{
-        background-image: linear-gradient(160deg , #0e2547 , #1d3b68) ;
+        background-image: linear-gradient(160deg , #342d64 , #342d64) ;
     }
 </style>
 
     <section class="w-full">
-        <a href="{{route('course.listcourseuser')}}" class="w-full mx-auto  h-14 flex justify-between items-center px-2 boxgradeanet ">
+        <a href="{{route('course.listcourseuser')}}" class="w-full mx-auto h-14 flex justify-between items-center px-2 boxgradeanet ">
             <div class="rounded-full p-[1px] flex justify-center items-center">
                 <div class="rounded-full p-1.5 flex justify-center items-center overflow-hidden">
                     <span class="text-2xl">🎓</span>
                 </div>
             </div>
             <span class="text-white"> لیست دوره ها  </span>
-            <div class="px-2 py-1.5 bg-[#1c3d66] rounded-xl flex gap-1 justify-center items-center">
+            <div class="px-2 py-1.5 bg-[#003e8c] rounded-xl flex gap-1 justify-center items-center">
                 <div class="text-[12px] text-white md:text-[1.2rem] lg:text-[1.6rem] font-bold"> دوره ها</div>
                 <div class="rounded-full  bg-[#121e32] flex justify-center items-center">
                     <svg viewBox="0 -50 448 512" class="size-3 md:size-4 lg:size-6 rotate-90" fill="white">
@@ -93,11 +93,11 @@
             </div>
         </a>
     </section>
-    <section class="w-full flex justify-center relative mt-5 mb-1">
+    <section class="w-full flex justify-center relative mt-4 mb-1">
         <div class=" w-11/12 pt-1 rounded-lg flex items-center gap-5 justify-between">
             @foreach($story as $story)
                 <div class="min-w-17 max-w-17 lg:min-w-17 lg:max-w-17 flex  flex-col gap-1 items-center pup_up_story stoey cursor-pointer pb-3" onclick="story('open' , '{{$story->path}}')">
-                    <div class="w-full rounded-full border-2 border-[#07164f] flex jsutfiy-center items-center p-0.5 ">
+                    <div class="w-full rounded-full border-2 border-[#342d64] flex jsutfiy-center items-center p-0.5 ">
                         <div class="w-full h-full rounded-full overflow-hidden flex justify-center items-center">
                             <img src="{{asset('storage/' . $story->path)}}" alt="" class="object-cover rounded-full size-15">
                         </div>
@@ -110,7 +110,7 @@
 
     <section class="w-full flex justify-center">
         <div class="w-11/12 ">
-            <img class="w-full min-h-48 max-h-48 lg:min-h-100 lg:max-h-100 object-cover rounded-xl" src="{{asset('assets/image/hero.webp')}}" alt="">
+            <img class="w-full min-h-44 max-h-44 lg:min-h-100 lg:max-h-100 object-cover rounded-xl" src="{{asset('assets/image/hero.webp')}}" alt="">
         </div>
     </section>
 {{--</div>--}}
@@ -124,7 +124,7 @@
 
 {{--tasc Amir--}}
 
-<main class="w-full relative mx-auto md:mt-20">
+<main class="w-full relative mx-auto md:mt-20 mb-15">
 
 
 
@@ -285,6 +285,9 @@
         .playsvegplayboxshadow{
             box-shadow: 0px 0px 2px 2px #002284
         }
+        .boxgradeanet1{
+            background-image: linear-gradient(90deg , #5c49b6, #2e1c68) ;
+        }
     </style>
 
 
@@ -356,88 +359,6 @@
         //     return `${String(mins).padStart(2,"0")}:${String(secs).padStart(2,"0")}`;
         // }    
     </script>
-    <section class="w-11/12 mx-auto mt-5 flex gap-2.5">
-        <div class="w-1/2 h-full bg-white flex flex-col relative rounded-xl border-1 border-white" style="box-shadow:0.5PX 0.5PX 5PX #d4d4e6">
-            <img src="{{asset('storage/home/file_00000000fb4471fbbcb3f2b09783b365.png')}}" alt="" class="object-cover w-full h-full lg:size-7/12 rounded-xl">
-            <div class="w-full h-full absolute py-1.5 pl-3 flex flex-col justify-between gap-1 items-end">
-                <div class="w-full flex gap-4 items-center justify-center">
-                    <div class="flex flex-col">
-                        <h3 class="text-[16px] md:text-[1.4rem] lg:text-[2rem] font-bold">تعیین سطج</h3>
-                        <h4 class="text-[12px] md:text-[1.2rem] lg:text-[1.8rem] font-bold">سطح خود </h4>
-                    </div>
-                    <div class="w-12 h-12 md:w-18 md:h-18 lg:w-22 lg:h-22 bg-white rounded-full border-3 border-[#f5d5b2] p-[1px] flex justify-center items-center">
-                        <div class="w-full h-full bg-[#fa6004] rounded-full  p-1.5 flex justify-center items-center overflow-hidden">
-                            <img src="{{asset('storage/home/file_0000000083ec71f489146d02f60521c4.png')}}" alt="" class="object-cover w-full h-full ">
-                        </div>
-                    </div>
-                </div>
-                <div class="flex flex-col gap-1 items-start">
-                    <div class="flex gap-1 items-center">
-                        <svg  class="size-3 lg:size-5" viewBox="0 0 36 36" fill="#ff9a1e"><path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path><path  d="M16.34,23.74l-5-5a1,1,0,0,1,1.41-1.41l3.59,3.59,6.78-6.78a1,1,0,0,1,1.41,1.41Z"></path><path class="clr-i-solid clr-i-solid-path-1" d="M30,18A12,12,0,1,1,18,6,12,12,0,0,1,30,18Zm-4.77-2.16a1.4,1.4,0,0,0-2-2l-6.77,6.77L13,17.16a1.4,1.4,0,0,0-2,2l5.45,5.45Z" style="display:none"></path></svg>
-                        <span class="text-[10px] md:text-[1.2rem] lg:text-[1.8rem] font-bold">تست استاندارد </span>
-                    </div>
-                    <div class="flex gap-1 items-center">
-                        <svg  class="size-3 lg:size-5" viewBox="0 0 36 36" fill="#ff9a1e"><path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path><path  d="M16.34,23.74l-5-5a1,1,0,0,1,1.41-1.41l3.59,3.59,6.78-6.78a1,1,0,0,1,1.41,1.41Z"></path><path class="clr-i-solid clr-i-solid-path-1" d="M30,18A12,12,0,1,1,18,6,12,12,0,0,1,30,18Zm-4.77-2.16a1.4,1.4,0,0,0-2-2l-6.77,6.77L13,17.16a1.4,1.4,0,0,0-2,2l5.45,5.45Z" style="display:none"></path></svg>
-                        <span class="text-[10px] md:text-[1.2rem] lg:text-[1.8rem] font-bold">مشخص کردن</span>
-                    </div>
-                    <div class="flex gap-1 items-center">
-                        <svg  class="size-3 lg:size-5" viewBox="0 0 36 36" fill="#ff9a1e"><path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path><path  d="M16.34,23.74l-5-5a1,1,0,0,1,1.41-1.41l3.59,3.59,6.78-6.78a1,1,0,0,1,1.41,1.41Z"></path><path class="clr-i-solid clr-i-solid-path-1" d="M30,18A12,12,0,1,1,18,6,12,12,0,0,1,30,18Zm-4.77-2.16a1.4,1.4,0,0,0-2-2l-6.77,6.77L13,17.16a1.4,1.4,0,0,0-2,2l5.45,5.45Z" style="display:none"></path></svg>
-                        <span class="text-[10px] md:text-[1.2rem] lg:text-[1.8rem] font-bold">تست استاندارد</span>
-                    </div>
-                </div>
-                <div class="px-3 py-1.5 bg-[#ff9a1e] rounded-xl flex gap-1 justify-center items-center">
-                    <span class="text-[10px] text-white md:text-[1.2rem] lg:text-[1.6rem] font-bold">تعیین سطح </span>
-                    <div class=" rounded-full  bg-[#f98300] flex justify-center items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -50 448 512" class="size-3 md:size-4 lg:size-6 rotate-90" fill="white">
-                            <!--! Font Awesome Pro 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                            <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"></path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <a href="{{route('course.listcourseuser')}}" class="w-1/2 min-h-full lg: bg-white flex flex-col justify-end items-end relative rounded-xl border-1 border-white" style="box-shadow:0.5PX 0.5PX 5PX #d4d4e6">
-            <img src="{{asset('storage/home/949c2d04-e7eb-4bd4-92a4-4f6bffa86ddb.jpg')}}" alt="" class="object-cover size-10/12 lg:size-7/12">
-
-            <div class="w-full h-full absolute py-1.5 pr-3 flex flex-col justify-between gap-1 items-start">
-                <div class="w-full flex gap-4 items-center justify-center">
-                    <div class="flex flex-col text-center">
-                        <h4 class="text-[16px] md:text-[1.4rem] lg:text-[2rem] font-bold text-[#051b61]">شرکت در دوره</h4>
-                        <span class="text-[12px] md:text-[1.3rem] lg:text-[1.8rem] font-bold text-[#051b61]">همین حالا </span>
-                    </div>
-                    <div class="w-12 h-12 md:w-18 md:h-18 lg:w-22 lg:h-22 bg-white rounded-full border-3 border-[#E6EBF1] p-[1px] flex justify-center items-center">
-                        <div class="w-full h-full bg-[#002284] rounded-full  p-1.5 flex justify-center items-center overflow-hidden">
-                            <img src="{{asset('storage/home/file_0000000068a071f4b4abc9e3fcc298aa.png')}}" alt="" class="object-cover w-full h-full">
-                        </div>
-                    </div>
-                </div>
-                <div class="flex flex-col gap-1 items-start">
-                    <div class="flex gap-1 items-center">
-                        <svg  class="size-3 lg:size-5" viewBox="0 0 36 36" fill="#1a2940"><path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path><path  d="M16.34,23.74l-5-5a1,1,0,0,1,1.41-1.41l3.59,3.59,6.78-6.78a1,1,0,0,1,1.41,1.41Z"></path><path class="clr-i-solid clr-i-solid-path-1" d="M30,18A12,12,0,1,1,18,6,12,12,0,0,1,30,18Zm-4.77-2.16a1.4,1.4,0,0,0-2-2l-6.77,6.77L13,17.16a1.4,1.4,0,0,0-2,2l5.45,5.45Z" style="display:none"></path></svg>
-                        <span class="text-[11px] md:text-[1.2rem] lg:text-[1.8rem] font-bold text-[#051b61]">دوره های کاربردی</span>
-                    </div>
-                    <div class="flex gap-1 items-center">
-                        <svg  class="size-3 lg:size-5" viewBox="0 0 36 36" fill="#1a2940"><path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path><path  d="M16.34,23.74l-5-5a1,1,0,0,1,1.41-1.41l3.59,3.59,6.78-6.78a1,1,0,0,1,1.41,1.41Z"></path><path class="clr-i-solid clr-i-solid-path-1" d="M30,18A12,12,0,1,1,18,6,12,12,0,0,1,30,18Zm-4.77-2.16a1.4,1.4,0,0,0-2-2l-6.77,6.77L13,17.16a1.4,1.4,0,0,0-2,2l5.45,5.45Z" style="display:none"></path></svg>
-                        <span class="text-[11px] md:text-[1.2rem] lg:text-[1.8rem] font-bold text-[#051b61]">اسانید حرفه ای</span>
-                    </div>
-                    <div class="flex gap-1 items-center">
-                        <svg  class="size-3 lg:size-5" viewBox="0 0 36 36" fill="#1a2940"><path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path><path  d="M16.34,23.74l-5-5a1,1,0,0,1,1.41-1.41l3.59,3.59,6.78-6.78a1,1,0,0,1,1.41,1.41Z"></path><path class="clr-i-solid clr-i-solid-path-1" d="M30,18A12,12,0,1,1,18,6,12,12,0,0,1,30,18Zm-4.77-2.16a1.4,1.4,0,0,0-2-2l-6.77,6.77L13,17.16a1.4,1.4,0,0,0-2,2l5.45,5.45Z" style="display:none"></path></svg>
-                        <span class="text-[11px] md:text-[1.2rem] lg:text-[1.8rem] font-bold text-[#051b61]">تست استاندارد </span>
-                    </div>
-                </div>
-                <div class="px-2 py-1.5 bg-[#002284] rounded-xl flex gap-1 justify-center items-center">
-                    <div class="text-[10px] text-white md:text-[1.2rem] lg:text-[1.6rem] font-bold">مشاهده دوره ها</div>
-                    <div class="rounded-full  bg-[#121e32] flex justify-center items-center">
-                        <svg viewBox="0 -50 448 512" class="size-3 md:size-4 lg:size-6 rotate-90" fill="white">
-                            <!--! Font Awesome Pro 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                            <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"></path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </a>
-
-    </section>
 {{--    <section class="w-full flex justify-center mt-5">--}}
 {{--        <div class="w-11/12 flex items-center justify-end ">--}}
 {{--            <a href="{{route('course.listcourseuser')}}" class="w-1/2 min-h-full lg: bg-white flex justify-end items-end relative rounded-xl border-1 border-white h-20" style="box-shadow:0.5PX 0.5PX 5PX #d4d4e6">--}}
@@ -455,6 +376,58 @@
 {{--            </a>--}}
 {{--        </div>--}}
 {{--    </section>--}}
+    <section class="flex items-center justify-center mt-4">
+        <div class="w-11/12 flex items-center justify-between gap-1 ">
+            <div class="min-w-22 max-w-22 flex flex-col items-center justify-between p-1 py-2 px-3 bg-[#DFE8FF] rounded-xl gap-1">
+                <div class="flex w-12 h-12 items-center justify-center bg-[#7E97FF] rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-5 fill-white">
+                        <path d="M243.5 37.3c8-3.4 17-3.4 25 0l176.7 75c11.3 4.8 18.9 15.5 18.8 27.6c-.5 94-39.4 259.8-195.5 334.5c-7.9 3.8-17.2 3.8-25.1 0C87.3 399.6 48.5 233.8 48 139.8c-.1-12.1 7.5-22.8 18.8-27.6l176.7-75zM281 7.8c-16-6.8-34-6.8-50 0L54.3 82.8c-22 9.3-38.4 31-38.3 57.2c.5 99.2 41.3 280.7 213.6 363.2c16.7 8 36.1 8 52.8 0C454.7 420.7 495.5 239.2 496 140c.1-26.2-16.3-47.9-38.3-57.2L281 7.8zm82.3 195.5c6.2-6.2 6.2-16.4 0-22.6s-16.4-6.2-22.6 0L224 297.4l-52.7-52.7c-6.2-6.2-16.4-6.2-22.6 0s-6.2 16.4 0 22.6l64 64c6.2 6.2 16.4 6.2 22.6 0l128-128z"/>
+                    </svg>
+                </div>
+                <span class="text-xs text-[#263B87] text-nowrap">گواهینامه معتبر</span>
+                <span class="text-xs text-[#263B87] text-nowrap">و پایان دوره</span>
+            </div>
+            <div class="min-w-22 max-w-22 flex flex-col items-center justify-between p-1 py-2 px-3 bg-[#D3EEFF] rounded-xl gap-1">
+                <div class="flex w-12 h-12 items-center justify-center bg-[#008CFC] rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="size-5 fill-white">
+                        <path d="M480 80H96c-26.5 0-48 21.5-48 48V320c0 26.5 21.5 48 48 48h53.5l-34.7 34.7c-4 4-7.4 8.5-10.2 13.3H96c-53 0-96-43-96-96V128C0 75 43 32 96 32H480c53 0 96 43 96 96V320c0 53-43 96-96 96h-8.6c-2.8-4.8-6.2-9.2-10.2-13.3L426.5 368H480c26.5 0 48-21.5 48-48V128c0-26.5-21.5-48-48-48zM198.6 432H377.4L288 342.6 198.6 432zm112-134.6l128 128c9.2 9.2 11.9 22.9 6.9 34.9s-16.6 19.8-29.6 19.8H160c-12.9 0-24.6-7.8-29.6-19.8s-2.2-25.7 6.9-34.9l128-128c12.5-12.5 32.8-12.5 45.3 0z"/>
+                    </svg>
+                </div>
+                <span class="text-xs text-[#263B87]">دسترسی</span>
+                <span class="text-xs text-[#263B87]">همیشگی</span>
+            </div>
+            <div class="min-w-22 max-w-22 flex flex-col items-center justify-between p-1 py-2 px-3 bg-[#DBE5FE] rounded-xl gap-1">
+                <div class="flex w-12 h-12 items-center justify-center bg-[#8098FB] rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="size-5 fill-white">
+                        <path d="M128 128a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM269.7 336c80 0 145 64.3 146.3 144H32c1.2-79.7 66.2-144 146.3-144h91.4zM224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3zm431 208c17 0 30.7-13.8 30.7-30.7C640 392.2 567.8 320 478.7 320H417.3c-4.4 0-8.8 .2-13.2 .5c11.3 9.4 21.6 19.9 30.7 31.5h43.9c71 0 128.6 57.2 129.3 128H480c0 .8 0 1.5 0 2.3c0 10.8-2.8 20.9-7.6 29.7H609.3zM432 256c61.9 0 112-50.1 112-112s-50.1-112-112-112c-24.8 0-47.7 8.1-66.3 21.7c5.2 9.8 9.3 20.3 12.4 31.2C392.3 71.9 411.2 64 432 64c44.2 0 80 35.8 80 80s-35.8 80-80 80c-25.2 0-47.6-11.6-62.3-29.8c-4.7 10.3-10.4 19.9-17 28.9C373 243.4 401 256 432 256z"/>
+                    </svg>
+                </div>
+                <span class="text-xs text-[#263B87]">پشتیبانی</span>
+                <span class="text-xs text-[#263B87]">و مشاوره</span>
+            </div>
+            <div class="min-w-22 max-w-22 flex flex-col items-center justify-between p-1 py-2 px-3 bg-[#FEF0E3] rounded-xl gap-1">
+                <div class="flex w-12 h-12 items-center justify-center bg-[#FF891C] rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="size-5 fill-white">
+                        <path d="M226.5 168.8L287.9 42.3l61.4 126.5c4.6 9.5 13.6 16.1 24.1 17.7l137.4 20.3-99.8 98.8c-7.4 7.3-10.8 17.8-9 28.1l23.5 139.5L303 407.7c-9.4-5-20.7-5-30.2 0L150.2 473.2l23.5-139.5c1.7-10.3-1.6-20.7-9-28.1L65 206.8l137.4-20.3c10.5-1.5 19.5-8.2 24.1-17.7zM424.9 509.1c8.1 4.3 17.9 3.7 25.3-1.7s11.2-14.5 9.7-23.5L433.6 328.4 544.8 218.2c6.5-6.4 8.7-15.9 5.9-24.5s-10.3-14.9-19.3-16.3L378.1 154.8 309.5 13.5C305.5 5.2 297.1 0 287.9 0s-17.6 5.2-21.6 13.5L197.7 154.8 44.5 177.5c-9 1.3-16.5 7.6-19.3 16.3s-.5 18.1 5.9 24.5L142.2 328.4 116 483.9c-1.5 9 2.2 18.1 9.7 23.5s17.3 6 25.3 1.7l137-73.2 137 73.2z"/>
+                    </svg>
+                </div>
+                <span class="text-xs text-[#263B87] text-nowrap">اساتید مجرب</span>
+                <span class="text-xs text-[#263B87]">و حرفه‌ای</span>
+            </div>
+        </div>
+    </section>
+    <section class="flex items-center justify-center mt-4">
+        <div class="w-11/12 flex items-center justify-between px-5 p-2 boxgradeanet1 rounded-xl">
+            <div class="w-14/20 h-full flex flex-col items-cener ">
+                <span class="text-lg text-white font-bold"> هم بحثیت منتظره</span>
+                <span class="text-[.7rem] text-white text-nowrap">سیستم هوشمنده جستوجو و انتخاب</span>
+                <span class="text-[.7rem] text-white text-nowrap">دوره بهترین مدرس رو بهت پیشنهاد میده</span>
+            </div>
+            <div class="w-6/20 flex items-center justify-center rounded-full bg-[#07D2B5]">
+                <div class="py-2 px-5 text-lg font-bold text-white text-nowrap">بزن بریم!</div>
+            </div>
+        </div>
+    </section>
     <section class="flex flex-col gap-2 mt-5">
         <div class="w-11/12 mx-auto flex flex-col items-center justify-center rounded-[4.5rem] playboxshadow px-4 xl:px-6 p-2 xl:p-4">
             <div class="w-full flex items-center justify-between gap-5">
@@ -558,203 +531,7 @@
             </div>
         </div>
     </section>
-    <!-- تعیین سصح -->
-    <section class="w-11/12 mx-auto mt-5 flex gap-2.5"> 
-        <div class="w-1/2 h-full bg-white flex flex-col relative rounded-xl border-1 border-white" style="box-shadow:0.5PX 0.5PX 5PX #d4d4e6">
-            <img src="{{asset('storage/home/file_00000000fb4471fbbcb3f2b09783b365.png')}}" alt="" class="object-cover w-full h-full lg:size-7/12 rounded-xl">
-            <div class="w-full h-full absolute py-1.5 pl-3 flex flex-col justify-between gap-1 items-end">
-                <div class="w-full flex gap-4 items-center justify-center">
-                    <div class="flex flex-col">
-                        <h3 class="text-[16px] md:text-[1.4rem] lg:text-[2rem] font-bold">تعیین سطج</h3>
-                        <h4 class="text-[12px] md:text-[1.2rem] lg:text-[1.8rem] font-bold">سطح خود </h4>
-                    </div>
-                    <div class="w-12 h-12 md:w-18 md:h-18 lg:w-22 lg:h-22 bg-white rounded-full border-3 border-[#f5d5b2] p-[1px] flex justify-center items-center">
-                        <div class="w-full h-full bg-[#fa6004] rounded-full  p-1.5 flex justify-center items-center overflow-hidden">
-                            <img src="{{asset('storage/home/file_0000000083ec71f489146d02f60521c4.png')}}" alt="" class="object-cover w-full h-full ">
-                        </div>
-                    </div>
-                </div>
-                <div class="flex flex-col gap-1 items-start">
-                    <div class="flex gap-1 items-center">
-                        <svg  class="size-3 lg:size-5" viewBox="0 0 36 36" fill="#ff9a1e"><path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path><path  d="M16.34,23.74l-5-5a1,1,0,0,1,1.41-1.41l3.59,3.59,6.78-6.78a1,1,0,0,1,1.41,1.41Z"></path><path class="clr-i-solid clr-i-solid-path-1" d="M30,18A12,12,0,1,1,18,6,12,12,0,0,1,30,18Zm-4.77-2.16a1.4,1.4,0,0,0-2-2l-6.77,6.77L13,17.16a1.4,1.4,0,0,0-2,2l5.45,5.45Z" style="display:none"></path></svg>
-                        <span class="text-[10px] md:text-[1.2rem] lg:text-[1.8rem] font-bold">تست استاندارد </span>
-                    </div>
-                    <div class="flex gap-1 items-center">
-                        <svg  class="size-3 lg:size-5" viewBox="0 0 36 36" fill="#ff9a1e"><path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path><path  d="M16.34,23.74l-5-5a1,1,0,0,1,1.41-1.41l3.59,3.59,6.78-6.78a1,1,0,0,1,1.41,1.41Z"></path><path class="clr-i-solid clr-i-solid-path-1" d="M30,18A12,12,0,1,1,18,6,12,12,0,0,1,30,18Zm-4.77-2.16a1.4,1.4,0,0,0-2-2l-6.77,6.77L13,17.16a1.4,1.4,0,0,0-2,2l5.45,5.45Z" style="display:none"></path></svg>
-                        <span class="text-[10px] md:text-[1.2rem] lg:text-[1.8rem] font-bold">مشخص کردن</span>
-                    </div>
-                    <div class="flex gap-1 items-center">
-                        <svg  class="size-3 lg:size-5" viewBox="0 0 36 36" fill="#ff9a1e"><path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path><path  d="M16.34,23.74l-5-5a1,1,0,0,1,1.41-1.41l3.59,3.59,6.78-6.78a1,1,0,0,1,1.41,1.41Z"></path><path class="clr-i-solid clr-i-solid-path-1" d="M30,18A12,12,0,1,1,18,6,12,12,0,0,1,30,18Zm-4.77-2.16a1.4,1.4,0,0,0-2-2l-6.77,6.77L13,17.16a1.4,1.4,0,0,0-2,2l5.45,5.45Z" style="display:none"></path></svg>
-                        <span class="text-[10px] md:text-[1.2rem] lg:text-[1.8rem] font-bold">تست استاندارد</span>
-                    </div>
-                </div>
-                <div class="px-3 py-1.5 bg-[#ff9a1e] rounded-xl flex gap-1 justify-center items-center">
-                    <span class="text-[10px] text-white md:text-[1.2rem] lg:text-[1.6rem] font-bold">تعیین سطح </span>
-                    <div class=" rounded-full  bg-[#f98300] flex justify-center items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -50 448 512" class="size-3 md:size-4 lg:size-6 rotate-90" fill="white">
-                            <!--! Font Awesome Pro 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                            <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"></path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <a href="{{route('course.listcourseuser')}}" class="w-1/2 min-h-full lg: bg-white flex flex-col justify-end items-end relative rounded-xl border-1 border-white" style="box-shadow:0.5PX 0.5PX 5PX #d4d4e6">
-            <img src="{{asset('storage/home/949c2d04-e7eb-4bd4-92a4-4f6bffa86ddb.jpg')}}" alt="" class="object-cover size-10/12 lg:size-7/12">
-
-            <div class="w-full h-full absolute py-1.5 pr-3 flex flex-col justify-between gap-1 items-start">
-                <div class="w-full flex gap-4 items-center justify-center">
-                    <div class="flex flex-col text-center">
-                        <h4 class="text-[16px] md:text-[1.4rem] lg:text-[2rem] font-bold text-[#051b61]">شرکت در دوره</h4>
-                        <span class="text-[12px] md:text-[1.3rem] lg:text-[1.8rem] font-bold text-[#051b61]">همین حالا </span>
-                    </div>
-                    <div class="w-12 h-12 md:w-18 md:h-18 lg:w-22 lg:h-22 bg-white rounded-full border-3 border-[#E6EBF1] p-[1px] flex justify-center items-center">
-                        <div class="w-full h-full bg-[#002284] rounded-full  p-1.5 flex justify-center items-center overflow-hidden">
-                            <img src="{{asset('storage/home/file_0000000068a071f4b4abc9e3fcc298aa.png')}}" alt="" class="object-cover w-full h-full">
-                        </div>
-                    </div>
-                </div>
-                <div class="flex flex-col gap-1 items-start">
-                    <div class="flex gap-1 items-center">
-                        <svg  class="size-3 lg:size-5" viewBox="0 0 36 36" fill="#1a2940"><path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path><path  d="M16.34,23.74l-5-5a1,1,0,0,1,1.41-1.41l3.59,3.59,6.78-6.78a1,1,0,0,1,1.41,1.41Z"></path><path class="clr-i-solid clr-i-solid-path-1" d="M30,18A12,12,0,1,1,18,6,12,12,0,0,1,30,18Zm-4.77-2.16a1.4,1.4,0,0,0-2-2l-6.77,6.77L13,17.16a1.4,1.4,0,0,0-2,2l5.45,5.45Z" style="display:none"></path></svg>
-                        <span class="text-[10px] md:text-[1.2rem] lg:text-[1.8rem] font-bold text-[#051b61]">دوره های کاربردی</span>
-                    </div>
-                    <div class="flex gap-1 items-center">
-                        <svg  class="size-3 lg:size-5" viewBox="0 0 36 36" fill="#1a2940"><path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path><path  d="M16.34,23.74l-5-5a1,1,0,0,1,1.41-1.41l3.59,3.59,6.78-6.78a1,1,0,0,1,1.41,1.41Z"></path><path class="clr-i-solid clr-i-solid-path-1" d="M30,18A12,12,0,1,1,18,6,12,12,0,0,1,30,18Zm-4.77-2.16a1.4,1.4,0,0,0-2-2l-6.77,6.77L13,17.16a1.4,1.4,0,0,0-2,2l5.45,5.45Z" style="display:none"></path></svg>
-                        <span class="text-[10px] md:text-[1.2rem] lg:text-[1.8rem] font-bold text-[#051b61]">اسانید حرفه ای</span>
-                    </div>
-                    <div class="flex gap-1 items-center">
-                        <svg  class="size-3 lg:size-5" viewBox="0 0 36 36" fill="#1a2940"><path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path><path  d="M16.34,23.74l-5-5a1,1,0,0,1,1.41-1.41l3.59,3.59,6.78-6.78a1,1,0,0,1,1.41,1.41Z"></path><path class="clr-i-solid clr-i-solid-path-1" d="M30,18A12,12,0,1,1,18,6,12,12,0,0,1,30,18Zm-4.77-2.16a1.4,1.4,0,0,0-2-2l-6.77,6.77L13,17.16a1.4,1.4,0,0,0-2,2l5.45,5.45Z" style="display:none"></path></svg>
-                        <span class="text-[10px] md:text-[1.2rem] lg:text-[1.8rem] font-bold text-[#051b61]">تست استاندارد </span>
-                    </div>
-                </div>
-                <div class="px-2 py-1.5 bg-[#002284] rounded-xl flex gap-1 justify-center items-center">
-                    <div class="text-[10px] text-white md:text-[1.2rem] lg:text-[1.6rem] font-bold">مشاهده دوره ها</div>
-                    <div class="rounded-full  bg-[#121e32] flex justify-center items-center">
-                        <svg viewBox="0 -50 448 512" class="size-3 md:size-4 lg:size-6 rotate-90" fill="white">
-                            <!--! Font Awesome Pro 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                            <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"></path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </a>
-
-    </section>
-    <!-- تعیین سصح -->
-
     <!-- پادکست -->
-    <section class="w-11/12 mx-auto mt-5 flex gap-2.5">
-        <div class="w-1/2 min-h-full flex relative rounded-xl border-1 border-white" style="box-shadow:0.5PX 0.5PX 5PX #d4d4e6">
-            <img src="{{asset('storage/home/file_000000009644720aa1772eca64c64eda.png')}}" alt="" class="object-cover w-full h-full rounded-xl">
-            <div class="w-11/20 h-full absolute flex flex-col justify-between items-center py-4">
-                <span class="text-xs text-[#ff9a1e] font-bold">پادکست صوتی</span>
-                <h5 class="text-xs font-bold">یادگیری زبان در سفر</h5>
-                <span class="text-xs text-[#ff9a1e]">پادکست صو صوتی</span>
-                <button class="p-1.5 bg-white rounded-lg flex gap-1 justify-center items-center">
-                    <span class="text-[10px]">گوش دهید</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="size-2"><defs><style>.fa-secondary{opacity:.4}</style></defs><path class="fa-secondary" d=""/><path class="fa-primary" d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
-                </button>
-            </div>
-        </div>
-        <div class="w-1/2 min-h-full bg-[#2A137F] rounded-xl relative flex justify-start items-end border-1 border-[#8975c4] " style="box-shadow:0.5PX 0.5PX 5PX #c4b1f8">
-
-            <img src="{{asset('storage/home/ChatGPT Image Jun 6, 2026, 04_45_18 PM.png')}}" alt="" class="size-15">
-
-            <div class="w-full h-full absolute flex flex-col  justify-between items-end pl-7 py-3">
-                <h3 class="text-[17px] text-white font-bold">هم بحثیتو پیدا کن</h3>
-                <button class="rounded-xl flex gap-1 p-1.5 justify-center items-center border-1 border-white">
-                    <span class="text-xs text-white">بیشتر بخوانید</span>
-                    <div class="w-3 h-3 rounded-full flex justify-center items-center">
-                        <svg viewBox="0 -50 448 512" class="size-2 rotate-90" fill="white">
-                            <!--! Font Awesome Pro 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                            <path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"></path>
-                        </svg>
-                    </div>
-                </button>
-            </div>
-
-
-
-
-        </div>
-    </section>
-    <!-- پادکست -->
-    <section class="w-11/12 mx-auto mt-5 md:mt-20">
-        <div class="w-full flex items-center mx-auto">
-            <span
-                    class="w-48 min-w-fit text-zinc-700 text-xs md:text-sm md:font-yekanBakhBold"
-            >جدید ترین مقالات</span
-            >
-            <span
-                    class="h-[1px] w-full bg-gradient-to-r from-white via-zinc-500 to-white"
-            ></span>
-            <div class="w-32 min-w-fit text-left">
-                <a
-                        href=""
-                        class="text-sm hover:text-orange-500 text-zinc-600 flex fle items-center gap-x-1 group"
-                >
-                    مشاهده همه
-                    <svg
-                            class="fill-zinc-600 hover:fill-orange-500 group-hover:-translate-x-1 transition group-hover:fill-orange-500 size-2.5 md:size-3"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width=""
-                            height=""
-                            fill=""
-                            viewBox="0 0 256 256"
-                    >
-                        <path
-                                d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"
-                        ></path>
-                    </svg>
-                </a>
-            </div>
-        </div>
-        <div class="w-full flex items-center mx-auto mt-5">
-            <div
-                    class="overflow-x-auto flex flex-row rounded-xl mx-auto px-[16px] py-[32px] [&::-webkit-scrollbar]:w-0.5 [&::-webkit-scrollbar-thumb]:bg-orange-500 [&::-webkit-scrollbar-thumb]:rounded-full"
-            >
-                <div class="flex flex-row gap-3">
-                    <a href="" class="min-w-30  overflow-hidden flex flex-col items-center rounded-lg gap-y-3">
-                        <img src="{{ asset('storage/home/nody-عکس-پروفایل-aوm-باهم-1630591365.jpg') }}" alt="" class="min-w-30 max-w-30 h-40 bg-red-200 rounded-lg">
-                        <div class="text-md text-zinc-600">محتوااااا</div>
-                    </a>
-                    <a href="" class="min-w-30 bg-white overflow-hidden flex flex-col items-center rounded-lg gap-y-3">
-                        <img src="{{ asset('storage/home/3D.Alphabet.PNG.2.jpg') }}" alt="" class="min-w-30 max-w-30 h-40 bg-red-200 rounded-lg">
-                        <div class="text-md text-zinc-600">محتوااااا</div>
-                    </a>
-                    <a href="" class="min-w-30 bg-white overflow-hidden flex flex-col items-center rounded-lg gap-y-3">
-                        <img src="{{ asset('storage/home/alphabet4.jpg') }}" alt="" class="min-w-30 max-w-30 h-40 bg-red-200 rounded-lg">
-                        <div class="text-md text-zinc-600">محتوااااا</div>
-                    </a>
-                    <a href="" class="min-w-30 bg-white overflow-hidden flex flex-col items-center rounded-lg gap-y-3">
-                        <img src="{{ asset('storage/home/nody-عکس-پروفایل-aوm-باهم-1630591365.jpg') }}" alt="" class="min-w-30 max-w-30 h-40 bg-red-200 rounded-lg">
-                        <div class="text-md text-zinc-600">محتوااااا</div>
-                    </a>
-                    <a href="" class="min-w-30 bg-white overflow-hidden flex flex-col items-center rounded-lg gap-y-3">
-                        <img src="{{ asset('storage/home/3D.Alphabet.PNG.2.jpg') }}" alt="" class="min-w-30 max-w-30 h-40 bg-red-200 rounded-lg">
-                        <div class="text-md text-zinc-600">محتوااااا</div>
-                    </a>
-                    <a href="" class="min-w-30 bg-white overflow-hidden flex flex-col items-center rounded-lg gap-y-3">
-                        <img src="{{ asset('storage/home/alphabet4.jpg') }}" alt="" class="min-w-30 max-w-30 h-40 bg-red-200 rounded-lg">
-                        <div class="text-md text-zinc-600">محتوااااا</div>
-                    </a>
-                    <a href="" class="min-w-30 bg-white overflow-hidden flex flex-col items-center rounded-lg gap-y-3">
-                        <img src="{{ asset('storage/home/nody-عکس-پروفایل-aوm-باهم-1630591365.jpg') }}" alt="" class="min-w-30 max-w-30 h-40 bg-red-200 rounded-lg">
-                        <div class="text-md text-zinc-600">محتوااااا</div>
-                    </a>
-                    <a href="" class="min-w-30 bg-white overflow-hidden flex flex-col items-center rounded-lg gap-y-3">
-                        <img src="{{ asset('storage/home/3D.Alphabet.PNG.2.jpg') }}" alt="" class="min-w-30 max-w-30 h-40 bg-red-200 rounded-lg">
-                        <div class="text-md text-zinc-600">محتوااااا</div>
-                    </a>
-                    <a href="" class="min-w-30 bg-white overflow-hidden flex flex-col items-center rounded-lg gap-y-3">
-                        <img src="{{ asset('storage/home/alphabet4.jpg') }}" alt="" class="min-w-30 max-w-30 h-40 bg-red-200 rounded-lg">
-                        <div class="text-md text-zinc-600">محتوااااا</div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
 </main>
 
 {{--tasc Amir end--}}
@@ -1122,5 +899,4 @@
 
 </script>
 
-</body>
-</html>
+@include("footer")
