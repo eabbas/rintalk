@@ -118,10 +118,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex w-full items-center justify-between gap-3 sm:mt-8 mt-4" id="pricebox">
-                    <div class="w-6/12 py-4 shadow-md text-center bg-gray-200 cursor-pointer" onclick="price(this , 'cash')">ثبت نام نقدی</div>
-                    <div class="w-6/12 py-4 shadow-md text-center bg-white cursor-pointer" onclick="price(this , 'instalments')">ثبت نام قسطی</div>
-                </div>
                 <div class="w-full flex flex-col sm:mt-5 mt-3 gap-2">
                     <span class="sm:text-md text-sm">قبل از پرداخت حتما vpn خود را خاموش فرمایید🙏</span>
                     <span class="text-gray-500 text-xs sm:text-md" id="description">ثبت نام نقد ۱۰ ملیون یکجا</span>
@@ -142,25 +138,6 @@
         </div>
     </div>
     <script>
-        {{--function registration(course_id){--}}
-        {{--    @if(!Auth::check())--}}
-        {{--        location.assign("{{url('login')}}")--}}
-        {{--    @endif--}}
-        {{--    $.ajaxSetup({--}}
-        {{--        headers: {--}}
-        {{--            'X-CSRF-TOKEN': "{{ csrf_token() }}"--}}
-        {{--        }--}}
-        {{--    });--}}
-        {{--    $.ajax({--}}
-        {{--        url:"{{route('course.registrationCourse')}}",--}}
-        {{--        type: "POST",--}}
-        {{--        dataType: "json",--}}
-        {{--        data:{'course_id':course_id},--}}
-        {{--        success: function(data) {--}}
-        {{--            console.log(data)--}}
-        {{--        }--}}
-        {{--    })--}}
-        {{--}--}}
         let popupcourse=document.getElementById('popupcourse')
         function logincourse(door){
             if(door=='open'){
@@ -173,26 +150,5 @@
             }
         }
         // console.log(instalments)
-        let instalments=document.getElementById('instalments')
-        let description=document.getElementById('description')
-        function price(element , price){
-            let pricebox=document.getElementById('pricebox')
-            pricebox.children[0].classList.add('bg-white')
-            pricebox.children[1].classList.add('bg-white')
-            element.classList.remove('bg-white')
-            element.classList.add('bg-gray-200')
-            if(price=='instalments'){
-                description.innerText=""
-                description.innerText='ثبت نام قسطی ۶۰۰ هزار تومان ماهانه'
-                discount.innerText=""
-                discount.innerText="600"
-            }
-            if(price=='cash'){
-                description.innerText=""
-                description.innerText='ثبت نام نقد ۱۰ ملیون یک جا'
-                discount.innerText=""
-                discount.innerText="10000000"
-            }
-        }
     </script>
 @endsection

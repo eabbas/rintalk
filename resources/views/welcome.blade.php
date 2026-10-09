@@ -328,7 +328,7 @@
             @yield('content')
         </div>
     </div>
-
+    @include("footer")
     <!-- اسکریپت مدیریت سایدبار و دراپ‌داون‌ها -->
     <script>
         (function() {
