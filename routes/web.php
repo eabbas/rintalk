@@ -103,6 +103,7 @@ Route::group([
     'prefix' => 'leitnary',
     'controller' => LeitnaryController::class,
     'as' =>'leitnary.',
+    'middleware' => [UserMiddleware::class]
 ], function(){
     Route::get('/create', 'create')->name('create');
     Route::post('/store','store')->name('store');

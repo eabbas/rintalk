@@ -7,21 +7,20 @@
 <footer class="w-full flex justify-center rounded-t-4xl bg-white fixed bottom-0 left-0 pt-2 pb-2 z-999" style="box-shadow: 0px 0px 10px 1px var(--secondary-text-color);"><!-- lg:w-[calc(100%-265px)] -->
     <div class="w-11/12 flex justify-between items-center">
         <a href="{{{ route('home') }}}" class="w-1/7 flex flex-col items-center gap-2" id="homeIcon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="w-5" fill="none" stroke="@if(Route::is('home')) #2f1d6a @else var(--secondary-text-color) @endif" stroke-width="32" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="w-5" fill="none" stroke="@if(Route::is('home')) #2f1d6a @else black @endif" stroke-width="32" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/>
             </svg>
             <span class="text-xs @if(Route::is('home')) text-[#2f1d6a] @else text-(--secondary-text-color) @endif">خانه</span>
         </a>
-        <div class="w-1/7 flex flex-col items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="size-6.5">
+        <a href="{{route('course.listcourseuser')}}" class="w-1/7 flex flex-col items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="size-6.5 @if(Route::is('course.listcourseuser')) fill-[#2f1d6a] @else fill-black @endif">
                 <path d="M320 80c2.5 0 5 .4 7.4 1.3l218 78.7-218 78.7c-2.4 .9-4.9 1.3-7.4 1.3s-5-.4-7.4-1.3L184.9 192.6l140.8-52.8c8.3-3.1 12.5-12.3 9.4-20.6s-12.3-12.5-20.6-9.4L154.9 169.6c-5.2 2-10.3 4.2-15.3 6.6L94.7 160l218-78.7c2.4-.9 4.9-1.3 7.4-1.3zM15.8 182.6l77.4 27.9c-27.2 28.7-43.7 66.7-45.1 107.7c-.1 .6-.1 1.2-.1 1.8c0 28.4-10.8 57.8-22.3 80.8c-6.5 13-13.9 25.8-22.5 37.6C0 442.7-.9 448.3 .9 453.4s6 8.9 11.2 10.2l64 16c4.2 1.1 8.7 .3 12.4-2s6.3-6.1 7.1-10.4c8.6-42.8 4.3-81.2-2.1-108.7c-3.2-14-7.5-28.3-13.4-41.5c1.9-37 19.2-70.9 46.7-94.2l169.5 61.2c7.6 2.7 15.6 4.1 23.7 4.1s16.1-1.4 23.7-4.1L624.2 182.6c9.5-3.4 15.8-12.5 15.8-22.6s-6.3-19.1-15.8-22.6L343.7 36.1C336.1 33.4 328.1 32 320 32s-16.1 1.4-23.7 4.1L15.8 137.4C6.3 140.9 0 149.9 0 160s6.3 19.1 15.8 22.6zm480.8 80l-46.5 16.8 12.7 120.5c-4.8 3.5-12.8 8-24.6 12.6C410 423.6 368 432 320 432s-90-8.4-118.3-19.4c-11.8-4.6-19.8-9.2-24.6-12.6l12.7-120.5-46.5-16.8L128 408c0 35.3 86 72 192 72s192-36.7 192-72L496.7 262.6zM467.4 396a.7 .7 0 1 0 -1.2-.7 .7 .7 0 1 0 1.2 .7zm-294.8 0a.7 .7 0 1 0 1.2-.6 .7 .7 0 1 0 -1.2 .6z"/>
             </svg>
-            <span class="text-xs text-nowrap text-(--secondary-text-color)">دوره ها</span>
-        </div>
+            <span class="text-xs text-nowrap @if(Route::is('course.listcourseuser')) text-[#2f1d6a] @else text-black @endif">دوره ها</span>
+        </a>
         <div class="w-1/7 flex flex-col items-center mb-3 cursor-pointer relative" onclick="scanQr('open')">
-            <div class=" bg-white flex flex-col gap-2 justify-center items-center rounded-full absolute -bottom-5" id="qrIcon">
+            <a href="{{route('leitnary.userLeitnary')}}" class=" bg-white flex flex-col gap-2 justify-center items-center rounded-full absolute -bottom-5" id="qrIcon">
                 <div class="size-12 bg-[#2f1d6a] rounded-full flex items-center justify-center">
-                    {{-- <? xml version = "1.0" encoding = "UTF-8" ?> --}}
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="size-6.5 fill-white">
                         <g>
                             <path d="M3.179 5.998a1.005 1.005 0 0 0-1.408.132L.494 7.669a1.004 1.004 0 0 0 .131 1.407l7.888 6.542-3.807-8.354-1.527-1.266zm3.834-3.315l-1.82.829a1.005 1.005 0 0 0-.495 1.324l4.25 9.325.213-9.179-.822-1.804c-.23-.5-.826-.723-1.326-.495zm7.198.204a1.003 1.003 0 0 0-.976-1.023l-2-.046a1.003 1.003 0 0 0-1.022.976l-.239 10.243 4.19-8.167.047-1.983zm4.98.95l-1.779-.913a1.005 1.005 0 0 0-1.347.434L9.674 15.814a1.004 1.004 0 0 0 .434 1.347l1.779.913a1.003 1.003 0 0 0 1.346-.433l6.391-12.456a1.005 1.005 0 0 0-.433-1.348zm-6.392 12.456a1 1 0 1 1-1.78-.911 1 1 0 0 1 1.78.911z"></path>
@@ -29,8 +28,8 @@
                     </svg>
 
                 </div>
-                <span class="text-xs text-[#2f1d6a]">لایتنر</span>
-            </div>
+                <span class="text-xs @if(Route::is('leitnary.userLeitnary')) text-[#2f1d6a] @else text-black @endif">لایتنر</span>
+            </a>
         </div>
         <div class="w-1/7 flex flex-col items-center gap-1 cursor-pointer relative"  id="orderLink">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="size-6.5">
@@ -160,135 +159,7 @@
     }
 </style>
 
-{{--    <div class="lg:hidden w-full fixed bottom-0 bg-white right-0 z-999999">--}}
-{{--        <div class="w-full flex flex-row justify-center">--}}
-{{--            <ul--}}
-{{--                class="w-full mx-auto flex flex-row justify-between items-center bg-white border-t-1 border-gray-300 p-2">--}}
-{{--                <li>--}}
-{{--                    --}}{{-- category --}}
-{{--                    <a href="{{ route('home') }}"--}}
-{{--                        class="size-10 flex justify-center items-center rounded-full @if (Route::is('home')) bg-[#eb3254] @endif footerItems relative relative" id="homeIcon">--}}
-{{--                        <?xml version="1.0" encoding="UTF-8"?>--}}
-{{--                        <svg xmlns="http://www.w3.org/2000/svg"--}}
-{{--                            class="size-5 @if (Route::is('home')) fill-white @endif" id="Layer_1"--}}
-{{--                            data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512">--}}
-{{--                            <path--}}
-{{--                                d="M22.849,7.68l-.869-.68h.021V2h-2v3.451L13.849,.637c-1.088-.852-2.609-.852-3.697,0L1.151,7.68c-.731,.572-1.151,1.434-1.151,2.363v13.957H9V15c0-.551,.448-1,1-1h4c.552,0,1,.449,1,1v9h9V10.043c0-.929-.42-1.791-1.151-2.363Zm-.849,14.32h-5v-7c0-1.654-1.346-3-3-3h-4c-1.654,0-3,1.346-3,3v7H2V10.043c0-.31,.14-.597,.384-.788L11.384,2.212c.363-.284,.869-.284,1.232,0l9,7.043c.244,.191,.384,.478,.384,.788v11.957Z" />--}}
-{{--                        </svg>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
-{{--                <li>--}}
-{{--                    <a href="#" id="shopIcon"--}}
-{{--                        class="size-10 flex justify-center items-center rounded-full transition cursor-pointer footerItems relative">--}}
-{{--                        <?xml version="1.0" encoding="UTF-8"?>--}}
-{{--                        <svg xmlns="http://www.w3.org/2000/svg" class="size-5 " id="Outline" viewBox="0 0 24 24"--}}
-{{--                            width="512" height="512">--}}
-{{--                            <path--}}
-{{--                                d="M21,6H18A6,6,0,0,0,6,6H3A3,3,0,0,0,0,9V19a5.006,5.006,0,0,0,5,5H19a5.006,5.006,0,0,0,5-5V9A3,3,0,0,0,21,6ZM12,2a4,4,0,0,1,4,4H8A4,4,0,0,1,12,2ZM22,19a3,3,0,0,1-3,3H5a3,3,0,0,1-3-3V9A1,1,0,0,1,3,8H6v2a1,1,0,0,0,2,0V8h8v2a1,1,0,0,0,2,0V8h3a1,1,0,0,1,1,1Z" />--}}
-{{--                        </svg>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
-{{--                <li onclick="scanQr('open')">--}}
-{{--                    <div class="size-10 flex justify-center items-center rounded-full footerItems relative" id="qrIcon">--}}
-{{--                        <?xml version="1.0" encoding="UTF-8"?>--}}
-{{--                        <svg xmlns="http://www.w3.org/2000/svg" class="size-5" id="Layer_1" data-name="Layer 1"--}}
-{{--                            viewBox="0 0 24 24">--}}
-{{--                            <path--}}
-{{--                                d="m4,11h7v-7h-7v7Zm2-5h3v3h-3v-3Zm14-2h-7v7h7v-7Zm-2,5h-3v-3h3v3Zm-14,11h7v-7h-7v7Zm2-5h3v3h-3v-3Zm-3,7h4v2H3c-1.654,0-3-1.346-3-3v-4h2v4c0,.551.449,1,1,1Zm19-5h2v4c0,1.654-1.346,3-3,3h-4v-2h4c.551,0,1-.449,1-1v-4Zm2-14v4h-2V3c0-.551-.449-1-1-1h-4V0h4c1.654,0,3,1.346,3,3ZM2,7H0V3C0,1.346,1.346,0,3,0h4v2H3c-.551,0-1,.449-1,1v4Zm11,10h3v3h-3v-3Zm4-1v-3h3v3h-3Zm-4-3h3v3h-3v-3Z" />--}}
-{{--                        </svg>--}}
 
-{{--                    </div>--}}
-{{--                </li>--}}
-{{--                <li>--}}
-{{--                    --}}{{-- ecommerce --}}
-{{--                    <a href="#" id="cartIcon" class="size-10 flex justify-center items-center rounded-full footerItems relative">--}}
-{{--                        <?xml version="1.0" encoding="UTF-8"?>--}}
-{{--                        <svg xmlns="http://www.w3.org/2000/svg" class="size-6" id="Outline" viewBox="0 0 24 24"--}}
-{{--                            width="512" height="512">--}}
-{{--                            <path--}}
-{{--                                d="M22.713,4.077A2.993,2.993,0,0,0,20.41,3H4.242L4.2,2.649A3,3,0,0,0,1.222,0H1A1,1,0,0,0,1,2h.222a1,1,0,0,1,.993.883l1.376,11.7A5,5,0,0,0,8.557,19H19a1,1,0,0,0,0-2H8.557a3,3,0,0,1-2.82-2h11.92a5,5,0,0,0,4.921-4.113l.785-4.354A2.994,2.994,0,0,0,22.713,4.077ZM21.4,6.178l-.786,4.354A3,3,0,0,1,17.657,13H5.419L4.478,5H20.41A1,1,0,0,1,21.4,6.178Z" />--}}
-{{--                            <circle cx="7" cy="22" r="2" />--}}
-{{--                            <circle cx="17" cy="22" r="2" />--}}
-{{--                        </svg>--}}
-
-{{--                    </a>--}}
-{{--                    --}}{{-- ecommerce end --}}
-{{--                </li>--}}
-{{--               --}}
-{{--                 @if (!Auth::check())--}}
-{{--                <li class="relative">--}}
-{{--                    <div--}}
-{{--                        class="size-10 flex justify-center items-center rounded-full @if (Route::is('login') || Route::is('signup') || Route::is('reset_password') || Route::is('forget_password') || Route::is('user.profile')) bg-[#eb3254] @endif footerItems relative" id="userIcon">--}}
-{{--                        <a href="{{ route('login') }}">--}}
-{{--                        <?xml version="1.0" encoding="UTF-8"?>--}}
-{{--                        <svg xmlns="http://www.w3.org/2000/svg" class="size-6 @if (Route::is('login') || Route::is('signup') || Route::is('reset_password') || Route::is('forget_password')) fill-white @else fill-black @endif" id="Outline"--}}
-{{--                            viewBox="0 0 24 24" width="512" height="512">--}}
-{{--                            <path--}}
-{{--                                d="M12,12A6,6,0,1,0,6,6,6.006,6.006,0,0,0,12,12ZM12,2A4,4,0,1,1,8,6,4,4,0,0,1,12,2Z" />--}}
-{{--                            <path--}}
-{{--                                d="M12,14a9.01,9.01,0,0,0-9,9,1,1,0,0,0,2,0,7,7,0,0,1,14,0,1,1,0,0,0,2,0A9.01,9.01,0,0,0,12,14Z" />--}}
-{{--                        </svg>--}}
-{{--                        </a>--}}
-{{--                        --}}
-{{--                       --}}
-{{--                    </div>--}}
-{{--                    pup_up_user_profile_start--}}
-{{--                   --}}
-
-{{--                </li>--}}
-{{--                 @else--}}
-{{--                  <li class="relative">--}}
-{{--                    <div--}}
-{{--                        class="size-10 flex justify-center items-center rounded-full @if (Route::is('login') || Route::is('signup') || Route::is('reset_password') || Route::is('forget_password') || Route::is('user.profile')) bg-[#eb3254] @endif footerItems relative" id="userIcon" >--}}
-{{--                            <img src="{{ Auth::user()->main_image ? asset('storage/'.Auth::user()->main_image) : asset('assets/img/user.png') }}" class="size-9 rounded-full" alt="profile image" onclick="pup_up_profil('open')">--}}
-{{--                             <div class="w-50 bg-white border-black shadow-[15px_0px_30px_#bab2b29e] fixed bottom-15 left-1/30 px-3 flex flex-col gap-2 rounded-lg max-h-0 overflow-hidden transition-all duration-400 invisible opacity-0 z-999999999" id="pup_up_profile">--}}
-{{--                                <div class="w-full flex gap-5 justify-start items-center px-4" onclick="account_user()">--}}
-{{--                                    <div class="w-8 h-8 bg-[#eb3153] rounded-full absolute -top-4 -right-3 flex justify-center items-center" onclick="pup_up_profil('close')">--}}
-{{--                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="w-4 "  fill="#fff"><path d="M345 137l17-17L328 86.1l-17 17-119 119L73 103l-17-17L22.1 120l17 17 119 119L39 375l-17 17L56 425.9l17-17 119-119L311 409l17 17L361.9 392l-17-17-119-119L345 137z"/></svg>--}}
-{{--                                    </div>--}}
-{{--                                    @if(Auth::check())--}}
-{{--                                    @if(Auth::user()->name && Auth::user()->family)--}}
-{{--                                    <h2 class=" font-bold text-nowrap">{{Auth::user()->name}} {{Auth::user()->family}}</h2>--}}
-{{--                                    @else--}}
-{{--                                     <h2 class=" font-bold">نام من</h2>--}}
-{{--                                    @endif--}}
-{{--                                    @endif--}}
-{{--                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-all duration-400 rotate-180"  id="account_user_sample"><polyline points="18 15 12 9 6 15"></polyline></svg>--}}
-{{--                                </div>--}}
-{{--                                 <div class="w-full px-4 flex flex-col gap-2 overflow-y-hidden max-h-0 transition-all duration-400" id="account_user_items">--}}
-{{--                                    @foreach(Auth::user()->pages as $page)--}}
-{{--                                    <a href="{{ route('pages.single', [$page]) }}" class="w-full rounded-lg cursor-pointer py-1 hover:bg-[#F9FAFC] flex gap-5 items-center">--}}
-{{--                                        <div class="min-w-10 max-w-10 min-h-10 max-h-10">--}}
-{{--                                            <img src="{{ $page->logo_path ? asset('storage/'. $page->logo_path) : asset('assets/img/user.png') }}" class="size-9 rounded-full" alt="user accont image">--}}
-{{--                                        </div>--}}
-{{--                                        <span class="text-xs text-[#5b5c75]">{{$page->title}}</span>--}}
-{{--                                    </a>--}}
-{{--                                    @endforeach--}}
-{{--                                     <!--<a href="" class="block w-full rounded-lg cursor-pointer py-1 hover:bg-[#F9FAFC] flex gap-5 items-center">-->--}}
-{{--                                     <!--    <img src="{{ Auth::user()->main_image ? asset('storage/'.Auth::user()->main_image) : asset('assets/img/user.png') }}" class="size-9 rounded-full" alt="user accont image">-->--}}
-{{--                                     <!--    <span class="text-sm text-[#5b5c75]">محمد</span>-->--}}
-{{--                                     <!--</a>-->--}}
-{{--                                 </div>--}}
-{{--                                <a href="{{ route('dashboard') }}" class="w-full rounded-lg cursor-pointer px-4 py-2 hover:bg-[#F9FAFC] flex gap-5 items-center">--}}
-{{--                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 512 512">--}}
-{{--                                        <path d="M256 0c17 0 33.6 1.7 49.8 4.8c7.9 1.5 21.8 6.1 29.4 20.1c2 3.7 3.6 7.6 4.6 11.8l9.3 38.5C350.5 81 360.3 86.7 366 85l38-11.2c4-1.2 8.1-1.8 12.2-1.9c16.1-.5 27 9.4 32.3 15.4c22.1 25.1 39.1 54.6 49.9 86.3c2.6 7.6 5.6 21.8-2.7 35.4c-2.2 3.6-4.9 7-8 10L459 246.3c-4.2 4-4.2 15.5 0 19.5l28.7 27.3c3.1 3 5.8 6.4 8 10c8.2 13.6 5.2 27.8 2.7 35.4c-10.8 31.7-27.8 61.1-49.9 86.3c-5.3 6-16.3 15.9-32.3 15.4c-4.1-.1-8.2-.8-12.2-1.9L366 427c-5.7-1.7-15.5 4-16.9 9.8l-9.3 38.5c-1 4.2-2.6 8.2-4.6 11.8c-7.7 14-21.6 18.5-29.4 20.1C289.6 510.3 273 512 256 512s-33.6-1.7-49.8-4.8c-7.9-1.5-21.8-6.1-29.4-20.1c-2-3.7-3.6-7.6-4.6-11.8l-9.3-38.5c-1.4-5.8-11.2-11.5-16.9-9.8l-38 11.2c-4 1.2-8.1 1.8-12.2 1.9c-16.1 .5-27-9.4-32.3-15.4c-22-25.1-39.1-54.6-49.9-86.3c-2.6-7.6-5.6-21.8 2.7-35.4c2.2-3.6 4.9-7 8-10L53 265.7c4.2-4 4.2-15.5 0-19.5L24.2 218.9c-3.1-3-5.8-6.4-8-10C8 195.3 11 181.1 13.6 173.6c10.8-31.7 27.8-61.1 49.9-86.3c5.3-6 16.3-15.9 32.3-15.4c4.1 .1 8.2 .8 12.2 1.9L146 85c5.7 1.7 15.5-4 16.9-9.8l9.3-38.5c1-4.2 2.6-8.2 4.6-11.8c7.7-14 21.6-18.5 29.4-20.1C222.4 1.7 239 0 256 0zM218.1 51.4l-8.5 35.1c-7.8 32.3-45.3 53.9-77.2 44.6L97.9 120.9c-16.5 19.3-29.5 41.7-38 65.7l26.2 24.9c24 22.8 24 66.2 0 89L59.9 325.4c8.5 24 21.5 46.4 38 65.7l34.6-10.2c31.8-9.4 69.4 12.3 77.2 44.6l8.5 35.1c24.6 4.5 51.3 4.5 75.9 0l8.5-35.1c7.8-32.3 45.3-53.9 77.2-44.6l34.6 10.2c16.5-19.3 29.5-41.7 38-65.7l-26.2-24.9c-24-22.8-24-66.2 0-89l26.2-24.9c-8.5-24-21.5-46.4-38-65.7l-34.6 10.2c-31.8 9.4-69.4-12.3-77.2-44.6l-8.5-35.1c-24.6-4.5-51.3-4.5-75.9 0zM208 256a48 48 0 1 0 96 0 48 48 0 1 0 -96 0zm48 96a96 96 0 1 1 0-192 96 96 0 1 1 0 192z"></path>--}}
-{{--                                    </svg>--}}
-{{--                                    <span class="text-sm text-[#5b5c75]">داشبورد</span>--}}
-{{--                                </a>--}}
-{{--                                <a href="{{ route('user.profile') }}" class="w-full rounded-lg cursor-pointer px-4 py-2 hover:bg-[#F9FAFC] flex gap-5 items-center">--}}
-{{--                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-4"><!--! Font Awesome Pro 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/></svg>--}}
-{{--                                    <span class="text-sm text-[#5b5c75]">حساب کاربری</span>--}}
-{{--                                </a>--}}
-{{--                                <a href="{{ route('user.logout') }}" class="w-full rounded-lg cursor-pointer px-4 py-2 hover:bg-[#F9FAFC] flex gap-5 items-center">--}}
-{{--                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 20 20" id="entypo-log-out" class="w-4" fill="#eb3153"><g><path d="M19 10l-6-5v3H6v4h7v3l6-5zM3 3h8V1H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H3V3z"></path></g></svg>--}}
-{{--                                    <span class="text-sm text-[#eb3153]">خروج</span>--}}
-{{--                                </a>--}}
-
-{{--                    </div>--}}
-{{--                            </div>--}}
-{{--                            </li>--}}
-{{--                        @endif--}}
-{{--                <div class="w-full h-[100vh] fixed top-0 left-0 transition-all duration-400 invisible opacity-0" id="close_pup_up_profile_all_viwe" onclick="pup_up_profil('close')"></div>--}}
 <script>
     let pup_up_profile= document.getElementById('pup_up_profile')
     // let close_pup_up_profile_all_viwe=document.getElementById('close_pup_up_profile_all_viwe')
