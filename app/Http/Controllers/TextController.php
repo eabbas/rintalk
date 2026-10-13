@@ -14,7 +14,7 @@ class TextController extends Controller
     }
 
     public function store(Request $request){
-    $textId = Text::insertGetId(['text' => $request->text]);
+    $textId = Text::insertGetId(['text' => $request->text , 'title' => $request->title]);
 
     $text = str_replace( ["\n" , "\t" , "\r"] , " " ,$request->text);
 
@@ -85,7 +85,7 @@ class TextController extends Controller
        return to_route('Text.texts');
     }
     public function showMeaning($id){
-          $text=Text::find($id);
+          $textmain=Text::find($id);
             // $user = auth()->user();
             $user=1;
             $userLeitnerWords = [];
@@ -94,7 +94,7 @@ class TextController extends Controller
                     ->pluck('word_id')
                     ->toArray();
             }
-          $text = str_replace( ["\n" , "\t" , "\r"] , " " ,$text->text);
+          $text = str_replace( ["\n" , "\t" , "\r"] , " " ,$textmain->text);
 
         //   dd($text);
           $sentences = explode('.', trim($text));
@@ -132,7 +132,7 @@ class TextController extends Controller
                 ];
             }
             // dd($sentenseWithWords);
-            return view("admin.Text.addLeitnary", ['sentenseWithWords' => $sentenseWithWords]);
+            return view("admin.Text.addLeitnary", ['sentenseWithWords' => $sentenseWithWords , 'text'=>$textmain]);
     }
 
 

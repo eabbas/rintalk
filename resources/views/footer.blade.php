@@ -310,7 +310,6 @@
     @include('newMenuJs')
 @endif --}}
 {{--    <script src="{{ asset('assets/js/userPanel.js') }}"></script>--}}
-@RegisterServiceWorkerScript
 </body>
 
 </html>

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Text extends Model
 {
-protected $fillable=['text'];
+protected $fillable=['text' , 'title'];
 
 public function sentences(){
 
