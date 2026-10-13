@@ -7,6 +7,7 @@
                         class="px-5 py-1 mb-4 rounded-sm bg-[#eb3254] hover:bg-rose-600 text-white text-xs lg:text-base"> برگشت</a>
                 </div>
 <script src="{{ asset('assets/js/jquery.js') }}"></script>
+    <div class="w-full py-3 text-center text-xl font-bold">{{$text->title}}</div>
 <div dir="ltr">
    @foreach($sentenseWithWords as $index => $item)
          
