@@ -213,24 +213,33 @@ class TextController extends Controller
 }
 
 
-        public function saveSentenceMeanings(Request $request){
-       
-         $meanings = $request->input('meaning');
-         $sentenceIds = $request->input('sentence_ids');
-     
-            if($sentenceIds){
-                foreach($sentenceIds as $index => $sentenceId){
-                    $meaning = $meanings[$index] ?? null;
-                    
-                    if($meaning){
-                        if($sentenceId){
-                        Sentence::where('id', $sentenceId)->update(['mean' => $meaning]);
-                        }
+    public function saveSentenceMeanings(Request $request){
+    
+        $meanings = $request->input('meaning');
+        $sentenceIds = $request->input('sentence_ids');
+    
+        if($sentenceIds){
+            foreach($sentenceIds as $index => $sentenceId){
+                $meaning = $meanings[$index] ?? null;
+                
+                if($meaning){
+                    if($sentenceId){
+                    Sentence::where('id', $sentenceId)->update(['mean' => $meaning]);
                     }
                 }
             }
-            return redirect()->back();  
         }
+        return redirect()->back();  
+    }
+
+    public function connectWords(Request $request){
+        $word=SentenseWords::find($request->wordin);
+        $nextword=SentenseWords::find($request->word_id);
+        $word->word= $word->word . ' ' . $nextword->word;
+        $word->save();
+        $nextword->delete();
+        return response()->json($word);
+    }
 }
 
 
