@@ -95,6 +95,7 @@ Route::group([
     Route::get('/setSentenceMeaning/{Text}', 'setSentenceMeaning')->name('setSentenceMeaning');
     Route::get('/index' , 'index')->name('texts');
     Route::get('/delete/{id}', 'delete')->name('delete');
+    Route::post('/connectWords' , 'connectWords')->name('connectWords');
 
 
   ///leitnary
