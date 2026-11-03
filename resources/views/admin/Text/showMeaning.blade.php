@@ -23,7 +23,7 @@
                         <div class="w-75 flex flex-col items-end">
                             <div class="w-40 flex items-center gap-1" id="{{$i}}">
                                 <label class="text-nowrap" for="">کلمه مشترک</label>
-                                <input class="border-1 w-full text-center" type="number" id="wordconnect{{$wordIndex + 1 }}">
+                                <input class="border-1 w-full text-center" type="number" id="wordconnect{{$wordIndex + 1 }}{{$wordData['id']}}">
                                 <div class="cursor-pointer" onclick="connect({{$i}} , {{$wordIndex + 1 }}, {{$wordData['id']}})">✅</div>
                             </div>
                             <input type="text"
@@ -46,7 +46,7 @@
     </form>
     <script>
         function connect(sentencenumber ,wordnumber , wrod){
-            let wordconnect=document.getElementById('wordconnect'+wordnumber)
+            let wordconnect=document.getElementById('wordconnect'+wordnumber+wrod)
             let connectword=document.getElementById('word'+sentencenumber+wordconnect.value)
             let thisword=document.getElementById('word'+sentencenumber+wordnumber)
             let word_id=connectword.getAttribute('data-id')
