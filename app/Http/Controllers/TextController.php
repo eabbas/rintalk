@@ -166,7 +166,8 @@ class TextController extends Controller
         foreach ($words as $word) {
             $wordsWithIds[] = [
                 'id' => $word->id,
-                'word' => $word->word
+                'word' => $word->word,
+                'mean' => $word->mean
             ];
         }
         
