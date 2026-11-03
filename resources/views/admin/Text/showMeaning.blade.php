@@ -29,7 +29,7 @@
                             <input type="text"
                             name="meanings[{{ $wordData['id'] }}]" 
                             placeholder="معنی کلمه «{{ $wordData['word'] }}» را وارد کنید" 
-                            style="border: 1px solid #ccc; padding: 5px; border-radius: 4px; width: 300px; margin-top: 5px;">
+                            style="border: 1px solid #ccc; padding: 5px; border-radius: 4px; width: 300px; margin-top: 5px;" value="{{$wordData['mean']}}">
                             <input type="hidden" name="word_ids[]" value="{{ $wordData['id'] }}">
                         </div>
                     </div>
@@ -40,7 +40,7 @@
             @endphp
         @endforeach
         
-        <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+        <button type="submit" class="mb-20" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
             ذخیره معانی
         </button>
     </form>

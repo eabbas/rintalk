@@ -99,7 +99,7 @@
                              span.setAttribute('data-in-leitner', newInLeitner ? 'true' : 'false');
                         }
                     });
-                    // console.log(datas)
+                    console.log(datas)
                 },
                 error: function() {
                     alert('خطا در بارگیری اطلاعات')
