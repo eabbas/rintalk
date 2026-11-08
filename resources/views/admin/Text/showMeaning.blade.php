@@ -40,7 +40,7 @@
             @endphp
         @endforeach
         
-        <button type="submit" class="mb-20 absolute bottom-5 left-5" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+        <button type="submit" class="mb-20 fixed bottom-5 left-5" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
             ذخیره معانی
         </button>
     </form>
