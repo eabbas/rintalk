@@ -96,6 +96,7 @@ Route::group([
     Route::get('/index' , 'index')->name('texts');
     Route::get('/delete/{id}', 'delete')->name('delete');
     Route::post('/connectWords' , 'connectWords')->name('connectWords');
+    Route::post('/separateWords' , 'separateWords')->name('separateWords');
 
 
   ///leitnary

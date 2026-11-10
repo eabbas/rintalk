@@ -161,13 +161,13 @@ class TextController extends Controller
     
     foreach ($sentences as $sentence) {
         $words = SentenseWords::where('sentence_id', $sentence->id)->get();
-        
         $wordsWithIds = [];
         foreach ($words as $word) {
             $wordsWithIds[] = [
                 'id' => $word->id,
                 'word' => $word->word,
-                'mean' => $word->mean
+                'mean' => $word->mean,
+                'flag' => $word->flag
             ];
         }
         
@@ -236,10 +236,38 @@ class TextController extends Controller
     public function connectWords(Request $request){
         $word=SentenseWords::find($request->wordin);
         $nextword=SentenseWords::find($request->word_id);
+        if($nextword->flag==0){
+            return response()->json(false);
+        }
         $word->word= $word->word . ' ' . $nextword->word;
         $word->save();
-        $nextword->delete();
+        $nextword->flag=0;
+        $nextword->save();
+        // $nextword->delete();
         return response()->json($word);
+    }
+    public function separateWords(Request $request){
+        $word=SentenseWords::find($request->wordin);
+        $nextword=SentenseWords::find($request->word_id);
+        if($nextword->flag>0){
+        return response()->json(false);
+        }
+        $words = explode(' ', trim($word->word));
+        $nextwords = explode(' ', trim($nextword->word));
+        
+        foreach($words as $key => $word1){
+            foreach($nextwords as $next){
+                if($word1 == $next){
+                    unset($words[$key]);
+                }
+            }
+        }
+        $nextexplodeword=implode(' ' , $words);
+        $nextword->flag=1;
+        $nextword->save();
+        $word->word=$nextexplodeword;
+        $word->save();
+        return response()->json($nextexplodeword);
     }
 }
 
