@@ -1,6 +1,8 @@
 @extends('welcome')
 @section('title', 'ذخیره معنی')
 @section('content')
+    <div class="absolute bg-red-500 w-55 rounded-2xl py-4 text-lg right-50 text-white -translate-y-20 z-1 text-center duration-300 transition-all" id="div">این کلمه قبلا استفاده شده</div>
+    <div class="absolute bg-red-500 w-55 rounded-2xl py-4 text-lg right-50 text-white -translate-y-20 z-1 text-center duration-300 transition-all" id="div2">کلامه مناسب را انتخاب کنید</div>
     <h2> افزودن معانی کلمات</h2>
       <div class="flex justify-end w-10/12 mx-auto">
                     <a href="{{ route('Text.texts') }}"
@@ -16,15 +18,25 @@
                 <b>جمله {{ $i }}: {{ $item['sentence'] }}</b>
                 <br><br>
                 @foreach($item['words'] as $wordIndex => $wordData)
-                    <div style="margin-bottom: 15px;" id="word{{$i.$wordIndex + 1}}" data-id="{{$wordData['id']}}">
+                    <div class="relative" style="margin-bottom: 15px;" id="word{{$i.$wordIndex + 1}}" data-id="{{$wordData['id']}}">
+                        @if($wordData['flag']==0)
+                            <div class="absolute w-full h-full bg-gray-100 filter-blur-xl opacity-50"></div>
+                        @endif
                         <strong>کلمه {{ $wordIndex + 1 }}:</strong>
                         <span>{{ $wordData['word'] }}</span> 
                         <br>
-                        <div class="w-75 flex flex-col items-end">
-                            <div class="w-40 flex items-center gap-1" id="{{$i}}">
-                                <label class="text-nowrap" for="">کلمه مشترک</label>
-                                <input class="border-1 w-full text-center" type="number" id="wordconnect{{$wordIndex + 1 }}{{$wordData['id']}}">
-                                <div class="cursor-pointer" onclick="connect({{$i}} , {{$wordIndex + 1 }}, {{$wordData['id']}})">✅</div>
+                        <div class="w-110 flex flex-col ">
+                            <div class="flex items-center gap-2">
+                                <div class="w-40 flex items-center gap-1" id="{{$i}}">
+                                    <label class="text-nowrap" for="">کلمه مشترک</label>
+                                    <input class="border-1 w-full text-center" type="number" id="wordconnect{{$wordIndex + 1 }}{{$wordData['id']}}">
+                                    <div class="cursor-pointer" onclick="connect({{$i}} , {{$wordIndex + 1 }}, {{$wordData['id']}})">✅</div>
+                                </div>
+                                <div class="w-40 flex items-center gap-1" id="{{$i}}">
+                                    <label class="text-nowrap" for="">جدا کردن کلمه</label>
+                                    <input class="border-1 w-full text-center" type="number" id="wordseparate{{$wordIndex + 1 }}{{$wordData['id']}}">
+                                    <div class="cursor-pointer" onclick="separate({{$i}} , {{$wordIndex + 1 }}, {{$wordData['id']}})">✅</div>
+                                </div>
                             </div>
                             <input type="text"
                             name="meanings[{{ $wordData['id'] }}]" 
@@ -46,6 +58,7 @@
     </form>
     <script>
         function connect(sentencenumber ,wordnumber , wrod){
+            let parent=document.getElementById('parent')
             let wordconnect=document.getElementById('wordconnect'+wordnumber+wrod)
             let connectword=document.getElementById('word'+sentencenumber+wordconnect.value)
             let thisword=document.getElementById('word'+sentencenumber+wordnumber)
@@ -61,9 +74,58 @@
                 dataType: "json",
                 data:{'word_id':word_id , 'wordin':wrod},
                 success: function(data) {
-                    thisword.children[1].innerText=""
-                    thisword.children[1].innerText=data.word
-                    connectword.remove()
+                    // console.log(data)
+                    if(data==false){
+                        let div=document.getElementById('div')
+                        div.classList.remove('translate-y-20')
+                        div.classList.add('translate-y-10')
+                        
+                    }else{
+                        wordconnect.value=""
+                        thisword.children[1].innerText=""
+                        thisword.children[1].innerText=data.word
+                        let div=document.createElement('div')
+                        div.classList="absolute w-full h-full bg-gray-100 filter-blur-xl opacity-50 top-0"
+                        connectword.appendChild(div)
+                    }
+
+                    // connectword.remove()
+                }
+            });
+        }
+        function separate(sentencenumber ,wordnumber , wrod){
+            let parent=document.getElementById('parent')
+            let wordseparate=document.getElementById('wordseparate'+wordnumber+wrod)
+            let connectword=document.getElementById('word'+sentencenumber+wordseparate.value)
+            let thisword=document.getElementById('word'+sentencenumber+wordnumber)
+            let word_id=connectword.getAttribute('data-id')
+            $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    }
+                })
+            $.ajax({
+                url: "{{route('Text.separateWords')}}",
+                type: "POST",
+                dataType: "json",
+                data:{'word_id':word_id , 'wordin':wrod},
+                success: function(data) {
+                    if(data==false){
+                        let div=document.getElementById('div2')
+                        div.classList.remove('translate-y-20')
+                        div.classList.add('translate-y-10')
+                    }else{
+                        wordseparate.value=""
+                        thisword.children[1].innerText=""
+                        thisword.children[1].innerText=data
+                        if(connectword.children[0].classList.contains('absolute')){
+                            connectword.children[0].classList.add('hidden')
+                        }
+                        if(connectword.children[4].classList.contains('absolute')){
+                            connectword.children[4].classList.add('hidden')
+                        }
+                    }
+
                 }
             });
         }
