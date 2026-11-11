@@ -16,14 +16,14 @@
                 <input type="text" 
                        name="meaning[{{ $index }}]" 
                        placeholder="معنی جمله را وارد کنید" 
-                       style="border: 1px solid #ccc; padding: 5px; border-radius: 4px; width: 500px;">
+                       style="border: 1px solid #ccc; padding: 5px; border-radius: 4px; width: 500px;" value="{{$item['mean']}}">
                 
                 <input type="hidden" name="sentence_ids[{{ $index }}]" value="{{ $item['id'] }}">   
                 <br><br>
             </div>
         @endforeach
         
-        <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+        <button type="submit" class="mb-20 fixed bottom-5 left-5" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
             ذخیره معانی
         </button>
     </form>
