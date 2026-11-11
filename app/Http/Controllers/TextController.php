@@ -206,6 +206,7 @@ class TextController extends Controller
         
         $sentenseWithIds[] = [
             'sentence' => $sentence->sentence,
+            'mean'=>$sentence->mean,
             'id' => $sentence->id
         ];
     }
