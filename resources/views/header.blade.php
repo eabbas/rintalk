@@ -168,7 +168,7 @@
             <div class="fixed top-0 right-0 w-full h-dvh bg-black/50 blur-[10px] opacity-0 invisible transtion-all duration-300 z-1 lg:hidden" id="blackpage" onclick="menu('close')"></div>
                         
 
-            <div id="sidebar" class="fixed top-0 h-dvh w-3/4 bg-white translate-x-full transtion-all duration-300 z-2 overflow-auto lg:hidden">
+            <div id="sidebar" class="fixed top-0 h-dvh w-3/4 bg-white translate-x-full transtion-all duration-300 z-3 overflow-auto lg:hidden">
 
                 <!-- پروفایل کاربر -->
                 <div class="px-5 py-5 flex items-center gap-3 border-b border-gray-50">
@@ -466,28 +466,5 @@
                 }
             });
         }
-        const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
-
-            dropdownTriggers.forEach(trigger => {
-                trigger.addEventListener('click', function(e) {
-                 
-                    e.preventDefault();
-                    // بستن سایر دراپ‌داون‌ها (اختیاری)
-                    // این کار باعث می‌شود فقط یکی باز بماند. برای تجربه بهتر می‌توانید آن را فعال کنید.
-                    // اما بنا بر نیاز کاربر، معمولاً بهتر است همزمان چند تا باز باشند. ما هر کدام را مستقل می‌کنیم.
-                    const parentItem = this.closest('.dropdown-item');
-                    const menu = parentItem.querySelector('.dropdown-menu');
-                    const chevron = this.querySelector('.chevron');
-                
-
-                    // if (menu.classList.contains('hidden')) {
-                    //     menu.classList.remove('hidden');
-                    //     chevron.classList.add('rotate-180');
-                    // } else {
-                    //     menu.classList.add('hidden');
-                    //     chevron.classList.remove('rotate-180');
-                    // }
-                });
-            });
 
     </script>
