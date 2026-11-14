@@ -704,46 +704,11 @@
 
 
 
-    for(let j=0;j<7;j++){
-        let mmjjjkk=`<div class="w-full min-py-1 flex gap-2 pr-2 justify-between border-r-2 border-[blue]" id="mmjjjkk">
-                                            <div class="w-10/12 flex gap-2">
-                                                <div>
-                                                    <div class="w-10 h-10 rounded-full overflow-hidden border-1">
-                                                        <img src="{{asset('assets/img/user.png')}}" alt="" class="object-cover">
-                                                    </div>
-                                                </div>
-                                                <div class="w-10/12 py-1 flex flex-col gap-1">
-                                                    <div class="flex gap-2">
-                                                        <span class="text-xs text-[#c3c4c7]">mahdi_1111</span>
-                                                        <span class="text-xs text-[#c3c4c7]">14h</span>
-                                                    </div>
-                                                    <div>
-                                                        <p class="text-xs lg:text-sm">متن_تستی متن_تستی متن_تستی متن_تستی متن_تستی</p>
-                                                    </div>
-                                                    <div class="flex">
-                                                        <span class="text-xs text-[#c3c4c7]">پاسخ</span>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="flex flex-col gap-2 items-center">
-                                                <div class="like_change_svg">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5" fill="black" id="no_like_in_comment"><path d="M256 163.9L222.1 130l-24.2-24.2C181.4 89.3 159 80 135.8 80C87.3 80 48 119.3 48 167.8c0 23.3 9.2 45.6 25.7 62.1l24.2 24.2L256 412.1 414.1 254.1l24.2-24.2c16.5-16.5 25.7-38.8 25.7-62.1c0-48.5-39.3-87.8-87.8-87.8c-23.3 0-45.6 9.2-62.1 25.7L289.9 130 256 163.9zm33.9 282.2L256 480l-33.9-33.9L64 288 39.8 263.8C14.3 238.3 0 203.8 0 167.8C0 92.8 60.8 32 135.8 32c36 0 70.5 14.3 96 39.8L256 96l24.2-24.2c0 0 0 0 0 0c25.5-25.4 60-39.7 96-39.7C451.2 32 512 92.8 512 167.8c0 36-14.3 70.5-39.8 96L448 288 289.9 446.1z"/></svg>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 hidden" fill="red"  id="like_in_comment"><path d="M39.8 263.8L64 288 256 480 448 288l24.2-24.2c25.5-25.5 39.8-60 39.8-96C512 92.8 451.2 32 376.2 32c-36 0-70.5 14.3-96 39.8L256 96 231.8 71.8c-25.5-25.5-60-39.8-96-39.8C60.8 32 0 92.8 0 167.8c0 36 14.3 70.5 39.8 96z"/></svg>
-                                                </div>
-                                                <span class="text-black text-sm text-nowrap">235 هزار</span>
-                                            </div>
-                                        </div>`
-        console.log(mmjjjkk)
-        let classElement=document.createElement('div')
-        classElement.innerHTML=mmjjjkk
-        mmmmkkkkddd.appendChild(classElement)
-    }
 
 
 
     let story=document.querySelectorAll('.pup_up_story')
-    console.log(story)
+    // console.log(story)
     story.forEach((item)=>{
         item.addEventListener('click',function(){
             if(item.nextElementSibling.children[0].classList.contains('invisible')){

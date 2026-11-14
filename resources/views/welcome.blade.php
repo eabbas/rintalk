@@ -330,76 +330,7 @@
     </div>
     @include("footer")
     <!-- اسکریپت مدیریت سایدبار و دراپ‌داون‌ها -->
-    <script>
-        (function() {
-            // ========== مدیریت سایدبار در موبایل ==========
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
-            const openBtn = document.getElementById('openSidebarBtn');
-            const closeBtn = document.getElementById('closeSidebarBtn');
 
-            function openSidebar() {
-                sidebar.classList.add('translate-x-0');
-                sidebar.classList.remove('translate-x-full');
-                overlay.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-            }
-
-            function closeSidebar() {
-                sidebar.classList.remove('translate-x-0');
-                sidebar.classList.add('translate-x-full');
-                overlay.classList.add('hidden');
-                document.body.style.overflow = '';
-            }
-            if (openBtn) openBtn.addEventListener('click', openSidebar);
-            if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
-            if (overlay) overlay.addEventListener('click', closeSidebar);
-
-            window.addEventListener('resize', function() {
-                if (window.innerWidth >= 1024) {
-                    if (sidebar.classList.contains('translate-x-0') && !sidebar.classList.contains('lg:translate-x-0')) {
-                        sidebar.classList.remove('translate-x-0');
-                        sidebar.classList.add('translate-x-full');
-                    }
-                    overlay.classList.add('hidden');
-                    document.body.style.overflow = '';
-                }
-            });
-
-            // ========== مدیریت دراپ‌داون‌های منو (دوره‌ها، فصل‌ها، درس‌ها) ==========
-            const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
-
-            dropdownTriggers.forEach(trigger => {
-                trigger.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    // بستن سایر دراپ‌داون‌ها (اختیاری)
-                    // این کار باعث می‌شود فقط یکی باز بماند. برای تجربه بهتر می‌توانید آن را فعال کنید.
-                    // اما بنا بر نیاز کاربر، معمولاً بهتر است همزمان چند تا باز باشند. ما هر کدام را مستقل می‌کنیم.
-
-                    const parentItem = this.closest('.dropdown-item');
-                    const menuD = parentItem.querySelector('.dropdown-menu');
-                    const chevron = this.querySelector('.chevron');
-
-                    if (menuD.classList.contains('hidden')) {
-                        menuD.classList.remove('hidden');
-                        chevron.classList.add('rotate-180');
-                    } else {
-                        menuD.classList.add('hidden');
-                        chevron.classList.remove('rotate-180');
-                    }
-                });
-            });
-
-            // جلوگیری از بسته شدن وقتی روی لینک‌های زیرمنو کلیک می‌شود
-            document.querySelectorAll('.dropdown-menu a').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    // اجازه می‌دهد لینک کار کند، ولی سایدبار در موبایل بسته نمی‌شود
-                    // در صورت نیاز می‌توانید کد اضافه کنید
-                    console.log('رفتن به:', link.innerText);
-                });
-            });
-        })();
-    </script>
 </body>
 
 </html>
