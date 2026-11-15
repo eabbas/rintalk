@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\generalcourse;
+use App\Models\courseSteps;
 
 class GeneralcourseController extends Controller{
     public function create(){
@@ -27,6 +28,14 @@ class GeneralcourseController extends Controller{
             'status'=>$request->stauts?1:0,
             'img'=>$imagePath
         ], ['id'] , ['title','description','price','discount','img']);
+        return to_route('course.courses');
+    }
+    public function delete($id){
+        $course=generalcourse::find($id)->delete();
+        $coursestep=courseSteps::where('course_id' , $id)->get();
+        foreach($coursestep as $step){
+            $step->delete();
+        }
         return to_route('course.courses');
     }
 }
