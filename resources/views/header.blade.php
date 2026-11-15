@@ -166,8 +166,6 @@
             </div>
         </div>
             <div class="fixed top-0 right-0 w-full h-dvh bg-black/50 blur-[10px] opacity-0 invisible transtion-all duration-300 z-1 lg:hidden" id="blackpage" onclick="menu('close')"></div>
-                        
-
             <div id="sidebar" class="fixed top-0 h-dvh w-3/4 bg-white translate-x-full transtion-all duration-300 z-2 overflow-auto lg:hidden">
 
                 <!-- پروفایل کاربر -->
