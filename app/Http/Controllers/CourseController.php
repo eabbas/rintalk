@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Models\generalcourse;
 use DB;
 
 class CourseController extends Controller
@@ -63,7 +64,8 @@ class CourseController extends Controller
     public function index()
     {
         $courses = course::all();
-        return view('admin.course.index', ['courses' => $courses]);
+        $generalcourse=generalcourse::first();
+        return view('admin.course.index', ['courses' => $courses , 'generalcourse'=>$generalcourse]);
     }
 
     public function edit(course $course)

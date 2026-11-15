@@ -10,7 +10,9 @@ use App\Http\Controllers\BooksController;
 use App\Http\Controllers\CourseAttachmentController;
 use App\Http\Controllers\CourseCommentController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\GeneralcourseController;
 use App\Http\Controllers\CourseMediaController;
+use App\Http\Controllers\CourseStepsController;
 //chapter
 use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\ChapterAtachmentController;
@@ -360,4 +362,26 @@ Route::group([
     Route::post('/store' , 'store')->name('commentStore');
     Route::get('/single/{chapter}' , 'single')->name('commentSingle');
     Route::get('/index' , 'index')->name('commentIndex');
+});
+
+Route::group([
+    'prefix' => 'generalcourse',
+    'controller'=> GeneralcourseController::class,
+    'as' => 'generalcourse.'
+], function(){
+    Route::get('/create', 'create')->name('create');
+    Route::post('/store', 'store')->name('store');
+});
+
+Route::group([
+    'prefix' => 'courseStep',
+    'controller' => CourseStepsController::class,
+    'as' => 'coursestep.'
+], function(){
+    Route::get('/create/{id}' , 'create')->name('create');
+    Route::post('/store' , 'store')->name('store');
+    Route::get('/list' , 'index')->name('list');
+    Route::get('/edit/{id}' , 'edit')->name('edit');
+    Route::post('/update' , 'update')->name('update');
+    Route::get('/delete/{id}' , 'delete')->name('delete');
 });
